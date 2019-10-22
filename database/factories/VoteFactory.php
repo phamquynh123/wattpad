@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\Model\User::class, function (Faker $faker) {
+$factory->define(App\Model\Vote::class, function (Faker $faker) {
     return [
         //
     ];
