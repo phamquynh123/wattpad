@@ -1,0 +1,14 @@
+{
+  "name": "wattpad",
+  "description": "Read story online",
+  "main": "",
+  "license": "MIT",
+  "homepage": "https://github.com/phamquynh123/wattpad",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
