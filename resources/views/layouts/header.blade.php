@@ -19,6 +19,7 @@
 <link href="{{ asset('bower_components/css/color.css') }}" rel="stylesheet">
 <!-- FONT AWESOME -->
 <link href="{{ asset('bower_components/css/font-awesome.min.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="{{ asset('bower_components/fontawesome/css/all.min.css') }}">
 <!-- BX SLIDER -->
 <link href="{{ asset('bower_components/css/jquery.bxslider.css') }}" rel="stylesheet">
 <!-- Boostrap Slider -->
@@ -41,143 +42,131 @@
 
     <div class="loader-section section-left"></div>
     <div class="loader-section section-right"></div>
-
 </div>
 <!--WRAPPER START-->
-<div class="wrapper kode-header-class-3">
+<div class="wrapper">
     <!--HEADER START-->
-    <header class="header-3">
-        <div class="container">
-            <div class="logo-container">
-                <div class="row">
-                    <div class="col-md-3">
-                         <!--LOGO START-->
-                        <div class="logo">
-                            <a href="#"><img src="{{ asset('bower_components/images/logo-2.png') }}" alt=""></a>
-                        </div>
-                        <!--LOGO END-->
-                    </div>
-                    <div class="col-md-9">
-                        <div class="top-strip">
-                            <div class="pull-left">
-                                <p>Welcome to Library theme</p>
-                            </div>
-                            <div class="social-icon">
-                                <a href="mailto:info@library-theme.com" class="pull-left">info@library-theme.com</a>
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>                      
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="kode-navigation">
-                           <ul>
-                                <li><a href="index-2.html">Home</a>
-                                    <ul>
-                                        <li><a href="index-1.html">Home page 1</a></li>
-                                    </ul>
-                                </li>
-                                
-                                <li><a href="about-us.html">About Us</a></li>
-                                <li><a href="books.html">Our Books</a>
-                                    <ul>
-                                        <li><a href="books3-sidebar.html">Book With Sidebar</a></li>
-                                        <li><a href="books-detail.html">Book Detail</a></li>                                
-                                    </ul>
-                                </li>
-                                <li><a href="blog.html">Blog</a>
-                                    <ul>
-                                        <li><a href="blog-2column.html">Blog 2 Column</a></li>
-                                        <li><a href="blog-full.html">Blog Full</a></li>
-                                        <li><a href="blog-detail.html">Blog Detail</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="authors.html">Authors</a>
-                                    <ul>
-                                        <li><a href="authors.html">Authors</a></li>
-                                        <li><a href="author-detail.html">Authors Detail</a></li>                                        
-                                    </ul>
-                                </li>
-                                <li class="last"><a href="#">Events</a>
-                                    <ul>
-                                        <li><a href="events-2column.html">Event 2 Column</a></li>
-                                        <li><a href="events-3column.html">Event 3 Column</a></li>
-                                        <li><a href="event-full.html">Event Single</a></li>
-                                        <li><a href="event-detail.html">Event Detail</a></li>
-                                    </ul>
-                                </li>
-                                
-                                <li class="last"><a href="#">Pages</a>
-                                    <ul class="children">
-                                        <li><a href="error-404.html">Error 404</a></li>
-                                        <li><a href="coming-soon.html">Comming Soon</a></li>
-                                        <li class="last"><a href="gallery-2col.html">Gallery</a>
-                                            <ul>
-                                                <li><a href="gallery-2col.html">Gallery 2 Col</a></li>
-                                                <li><a href="gallery-3col.html">Gallery 3 Col</a></li>
-                                                <li><a href="gallery-4col.html">Gallery 4 Col</a></li>    
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="last"><a href="contact-us.html">Contact Us</a></li>
+    <header class="header-1">
+        <div class="top-strip">
+            <div class="container">
+                <div class="pull-left">
+                    <p>Welcome to Library theme</p>
+                </div>
+                <ul class="my-account">
+                        <li><a href="#"><i class="fa fa-list"></i> Wishlist</a></li>
+                        <li><a href="#"><i class="far fa-user"></i></i> My Account</a></li>
+                        <li><a href="#"><i class="fa fa-compress"></i> Compare</a></li>
+                        <li><a href="#"><i class="fa fa-sign-in"></i> Login</a></li>
+                        <li><a href="#"><i class="fa fa-shopping-cart"></i> 0Item</a></li>                        
+                    </ul>
+            </div>
+        </div>
+        <div class="logo-container">
+            <div class="container">
+                <!--LOGO START-->
+                <div class="logo">
+                    <a href="#"><img src="{{ asset('bower_components/images/logo-2.png') }}" alt=""></a>
+                </div>
+                <!--LOGO END-->
+                <div class="kode-navigation">
+                    <ul>
+                        <li><a href="index-2.html">Home</a>
+                            <ul>
+                                <li><a href="index-1.html">Home page 1</a></li>
                             </ul>
-                        </div>
-                        <div id="kode-responsive-navigation" class="dl-menuwrapper">
-                            <button class="dl-trigger">Open Menu</button>
-                            <ul class="dl-menu">
-                                <li class="menu-item kode-parent-menu"><a href="index-2.html">Home</a>
-                                    <ul class="dl-submenu">
-                                        <li><a href="index-1.html">Home page 1</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="about-us.html">About Us</a></li>
-                                <li class="menu-item kode-parent-menu"><a href="books.html">Our Books</a>
-                                    <ul class="dl-submenu">
-                                        <li><a href="books3-sidebar.html">Book With Sidebar</a></li>
-                                        <li><a href="books-detail.html">Book Detail</a></li>                                
-                                    </ul>
-                                </li>
-                                <li class="menu-item kode-parent-menu"><a href="blog.html">Blog</a>
-                                    <ul class="dl-submenu">
-                                        <li><a href="blog-2column.html">Blog 2 Column</a></li>
-                                        <li><a href="blog-full.html">Blog Full</a></li>
-                                        <li><a href="blog-detail.html">Blog Detail</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item kode-parent-menu last"><a href="authors.html">Authors</a>
-                                    <ul class="dl-submenu">
-                                        <li><a href="authors.html">Authors</a></li>
-                                        <li><a href="author-detail.html">Authors Detail</a></li>                                        
-                                    </ul>
-                                </li>
-                                <li class="menu-item kode-parent-menu last"><a href="#">Events</a>
-                                    <ul class="dl-submenu">
-                                        <li><a href="events-2column.html">Event 2 Column</a></li>
-                                        <li><a href="events-3column.html">Event 3 Column</a></li>
-                                        <li><a href="event-full.html">Event Single</a></li>
-                                        <li><a href="event-detail.html">Event Detail</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item kode-parent-menu last"><a href="#">Pages</a>
-                                    <ul class="dl-submenu">
-                                        <li><a href="error-404.html">Error 404</a></li>
-                                        <li><a href="coming-soon.html">Comming Soon</a></li>
-                                        <li class="menu-item kode-parent-menu last"><a href="gallery-2col.html">Gallery</a>
-                                            <ul class="dl-submenu">
-                                                <li><a href="gallery-2col.html">Gallery 2 Col</a></li>
-                                                <li><a href="gallery-3col.html">Gallery 3 Col</a></li>
-                                                <li><a href="gallery-4col.html">Gallery 4 Col</a></li>    
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="last"><a href="contact-us.html">Contact Us</a></li>
+                        </li>
+                        
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="books.html">Our Books</a>
+                            <ul>
+                                <li><a href="books3-sidebar.html">Book With Sidebar</a></li>
+                                <li><a href="books-detail.html">Book Detail</a></li>                                
                             </ul>
-                        </div>
-                    </div>
+                        </li>
+                        <li><a href="blog.html">Blog</a>
+                            <ul>
+                                <li><a href="blog-2column.html">Blog 2 Column</a></li>
+                                <li><a href="blog-full.html">Blog Full</a></li>
+                                <li><a href="blog-detail.html">Blog Detail</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="authors.html">Authors</a>
+                            <ul>
+                                <li><a href="authors.html">Authors</a></li>
+                                <li><a href="author-detail.html">Authors Detail</a></li>                                        
+                            </ul>
+                        </li>
+                        <li class="last"><a href="#">Events</a>
+                            <ul>
+                                <li><a href="events-2column.html">Event 2 Column</a></li>
+                                <li><a href="events-3column.html">Event 3 Column</a></li>
+                                <li><a href="event-full.html">Event Single</a></li>
+                                <li><a href="event-detail.html">Event Detail</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="last"><a href="#">Pages</a>
+                            <ul class="children">
+                                <li><a href="error-404.html">Error 404</a></li>
+                                <li><a href="coming-soon.html">Comming Soon</a></li>
+                                <li class="last"><a href="gallery-2col.html">Gallery</a>
+                                    <ul>
+                                        <li><a href="gallery-2col.html">Gallery 2 Col</a></li>
+                                        <li><a href="gallery-3col.html">Gallery 3 Col</a></li>
+                                        <li><a href="gallery-4col.html">Gallery 4 Col</a></li>    
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="last"><a href="contact-us.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div id="kode-responsive-navigation" class="dl-menuwrapper">
+                    <button class="dl-trigger">Open Menu</button>
+                    <ul class="dl-menu">
+                        <li class="menu-item kode-parent-menu"><a href="index-2.html">Home</a>
+                            <ul class="dl-submenu">
+                                <li><a href="index-1.html">Home page 1</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li class="menu-item kode-parent-menu"><a href="books.html">Our Books</a>
+                            <ul class="dl-submenu">
+                                <li><a href="books3-sidebar.html">Book With Sidebar</a></li>
+                                <li><a href="books-detail.html">Book Detail</a></li>                                
+                            </ul>
+                        </li>
+                        <li class="menu-item kode-parent-menu"><a href="blog.html">Blog</a>
+                            <ul class="dl-submenu">
+                                <li><a href="blog-2column.html">Blog 2 Column</a></li>
+                                <li><a href="blog-full.html">Blog Full</a></li>
+                                <li><a href="blog-detail.html">Blog Detail</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="authors.html">Authors</a></li>
+                        <li class="menu-item kode-parent-menu last"><a href="#">Events</a>
+                            <ul class="dl-submenu">
+                                <li><a href="events-2column.html">Event 2 Column</a></li>
+                                <li><a href="events-3column.html">Event 3 Column</a></li>
+                                <li><a href="event-full.html">Event Single</a></li>
+                                <li><a href="event-detail.html">Event Detail</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item kode-parent-menu last"><a href="#">Pages</a>
+                            <ul class="dl-submenu">
+                                <li><a href="error-404.html">Error 404</a></li>
+                                <li><a href="coming-soon.html">Comming Soon</a></li>
+                                <li class="menu-item kode-parent-menu last"><a href="gallery-2col.html">Gallery</a>
+                                    <ul class="dl-submenu">
+                                        <li><a href="gallery-2col.html">Gallery 2 Col</a></li>
+                                        <li><a href="gallery-3col.html">Gallery 3 Col</a></li>
+                                        <li><a href="gallery-4col.html">Gallery 4 Col</a></li>    
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="last"><a href="contact-us.html">Contact Us</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -230,9 +219,9 @@
         <div class="container">
             <!-- Nav tabs -->
               <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation"><a href="#Basic" role="tab" data-toggle="tab">Basic</a></li>
-                <li role="presentation" class="active"><a href="#Author" role="tab" data-toggle="tab">Author</a></li>
-                <li role="presentation"><a href="#Publications" role="tab" data-toggle="tab">Publications</a></li>
+                <li role="presentation"><a href="#Basic" aria-controls="Basic" role="tab" data-toggle="tab">Basic</a></li>
+                <li role="presentation" class="active"><a href="#Author" aria-controls="Author" role="tab" data-toggle="tab">Author</a></li>
+                <li role="presentation"><a href="#Publications" aria-controls="Publications" role="tab" data-toggle="tab">Publications</a></li>
               </ul>
             
               <!-- Tab panes -->
@@ -356,10 +345,10 @@
                 </div>
                 <!--SECTION CONTENT END-->
                 <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#Photography" role="tab" data-toggle="tab">Arts &amp; Photography</a></li>
-                <li role="presentation"><a href="#Biographies" role="tab" data-toggle="tab">Biographies &amp; Memoirsa</a></li>
-                <li role="presentation"><a href="#Business" role="tab" data-toggle="tab">Business</a></li>
-                <li role="presentation"><a href="#Computers" role="tab" data-toggle="tab">Computers &amp; Internet</a></li>
+                <li role="presentation" class="active"><a href="#Photography" aria-controls="Photography" role="tab" data-toggle="tab">Arts &amp; Photography</a></li>
+                <li role="presentation"><a href="#Biographies" aria-controls="Biographies" role="tab" data-toggle="tab">Biographies &amp; Memoirsa</a></li>
+                <li role="presentation"><a href="#Business" aria-controls="Business" role="tab" data-toggle="tab">Business</a></li>
+                <li role="presentation"><a href="#Computers" aria-controls="Computers" role="tab" data-toggle="tab">Computers &amp; Internet</a></li>
                 </ul>
                 
                 <!-- Tab panes -->
@@ -370,486 +359,9 @@
                             <!--PRODUCT GRID START-->
                             <div class="col-md-3 col-sm-6 best-seller-pro">
                                 <figure>
-                                <img src="images/book.png" alt="">
-                            </figure>
-                            <div class="kode-text">
-                                <h3>PENDRAGON</h3>
-                            </div>
-                            <div class="kode-caption">
-                                <h3>PENDRAGON Dr.Machale</h3>
-                                <div class="rating">
-<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-</div>
-                                <p>Dr.Machale</p>
-                                <p class="price">$224.20</p>
-                                <a href="#" class="add-to-cart">Add To Cart</a>
-                                </div>
-                                </div>
-                            <!--PRODUCT GRID END-->
-                            <!--PRODUCT GRID START-->
-                            <div class="col-md-3 col-sm-6 best-seller-pro">
-                                <figure>
-                                <img src="images/book2.png" alt="">
-                            </figure>
-                            <div class="kode-text">
-                                <h3><a href="#">Bridget Jones</a></h3>
-                            </div>
-                            <div class="kode-caption">
-                                <h3>Mad About the Boy</h3>
-                                <div class="rating">
-<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-</div>
-                                <p>Helen Fielding</p>
-                                <p class="price">$77.70</p>
-                                <a href="#" class="add-to-cart">Add To Cart</a>
-                                </div>
-                            </div>
-                            <!--PRODUCT GRID END-->
-                            <!--PRODUCT GRID START-->
-                            <div class="col-md-3 col-sm-6 best-seller-pro">
-                               <figure>
-                                <img src="images/book3.png" alt="">
-                            </figure>
-                            <div class="kode-text">
-                                <h3><a href="#">Burnt Siena</a></h3>
-                            </div>
-                            <div class="kode-caption">
-                                <h3>Art History Mystery</h3>
-                                <div class="rating">
-<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-</div>
-                                <p>Sara Wisseman</p>
-                                <p class="price">$334.50</p>
-                                <a href="#" class="add-to-cart">Add To Cart</a>
-                                </div>
-                            </div>
-                            <!--PRODUCT GRID END-->
-                            <!--PRODUCT GRID START-->
-                            <div class="col-md-3 col-sm-6 best-seller-pro">
-                               <figure>
-                                <img src="images/book4.png" alt="">
-                            </figure>
-                            <div class="kode-text">
-                                <h3><a href="#">Chrysalis</a></h3>
-                            </div>
-                            <div class="kode-caption">
-                                <h3>The Brave Girl</h3>
-                                <div class="rating">
-<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-</div>
-                                <p>William S.</p>
-                                <p class="price">$24.75</p>
-                                <a href="#" class="add-to-cart">Add To Cart</a>
-                                </div>
-                            </div>
-                            <!--PRODUCT GRID END-->
-                        </li>
-                        <li>
-                            <!--PRODUCT GRID START-->
-                            <div class="col-md-3 col-sm-6 best-seller-pro">
-                                <figure>
-                                <img alt="" src="images/book5.png">
-                            </figure>
-                            <div class="kode-text">
-                                <h3><a href="#">The Winning</a></h3>
-                            </div>
-                            <div class="kode-caption">
-                                <h3>The Winning Story</h3>
-                                <div class="rating">
-<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-</div>
-                                <p>Mind Set</p>
-                                <p class="price">$447.75</p>
-                                <a class="add-to-cart" href="#">Add To Cart</a>
-                                </div>
-                                </div>
-                            <!--PRODUCT GRID END-->
-                            <!--PRODUCT GRID START-->
-                            <div class="col-md-3 col-sm-6 best-seller-pro">
-                                <figure>
-                                <img alt="" src="images/book10.png">
-                            </figure>
-                            <div class="kode-text">
-                                <h3><a href="#">Dead Water</a></h3>
-                            </div>
-                            <div class="kode-caption">
-                                <h3>Dead Water in the Sea</h3>
-                                <div class="rating">
-<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-</div>
-                                <p>Ann Grannger</p>
-                                <p class="price">$777.75</p>
-                                <a class="add-to-cart" href="#">Add To Cart</a>
-                                </div>
-                            </div>
-                            <!--PRODUCT GRID END-->
-                            <!--PRODUCT GRID START-->
-                            <div class="col-md-3 col-sm-6 best-seller-pro">
-                               <figure>
-                                <img alt="" src="images/book7.png">
-                            </figure>
-                            <div class="kode-text">
-                                <h3><a href="#">The Fault In our Stars</a></h3>
-                            </div>
-                            <div class="kode-caption">
-                                <h3>Paper Towns</h3>
-                                <div class="rating">
-<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-</div>
-                                <p>Daniel Abraham</p>
-                                <p class="price">$770.75</p>
-                                <a class="add-to-cart" href="#">Add To Cart</a>
-                                </div>
-                            </div>
-                            <!--PRODUCT GRID END-->
-                            <!--PRODUCT GRID START-->
-                            <div class="col-md-3 col-sm-6 best-seller-pro">
-                                <figure>
-                                <img alt="" src="images/book8.png">
-                            </figure>
-                            <div class="kode-text">
-                                <h3><a href="#">The Ruby Of Egypt</a></h3>
-                            </div>
-                            <div class="kode-caption">
-                                <h3>The Ruby Of Egypt</h3>
-                                <div class="rating">
-<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-</div>
-                                <p>Cat Howard</p>
-                                <p class="price">$996.75</p>
-                                <a class="add-to-cart" href="#">Add To Cart</a>
-                                </div>
-                            </div>
-                            <!--PRODUCT GRID END-->
-                        </li>
-                        <li>
-                            <!--PRODUCT GRID START-->
-                            <div class="col-md-3 col-sm-6 best-seller-pro">
-                                <figure>
-                                <img alt="" src="images/book9.png">
-                            </figure>
-                            <div class="kode-text">
-                                <h3><a href="#">Fableheaven</a></h3>
-                            </div>
-                            <div class="kode-caption">
-                                <h3>Fableheaven The Master</h3>
-                                <div class="rating">
-<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-</div>
-                                <p>Brandon Hall</p>
-                                <p class="price">$542.75</p>
-                                <a class="add-to-cart" href="#">Add To Cart</a>
-                                </div>
-                                </div>
-                            <!--PRODUCT GRID END-->
-                            <!--PRODUCT GRID START-->
-                            <div class="col-md-3 col-sm-6 best-seller-pro">
-                                <figure>
-                                <img alt="" src="images/book.png">
-                            </figure>
-                            <div class="kode-text">
-                                <h3><a href="#">Star Trek</a></h3>
-                            </div>
-                            <div class="kode-caption">
-                                <h3>Star Trek Course</h3>
-                                <div class="rating">
-<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-</div>
-                                <p>DisAvowed</p>
-                                <p class="price">$821.75</p>
-                                <a class="add-to-cart" href="#">Add To Cart</a>
-                                </div>
-                            </div>
-                            <!--PRODUCT GRID END-->
-                            <!--PRODUCT GRID START-->
-                            <div class="col-md-3 col-sm-6 best-seller-pro">
-                                <figure>
-                                <img alt="" src="images/book10.png">
-                            </figure>
-                            <div class="kode-text">
-                                <h3><a href="#">City Of Bones</a></h3>
-                            </div>
-                            <div class="kode-caption">
-                                <h3>City Of Bones Lies here</h3>
-                                <div class="rating">
-<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-</div>
-                                <p>Cassandra Clare</p>
-                                <p class="price">$362.75</p>
-                                <a class="add-to-cart" href="#">Add To Cart</a>
-                                </div>
-                            </div>
-                            <!--PRODUCT GRID END-->
-                            <!--PRODUCT GRID START-->
-                            <div class="col-md-3 col-sm-6 best-seller-pro">
-                                <figure>
-                                <img alt="" src="images/book2.png">
-                            </figure>
-                            <div class="kode-text">
-                                <h3><a href="#">Annette Blair</a></h3>
-                            </div>
-                            <div class="kode-caption">
-                                <h3>Annette Blair The Maker</h3>
-                                <div class="rating">
-<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-</div>
-                                <p>Vampire Dragon</p>
-                                <p class="price">$599.75</p>
-                                <a class="add-to-cart" href="#">Add To Cart</a>
-                                </div>
-                            </div>
-                            <!--PRODUCT GRID END-->
-                        </li>
-                    </ul>
-                    
-                </div>
-                <div role="tabpanel" class="tab-pane fade" id="Biographies">
-                    <ul class="bxslider-1">
-                        <li>
-                            <!--PRODUCT GRID START-->
-                            <div class="col-md-3 col-sm-6 best-seller-pro">
-                                <figure>
-                                <img src="images/book3.png" alt="">
-                            </figure>
-                            <div class="kode-text">
-                                <h3>PENDRAGON</h3>
-                            </div>
-                            <div class="kode-caption">
-                                <h3>PENDRAGON Dr.Machale</h3>
-                                <div class="rating">
-<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-</div>
-                                <p>Dr.Machale</p>
-                                <p class="price">$224.20</p>
-                                <a href="#" class="add-to-cart">Add To Cart</a>
-                                </div>
-                                </div>
-                            <!--PRODUCT GRID END-->
-                            <!--PRODUCT GRID START-->
-                            <div class="col-md-3 col-sm-6 best-seller-pro">
-                                <figure>
-                                <img src="images/book4.png" alt="">
-                            </figure>
-                            <div class="kode-text">
-                                <h3><a href="#">Bridget Jones</a></h3>
-                            </div>
-                            <div class="kode-caption">
-                                <h3>Mad About the Boy</h3>
-                                <div class="rating">
-<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-</div>
-                                <p>Helen Fielding</p>
-                                <p class="price">$77.70</p>
-                                <a href="#" class="add-to-cart">Add To Cart</a>
-                                </div>
-                            </div>
-                            <!--PRODUCT GRID END-->
-                            <!--PRODUCT GRID START-->
-                            <div class="col-md-3 col-sm-6 best-seller-pro">
-                               <figure>
-                                <img src="images/book7.png" alt="">
-                            </figure>
-                            <div class="kode-text">
-                                <h3><a href="#">Burnt Siena</a></h3>
-                            </div>
-                            <div class="kode-caption">
-                                <h3>Art History Mystery</h3>
-                                <div class="rating">
-<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-</div>
-                                <p>Sara Wisseman</p>
-                                <p class="price">$334.50</p>
-                                <a href="#" class="add-to-cart">Add To Cart</a>
-                                </div>
-                            </div>
-                            <!--PRODUCT GRID END-->
-                            <!--PRODUCT GRID START-->
-                            <div class="col-md-3 col-sm-6 best-seller-pro">
-                               <figure>
                                 <img src="images/book5.png" alt="">
                             </figure>
                             <div class="kode-text">
-                                <h3><a href="#">Chrysalis</a></h3>
-                            </div>
-                            <div class="kode-caption">
-                                <h3>The Brave Girl</h3>
-                                <div class="rating">
-<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-</div>
-                                <p>William S.</p>
-                                <p class="price">$24.75</p>
-                                <a href="#" class="add-to-cart">Add To Cart</a>
-                                </div>
-                            </div>
-                            <!--PRODUCT GRID END-->
-                        </li>
-                        <li>
-                            <!--PRODUCT GRID START-->
-                            <div class="col-md-3 col-sm-6 best-seller-pro">
-                                <figure>
-                                <img alt="" src="images/book8.png">
-                            </figure>
-                            <div class="kode-text">
-                                <h3><a href="#">The Winning</a></h3>
-                            </div>
-                            <div class="kode-caption">
-                                <h3>The Winning Story</h3>
-                                <div class="rating">
-<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-</div>
-                                <p>Mind Set</p>
-                                <p class="price">$447.75</p>
-                                <a class="add-to-cart" href="#">Add To Cart</a>
-                                </div>
-                                </div>
-                            <!--PRODUCT GRID END-->
-                            <!--PRODUCT GRID START-->
-                            <div class="col-md-3 col-sm-6 best-seller-pro">
-                                <figure>
-                                <img alt="" src="images/book9.png">
-                            </figure>
-                            <div class="kode-text">
-                                <h3><a href="#">Dead Water</a></h3>
-                            </div>
-                            <div class="kode-caption">
-                                <h3>Dead Water in the Sea</h3>
-                                <div class="rating">
-<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-</div>
-                                <p>Ann Grannger</p>
-                                <p class="price">$777.75</p>
-                                <a class="add-to-cart" href="#">Add To Cart</a>
-                                </div>
-                            </div>
-                            <!--PRODUCT GRID END-->
-                            <!--PRODUCT GRID START-->
-                            <div class="col-md-3 col-sm-6 best-seller-pro">
-                               <figure>
-                                <img alt="" src="images/book13.png">
-                            </figure>
-                            <div class="kode-text">
-                                <h3><a href="#">The Fault In our Stars</a></h3>
-                            </div>
-                            <div class="kode-caption">
-                                <h3>Paper Towns</h3>
-                                <div class="rating">
-<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-</div>
-                                <p>Daniel Abraham</p>
-                                <p class="price">$770.75</p>
-                                <a class="add-to-cart" href="#">Add To Cart</a>
-                                </div>
-                            </div>
-                            <!--PRODUCT GRID END-->
-                            <!--PRODUCT GRID START-->
-                            <div class="col-md-3 col-sm-6 best-seller-pro">
-                                <figure>
-                                <img alt="" src="images/book.png">
-                            </figure>
-                            <div class="kode-text">
-                                <h3><a href="#">The Ruby Of Egypt</a></h3>
-                            </div>
-                            <div class="kode-caption">
-                                <h3>The Ruby Of Egypt</h3>
-                                <div class="rating">
-<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-</div>
-                                <p>Cat Howard</p>
-                                <p class="price">$996.75</p>
-                                <a class="add-to-cart" href="#">Add To Cart</a>
-                                </div>
-                            </div>
-                            <!--PRODUCT GRID END-->
-                        </li>
-                        <li>
-                            <!--PRODUCT GRID START-->
-                            <div class="col-md-3 col-sm-6 best-seller-pro">
-                                <figure>
-                                <img alt="" src="images/book4.png">
-                            </figure>
-                            <div class="kode-text">
-                                <h3><a href="#">Fableheaven</a></h3>
-                            </div>
-                            <div class="kode-caption">
-                                <h3>Fableheaven The Master</h3>
-                                <div class="rating">
-<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-</div>
-                                <p>Brandon Hall</p>
-                                <p class="price">$542.75</p>
-                                <a class="add-to-cart" href="#">Add To Cart</a>
-                                </div>
-                                </div>
-                            <!--PRODUCT GRID END-->
-                            <!--PRODUCT GRID START-->
-                            <div class="col-md-3 col-sm-6 best-seller-pro">
-                                <figure>
-                                <img alt="" src="images/book2.png">
-                            </figure>
-                            <div class="kode-text">
-                                <h3><a href="#">Star Trek</a></h3>
-                            </div>
-                            <div class="kode-caption">
-                                <h3>Star Trek Course</h3>
-                                <div class="rating">
-<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-</div>
-                                <p>DisAvowed</p>
-                                <p class="price">$821.75</p>
-                                <a class="add-to-cart" href="#">Add To Cart</a>
-                                </div>
-                            </div>
-                            <!--PRODUCT GRID END-->
-                            <!--PRODUCT GRID START-->
-                            <div class="col-md-3 col-sm-6 best-seller-pro">
-                                <figure>
-                                <img alt="" src="images/book3.png">
-                            </figure>
-                            <div class="kode-text">
-                                <h3><a href="#">City Of Bones</a></h3>
-                            </div>
-                            <div class="kode-caption">
-                                <h3>City Of Bones Lies here</h3>
-                                <div class="rating">
-<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-</div>
-                                <p>Cassandra Clare</p>
-                                <p class="price">$362.75</p>
-                                <a class="add-to-cart" href="#">Add To Cart</a>
-                                </div>
-                            </div>
-                            <!--PRODUCT GRID END-->
-                            <!--PRODUCT GRID START-->
-                            <div class="col-md-3 col-sm-6 best-seller-pro">
-                                <figure>
-                                <img alt="" src="images/book4.png">
-                            </figure>
-                            <div class="kode-text">
-                                <h3><a href="#">Annette Blair</a></h3>
-                            </div>
-                            <div class="kode-caption">
-                                <h3>Annette Blair The Maker</h3>
-                                <div class="rating">
-<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-</div>
-                                <p>Vampire Dragon</p>
-                                <p class="price">$599.75</p>
-                                <a class="add-to-cart" href="#">Add To Cart</a>
-                                </div>
-                            </div>
-                            <!--PRODUCT GRID END-->
-                        </li>
-                    </ul>
-                </div>
-                <div role="tabpanel" class="tab-pane fade" id="Business">
-                    <ul class="bxslider-3">
-                        <li>
-                            <!--PRODUCT GRID START-->
-                            <div class="col-md-3 col-sm-6 best-seller-pro">
-                                <figure>
-                                <img src="images/book4.png" alt="">
-                            </figure>
-                            <div class="kode-text">
                                 <h3>PENDRAGON</h3>
                             </div>
                             <div class="kode-caption">
@@ -866,7 +378,7 @@
                             <!--PRODUCT GRID START-->
                             <div class="col-md-3 col-sm-6 best-seller-pro">
                                 <figure>
-                                <img src="images/book5.png" alt="">
+                                <img src="images/book6.png" alt="">
                             </figure>
                             <div class="kode-text">
                                 <h3><a href="#">Bridget Jones</a></h3>
@@ -925,7 +437,7 @@
                             <!--PRODUCT GRID START-->
                             <div class="col-md-3 col-sm-6 best-seller-pro">
                                 <figure>
-                                <img alt="" src="images/book6.png">
+                                <img alt="" src="images/book10.png">
                             </figure>
                             <div class="kode-text">
                                 <h3><a href="#">The Winning</a></h3>
@@ -944,7 +456,484 @@
                             <!--PRODUCT GRID START-->
                             <div class="col-md-3 col-sm-6 best-seller-pro">
                                 <figure>
+                                <img alt="" src="images/book3.png">
+                            </figure>
+                            <div class="kode-text">
+                                <h3><a href="#">Dead Water</a></h3>
+                            </div>
+                            <div class="kode-caption">
+                                <h3>Dead Water in the Sea</h3>
+                                <div class="rating">
+<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+</div>
+                                <p>Ann Grannger</p>
+                                <p class="price">$777.75</p>
+                                <a class="add-to-cart" href="#">Add To Cart</a>
+                                </div>
+                            </div>
+                            <!--PRODUCT GRID END-->
+                            <!--PRODUCT GRID START-->
+                            <div class="col-md-3 col-sm-6 best-seller-pro">
+                               <figure>
+                                <img alt="" src="images/book4.png">
+                            </figure>
+                            <div class="kode-text">
+                                <h3><a href="#">The Fault In our Stars</a></h3>
+                            </div>
+                            <div class="kode-caption">
+                                <h3>Paper Towns</h3>
+                                <div class="rating">
+<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+</div>
+                                <p>Daniel Abraham</p>
+                                <p class="price">$770.75</p>
+                                <a class="add-to-cart" href="#">Add To Cart</a>
+                                </div>
+                            </div>
+                            <!--PRODUCT GRID END-->
+                            <!--PRODUCT GRID START-->
+                            <div class="col-md-3 col-sm-6 best-seller-pro">
+                                <figure>
+                                <img alt="" src="images/book5.png">
+                            </figure>
+                            <div class="kode-text">
+                                <h3><a href="#">The Ruby Of Egypt</a></h3>
+                            </div>
+                            <div class="kode-caption">
+                                <h3>The Ruby Of Egypt</h3>
+                                <div class="rating">
+<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+</div>
+                                <p>Cat Howard</p>
+                                <p class="price">$996.75</p>
+                                <a class="add-to-cart" href="#">Add To Cart</a>
+                                </div>
+                            </div>
+                            <!--PRODUCT GRID END-->
+                        </li>
+                        <li>
+                            <!--PRODUCT GRID START-->
+                            <div class="col-md-3 col-sm-6 best-seller-pro">
+                                <figure>
+                                <img alt="" src="images/book6.png">
+                            </figure>
+                            <div class="kode-text">
+                                <h3><a href="#">Fableheaven</a></h3>
+                            </div>
+                            <div class="kode-caption">
+                                <h3>Fableheaven The Master</h3>
+                                <div class="rating">
+<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+</div>
+                                <p>Brandon Hall</p>
+                                <p class="price">$542.75</p>
+                                <a class="add-to-cart" href="#">Add To Cart</a>
+                                </div>
+                                </div>
+                            <!--PRODUCT GRID END-->
+                            <!--PRODUCT GRID START-->
+                            <div class="col-md-3 col-sm-6 best-seller-pro">
+                                <figure>
+                                <img alt="" src="images/book7.png">
+                            </figure>
+                            <div class="kode-text">
+                                <h3><a href="#">Star Trek</a></h3>
+                            </div>
+                            <div class="kode-caption">
+                                <h3>Star Trek Course</h3>
+                                <div class="rating">
+<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+</div>
+                                <p>DisAvowed</p>
+                                <p class="price">$821.75</p>
+                                <a class="add-to-cart" href="#">Add To Cart</a>
+                                </div>
+                            </div>
+                            <!--PRODUCT GRID END-->
+                            <!--PRODUCT GRID START-->
+                            <div class="col-md-3 col-sm-6 best-seller-pro">
+                                <figure>
+                                <img alt="" src="images/book8.png">
+                            </figure>
+                            <div class="kode-text">
+                                <h3><a href="#">City Of Bones</a></h3>
+                            </div>
+                            <div class="kode-caption">
+                                <h3>City Of Bones Lies here</h3>
+                                <div class="rating">
+<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+</div>
+                                <p>Cassandra Clare</p>
+                                <p class="price">$362.75</p>
+                                <a class="add-to-cart" href="#">Add To Cart</a>
+                                </div>
+                            </div>
+                            <!--PRODUCT GRID END-->
+                            <!--PRODUCT GRID START-->
+                            <div class="col-md-3 col-sm-6 best-seller-pro">
+                                <figure>
                                 <img alt="" src="images/book9.png">
+                            </figure>
+                            <div class="kode-text">
+                                <h3><a href="#">Annette Blair</a></h3>
+                            </div>
+                            <div class="kode-caption">
+                                <h3>Annette Blair The Maker</h3>
+                                <div class="rating">
+<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+</div>
+                                <p>Vampire Dragon</p>
+                                <p class="price">$599.75</p>
+                                <a class="add-to-cart" href="#">Add To Cart</a>
+                                </div>
+                            </div>
+                            <!--PRODUCT GRID END-->
+                        </li>
+                    </ul>
+                    
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="Biographies">
+                    <ul class="bxslider-1">
+                        <li>
+                            <!--PRODUCT GRID START-->
+                            <div class="col-md-3 col-sm-6 best-seller-pro">
+                                <figure>
+                                <img src="images/book5.png" alt="">
+                            </figure>
+                            <div class="kode-text">
+                                <h3>PENDRAGON</h3>
+                            </div>
+                            <div class="kode-caption">
+                                <h3>PENDRAGON Dr.Machale</h3>
+                                <div class="rating">
+<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+</div>
+                                <p>Dr.Machale</p>
+                                <p class="price">$224.20</p>
+                                <a href="#" class="add-to-cart">Add To Cart</a>
+                                </div>
+                                </div>
+                            <!--PRODUCT GRID END-->
+                            <!--PRODUCT GRID START-->
+                            <div class="col-md-3 col-sm-6 best-seller-pro">
+                                <figure>
+                                <img src="images/book6.png" alt="">
+                            </figure>
+                            <div class="kode-text">
+                                <h3><a href="#">Bridget Jones</a></h3>
+                            </div>
+                            <div class="kode-caption">
+                                <h3>Mad About the Boy</h3>
+                                <div class="rating">
+<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+</div>
+                                <p>Helen Fielding</p>
+                                <p class="price">$77.70</p>
+                                <a href="#" class="add-to-cart">Add To Cart</a>
+                                </div>
+                            </div>
+                            <!--PRODUCT GRID END-->
+                            <!--PRODUCT GRID START-->
+                            <div class="col-md-3 col-sm-6 best-seller-pro">
+                               <figure>
+                                <img src="images/book7.png" alt="">
+                            </figure>
+                            <div class="kode-text">
+                                <h3><a href="#">Burnt Siena</a></h3>
+                            </div>
+                            <div class="kode-caption">
+                                <h3>Art History Mystery</h3>
+                                <div class="rating">
+<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+</div>
+                                <p>Sara Wisseman</p>
+                                <p class="price">$334.50</p>
+                                <a href="#" class="add-to-cart">Add To Cart</a>
+                                </div>
+                            </div>
+                            <!--PRODUCT GRID END-->
+                            <!--PRODUCT GRID START-->
+                            <div class="col-md-3 col-sm-6 best-seller-pro">
+                               <figure>
+                                <img src="images/book8.png" alt="">
+                            </figure>
+                            <div class="kode-text">
+                                <h3><a href="#">Chrysalis</a></h3>
+                            </div>
+                            <div class="kode-caption">
+                                <h3>The Brave Girl</h3>
+                                <div class="rating">
+<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+</div>
+                                <p>William S.</p>
+                                <p class="price">$24.75</p>
+                                <a href="#" class="add-to-cart">Add To Cart</a>
+                                </div>
+                            </div>
+                            <!--PRODUCT GRID END-->
+                        </li>
+                        <li>
+                            <!--PRODUCT GRID START-->
+                            <div class="col-md-3 col-sm-6 best-seller-pro">
+                                <figure>
+                                <img alt="" src="images/book9.png">
+                            </figure>
+                            <div class="kode-text">
+                                <h3><a href="#">The Winning</a></h3>
+                            </div>
+                            <div class="kode-caption">
+                                <h3>The Winning Story</h3>
+                                <div class="rating">
+<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+</div>
+                                <p>Mind Set</p>
+                                <p class="price">$447.75</p>
+                                <a class="add-to-cart" href="#">Add To Cart</a>
+                                </div>
+                                </div>
+                            <!--PRODUCT GRID END-->
+                            <!--PRODUCT GRID START-->
+                            <div class="col-md-3 col-sm-6 best-seller-pro">
+                                <figure>
+                                <img alt="" src="images/book8.png">
+                            </figure>
+                            <div class="kode-text">
+                                <h3><a href="#">Dead Water</a></h3>
+                            </div>
+                            <div class="kode-caption">
+                                <h3>Dead Water in the Sea</h3>
+                                <div class="rating">
+<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+</div>
+                                <p>Ann Grannger</p>
+                                <p class="price">$777.75</p>
+                                <a class="add-to-cart" href="#">Add To Cart</a>
+                                </div>
+                            </div>
+                            <!--PRODUCT GRID END-->
+                            <!--PRODUCT GRID START-->
+                            <div class="col-md-3 col-sm-6 best-seller-pro">
+                               <figure>
+                                <img alt="" src="images/book7.png">
+                            </figure>
+                            <div class="kode-text">
+                                <h3><a href="#">The Fault In our Stars</a></h3>
+                            </div>
+                            <div class="kode-caption">
+                                <h3>Paper Towns</h3>
+                                <div class="rating">
+<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+</div>
+                                <p>Daniel Abraham</p>
+                                <p class="price">$770.75</p>
+                                <a class="add-to-cart" href="#">Add To Cart</a>
+                                </div>
+                            </div>
+                            <!--PRODUCT GRID END-->
+                            <!--PRODUCT GRID START-->
+                            <div class="col-md-3 col-sm-6 best-seller-pro">
+                                <figure>
+                                <img alt="" src="images/book8.png">
+                            </figure>
+                            <div class="kode-text">
+                                <h3><a href="#">The Ruby Of Egypt</a></h3>
+                            </div>
+                            <div class="kode-caption">
+                                <h3>The Ruby Of Egypt</h3>
+                                <div class="rating">
+<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+</div>
+                                <p>Cat Howard</p>
+                                <p class="price">$996.75</p>
+                                <a class="add-to-cart" href="#">Add To Cart</a>
+                                </div>
+                            </div>
+                            <!--PRODUCT GRID END-->
+                        </li>
+                        <li>
+                            <!--PRODUCT GRID START-->
+                            <div class="col-md-3 col-sm-6 best-seller-pro">
+                                <figure>
+                                <img alt="" src="images/book2.png">
+                            </figure>
+                            <div class="kode-text">
+                                <h3><a href="#">Fableheaven</a></h3>
+                            </div>
+                            <div class="kode-caption">
+                                <h3>Fableheaven The Master</h3>
+                                <div class="rating">
+<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+</div>
+                                <p>Brandon Hall</p>
+                                <p class="price">$542.75</p>
+                                <a class="add-to-cart" href="#">Add To Cart</a>
+                                </div>
+                                </div>
+                            <!--PRODUCT GRID END-->
+                            <!--PRODUCT GRID START-->
+                            <div class="col-md-3 col-sm-6 best-seller-pro">
+                                <figure>
+                                <img alt="" src="images/book.png">
+                            </figure>
+                            <div class="kode-text">
+                                <h3><a href="#">Star Trek</a></h3>
+                            </div>
+                            <div class="kode-caption">
+                                <h3>Star Trek Course</h3>
+                                <div class="rating">
+<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+</div>
+                                <p>DisAvowed</p>
+                                <p class="price">$821.75</p>
+                                <a class="add-to-cart" href="#">Add To Cart</a>
+                                </div>
+                            </div>
+                            <!--PRODUCT GRID END-->
+                            <!--PRODUCT GRID START-->
+                            <div class="col-md-3 col-sm-6 best-seller-pro">
+                                <figure>
+                                <img alt="" src="images/book8.png">
+                            </figure>
+                            <div class="kode-text">
+                                <h3><a href="#">City Of Bones</a></h3>
+                            </div>
+                            <div class="kode-caption">
+                                <h3>City Of Bones Lies here</h3>
+                                <div class="rating">
+<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+</div>
+                                <p>Cassandra Clare</p>
+                                <p class="price">$362.75</p>
+                                <a class="add-to-cart" href="#">Add To Cart</a>
+                                </div>
+                            </div>
+                            <!--PRODUCT GRID END-->
+                            <!--PRODUCT GRID START-->
+                            <div class="col-md-3 col-sm-6 best-seller-pro">
+                                <figure>
+                                <img alt="" src="images/book6.png">
+                            </figure>
+                            <div class="kode-text">
+                                <h3><a href="#">Annette Blair</a></h3>
+                            </div>
+                            <div class="kode-caption">
+                                <h3>Annette Blair The Maker</h3>
+                                <div class="rating">
+<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+</div>
+                                <p>Vampire Dragon</p>
+                                <p class="price">$599.75</p>
+                                <a class="add-to-cart" href="#">Add To Cart</a>
+                                </div>
+                            </div>
+                            <!--PRODUCT GRID END-->
+                        </li>
+                    </ul>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="Business">
+                    <ul class="bxslider-3">
+                        <li>
+                            <!--PRODUCT GRID START-->
+                            <div class="col-md-3 col-sm-6 best-seller-pro">
+                                <figure>
+                                <img src="images/book5.png" alt="">
+                            </figure>
+                            <div class="kode-text">
+                                <h3>PENDRAGON</h3>
+                            </div>
+                            <div class="kode-caption">
+                                <h3>PENDRAGON Dr.Machale</h3>
+                                <div class="rating">
+<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+</div>
+                                <p>Dr.Machale</p>
+                                <p class="price">$224.20</p>
+                                <a href="#" class="add-to-cart">Add To Cart</a>
+                                </div>
+                                </div>
+                            <!--PRODUCT GRID END-->
+                            <!--PRODUCT GRID START-->
+                            <div class="col-md-3 col-sm-6 best-seller-pro">
+                                <figure>
+                                <img src="images/book9.png" alt="">
+                            </figure>
+                            <div class="kode-text">
+                                <h3><a href="#">Bridget Jones</a></h3>
+                            </div>
+                            <div class="kode-caption">
+                                <h3>Mad About the Boy</h3>
+                                <div class="rating">
+<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+</div>
+                                <p>Helen Fielding</p>
+                                <p class="price">$77.70</p>
+                                <a href="#" class="add-to-cart">Add To Cart</a>
+                                </div>
+                            </div>
+                            <!--PRODUCT GRID END-->
+                            <!--PRODUCT GRID START-->
+                            <div class="col-md-3 col-sm-6 best-seller-pro">
+                               <figure>
+                                <img src="images/book7.png" alt="">
+                            </figure>
+                            <div class="kode-text">
+                                <h3><a href="#">Burnt Siena</a></h3>
+                            </div>
+                            <div class="kode-caption">
+                                <h3>Art History Mystery</h3>
+                                <div class="rating">
+<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+</div>
+                                <p>Sara Wisseman</p>
+                                <p class="price">$334.50</p>
+                                <a href="#" class="add-to-cart">Add To Cart</a>
+                                </div>
+                            </div>
+                            <!--PRODUCT GRID END-->
+                            <!--PRODUCT GRID START-->
+                            <div class="col-md-3 col-sm-6 best-seller-pro">
+                               <figure>
+                                <img src="images/book8.png" alt="">
+                            </figure>
+                            <div class="kode-text">
+                                <h3><a href="#">Chrysalis</a></h3>
+                            </div>
+                            <div class="kode-caption">
+                                <h3>The Brave Girl</h3>
+                                <div class="rating">
+<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+</div>
+                                <p>William S.</p>
+                                <p class="price">$24.75</p>
+                                <a href="#" class="add-to-cart">Add To Cart</a>
+                                </div>
+                            </div>
+                            <!--PRODUCT GRID END-->
+                        </li>
+                        <li>
+                            <!--PRODUCT GRID START-->
+                            <div class="col-md-3 col-sm-6 best-seller-pro">
+                                <figure>
+                                <img alt="" src="images/book9.png">
+                            </figure>
+                            <div class="kode-text">
+                                <h3><a href="#">The Winning</a></h3>
+                            </div>
+                            <div class="kode-caption">
+                                <h3>The Winning Story</h3>
+                                <div class="rating">
+<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+</div>
+                                <p>Mind Set</p>
+                                <p class="price">$447.75</p>
+                                <a class="add-to-cart" href="#">Add To Cart</a>
+                                </div>
+                                </div>
+                            <!--PRODUCT GRID END-->
+                            <!--PRODUCT GRID START-->
+                            <div class="col-md-3 col-sm-6 best-seller-pro">
+                                <figure>
+                                <img alt="" src="images/book6.png">
                             </figure>
                             <div class="kode-text">
                                 <h3><a href="#">Dead Water</a></h3>
@@ -982,7 +971,7 @@
                             <!--PRODUCT GRID START-->
                             <div class="col-md-3 col-sm-6 best-seller-pro">
                                 <figure>
-                                <img alt="" src="images/book2.png">
+                                <img alt="" src="images/book3.png">
                             </figure>
                             <div class="kode-text">
                                 <h3><a href="#">The Ruby Of Egypt</a></h3>
@@ -1022,7 +1011,7 @@
                             <!--PRODUCT GRID START-->
                             <div class="col-md-3 col-sm-6 best-seller-pro">
                                 <figure>
-                                <img alt="" src="images/book4.png">
+                                <img alt="" src="images/book6.png">
                             </figure>
                             <div class="kode-text">
                                 <h3><a href="#">Star Trek</a></h3>
@@ -1041,7 +1030,7 @@
                             <!--PRODUCT GRID START-->
                             <div class="col-md-3 col-sm-6 best-seller-pro">
                                 <figure>
-                                <img alt="" src="images/book5.png">
+                                <img alt="" src="images/book7.png">
                             </figure>
                             <div class="kode-text">
                                 <h3><a href="#">City Of Bones</a></h3>
@@ -1060,7 +1049,7 @@
                             <!--PRODUCT GRID START-->
                             <div class="col-md-3 col-sm-6 best-seller-pro">
                                 <figure>
-                                <img alt="" src="images/book6.png">
+                                <img alt="" src="images/book9.png">
                             </figure>
                             <div class="kode-text">
                                 <h3><a href="#">Annette Blair</a></h3>
@@ -1182,7 +1171,7 @@
                             <!--PRODUCT GRID START-->
                             <div class="col-md-3 col-sm-6 best-seller-pro">
                                 <figure>
-                                <img alt="" src="images/book10.png">
+                                <img alt="" src="images/book8.png">
                             </figure>
                             <div class="kode-text">
                                 <h3><a href="#">Dead Water</a></h3>
@@ -1220,7 +1209,7 @@
                             <!--PRODUCT GRID START-->
                             <div class="col-md-3 col-sm-6 best-seller-pro">
                                 <figure>
-                                <img alt="" src="images/book6.png">
+                                <img alt="" src="images/book3.png">
                             </figure>
                             <div class="kode-text">
                                 <h3><a href="#">The Ruby Of Egypt</a></h3>
@@ -1241,7 +1230,7 @@
                             <!--PRODUCT GRID START-->
                             <div class="col-md-3 col-sm-6 best-seller-pro">
                                 <figure>
-                                <img alt="" src="images/book7.png">
+                                <img alt="" src="images/book6.png">
                             </figure>
                             <div class="kode-text">
                                 <h3><a href="#">Fableheaven</a></h3>
@@ -1260,7 +1249,7 @@
                             <!--PRODUCT GRID START-->
                             <div class="col-md-3 col-sm-6 best-seller-pro">
                                 <figure>
-                                <img alt="" src="images/book10.png">
+                                <img alt="" src="images/book5.png">
                             </figure>
                             <div class="kode-text">
                                 <h3><a href="#">Star Trek</a></h3>
@@ -1279,7 +1268,7 @@
                             <!--PRODUCT GRID START-->
                             <div class="col-md-3 col-sm-6 best-seller-pro">
                                 <figure>
-                                <img alt="" src="images/book2.png">
+                                <img alt="" src="images/book3.png">
                             </figure>
                             <div class="kode-text">
                                 <h3><a href="#">City Of Bones</a></h3>
@@ -1298,7 +1287,7 @@
                             <!--PRODUCT GRID START-->
                             <div class="col-md-3 col-sm-6 best-seller-pro">
                                 <figure>
-                                <img alt="" src="images/book3.png">
+                                <img alt="" src="images/book8.png">
                             </figure>
                             <div class="kode-text">
                                 <h3><a href="#">Annette Blair</a></h3>
@@ -1333,7 +1322,7 @@
                         <div class="bb-item">
                             <div class="bb-custom-side">
                                 <h3>Chepter 1</h3>
-                                <p>Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie. Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie. Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie. Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie.Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie.</p>
+                                <p>Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie. Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie. Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie. Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie.</p>
                             </div>
                             <div class="bb-custom-side">
                                 <h3>Chepter 2</h3>
@@ -1343,7 +1332,7 @@
                         <div class="bb-item">
                             <div class="bb-custom-side">
                                 <h3>Chepter 3</h3>
-                                <p>Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie. Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie. Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie. Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie.Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie.</p>
+                                <p>Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie. Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie. Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie. Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie.</p>
                             </div>
                             <div class="bb-custom-side">
                                 <h3>Chepter 4</h3>
@@ -1353,7 +1342,7 @@
                         <div class="bb-item">
                             <div class="bb-custom-side">
                                 <h3>Chepter 5</h3>
-                                <p>Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie. Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie. Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie. Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie.Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie.</p>
+                                <p>Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie. Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie. Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie. Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie.</p>
                             </div>
                             <div class="bb-custom-side">
                                 <h3>Chepter 6</h3>
@@ -1363,7 +1352,7 @@
                         <div class="bb-item">
                             <div class="bb-custom-side">
                                 <h3>Chepter 7</h3>
-                                <p>Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie. Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie. Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie. Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie.Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie.</p>
+                                <p>Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie. Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie. Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie. Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie.</p>
                             </div>
                             <div class="bb-custom-side">
                                 <h3>Chepter 8</h3>
@@ -1373,7 +1362,7 @@
                         <div class="bb-item">
                             <div class="bb-custom-side">
                                 <h3>Chepter 9</h3>
-                                <p>Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie. Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie. Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie. Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie.Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie.</p>
+                                <p>Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie. Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie. Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie. Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish brownie.</p>
                             </div>
                             <div class="bb-custom-side">
                                 <h3>Chepter 10</h3>
@@ -1411,42 +1400,42 @@
                     <!--SECTION CONTENT END-->
                     <ul class="nav nav-tabs" role="tablist">
                         <li role="presentation" class="active col-md-4 col-sm-3">
-                            <a href="#book1" role="tab" data-toggle="tab">
+                            <a href="#book1" aria-controls="book1" role="tab" data-toggle="tab">
                                 <div class="lib-papular-thumb">
                                     <img src="images/papular-books2.png" alt="">
                                 </div>
                             </a>
                         </li>
                         <li role="presentation" class="col-md-4 col-sm-3">
-                            <a href="#book2" role="tab" data-toggle="tab">
+                            <a href="#book2" aria-controls="book2" role="tab" data-toggle="tab">
                                 <div class="lib-papular-thumb">
                                     <img src="images/papular-books3.png" alt="">
                                 </div>
                             </a>
                         </li>
                         <li role="presentation" class="col-md-4 col-sm-3">
-                            <a href="#book3" role="tab" data-toggle="tab">
+                            <a href="#book3" aria-controls="book3" role="tab" data-toggle="tab">
                                 <div class="lib-papular-thumb">
                                     <img src="images/papular-books4.png" alt="">
                                 </div>
                             </a>
                         </li>
                         <li role="presentation" class="col-md-4 col-sm-3">
-                            <a href="#book4" role="tab" data-toggle="tab">
+                            <a href="#book4" aria-controls="book4" role="tab" data-toggle="tab">
                                 <div class="lib-papular-thumb">
                                     <img src="images/papular-books5.png" alt="">
                                 </div>
                             </a>
                         </li>
                         <li role="presentation" class="col-md-4 col-sm-3 visible-lg visible-md">
-                            <a href="#book5" role="tab" data-toggle="tab">
+                            <a href="#book5" aria-controls="book5" role="tab" data-toggle="tab">
                                 <div class="lib-papular-thumb">
                                     <img src="images/papular-books6.png" alt="">
                                 </div>
                             </a>
                         </li>
                         <li role="presentation" class="col-md-4 col-sm-3 visible-lg visible-md">
-                            <a href="#book6" role="tab" data-toggle="tab">
+                            <a href="#book6" aria-controls="book6" role="tab" data-toggle="tab">
                                 <div class="lib-papular-thumb">
                                     <img src="images/papular-books7.png" alt="">
                                 </div>
@@ -1455,7 +1444,7 @@
                     </ul>
                     <!-- Tab panes -->
                     <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane fade in active" id="book1">
+                         <div role="tabpanel" class="tab-pane fade in active" id="book1">
                             <div class="lib-papular">
                                 <div class="kode-thumb">
                                     <img src="images/papular-books.png" alt="">
@@ -1466,7 +1455,7 @@
                                     <div class="rating">
                                     <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
                                     </div>
-                                    <p>When asked what they want colleges to emphasize most, employers didn’t put science, computing, math, or business management first. According to 2013 employer survey, 95% of employers give hiring preference to college graduates with skills that will enable them to contribute to innovation in the workplace. that will enable them to contribute to innovation in the workplace in the city town of the lost vallies.</p>
+                                    <p>When asked what they want colleges to emphasize most, employers didn’t put science, computing, math, or business management first. According to AAC &amp; U’s 2013 employer survey, 95% of employers give hiring preference to college graduates with skills that will enable them to contribute to innovation in the workplace.</p>
                                     <div class="lib-price">
                                         <h3>$245</h3>
                                         <a href="#">See More</a>
@@ -1485,7 +1474,7 @@
                                     <div class="rating">
                                     <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
                                     </div>
-                                    <p>The world's most infamous hacker offers an insider's view of the low-tech threats to high-tech security. Kevin Mitnick's exploits as a cyber-desperado and fugitive form one of the most exhaustive FBI manhunts in history and have spawned dozens of articles, books, films, and documentaries. Since his release from federal prison, in 1998 that will enable them to contribute to innovation in the workplace</p>
+                                    <p>The world's most infamous hacker offers an insider's view of the low-tech threats to high-tech security. Kevin Mitnick's exploits as a cyber-desperado and fugitive form one of the most exhaustive FBI manhunts in history and have spawned dozens of articles, books, films, and documentaries. Since his release from federal prison, in 1998</p>
                                     <div class="lib-price">
                                         <h3>$245</h3>
                                         <a href="#">See More</a>
@@ -1504,11 +1493,12 @@
                                     <div class="rating">
                                     <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
                                     </div>
-                                    <p>Last Days (winner of the British Fantasy Award for Best Horror Novel of the Year) by Adam Nevill is a Blair Witch style novel in which a documentary film-maker undertakes the investigation of a dangerous. When guerrilla documentary maker, Kyle Freeman, is asked to shoot a film on the notorious cult known as the Temple of the Last Days that will enable them to contribute to innovation in the workplace</p>
+                                    <p>Last Days (winner of the British Fantasy Award for Best Horror Novel of the Year) by Adam Nevill is a Blair Witch style novel in which a documentary film-maker undertakes the investigation of a dangerous. When guerrilla documentary maker, Kyle Freeman, is asked to shoot a film on the notorious cult known as the Temple of the Last Days</p>
                                     <div class="lib-price">
                                         <h3>$555</h3>
                                         <a href="#">See More</a>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -1523,7 +1513,7 @@
                                     <div class="rating">
                                     <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
                                     </div>
-                                    <p>Against all odds, Katniss Everdeen has won the annual Hunger Games with fellow district tribute Peeta Mellark. But it was a victory won by defiance of the Capitol and their harsh rules. Katniss and Peeta should be happy. After all, they have just won for themselves and their families a life of safety and plenty that will enable them to contribute to innovation in the workplace families a life of safety.</p>
+                                    <p>Against all odds, Katniss Everdeen has won the annual Hunger Games with fellow district tribute Peeta Mellark. But it was a victory won by defiance of the Capitol and their harsh rules. Katniss and Peeta should be happy. After all, they have just won for themselves and their families a life of safety and plenty.</p>
                                     <div class="lib-price">
                                         <h3>$751</h3>
                                         <a href="#">See More</a>
@@ -1542,7 +1532,7 @@
                                     <div class="rating">
                                     <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
                                     </div>
-                                    <p>“You’ve reached the age at which people in this family cross the border into the magical world. It’s your turn for an adventure—yes, it’s finally here!” So says Haroun to his younger brother, twelve-year-old Luka. The adventure begins one beautiful starry night in the land of Alifbay, when Luka’s father, Rashid that will enable them to contribute to innovation in the workplace families a life of safety.</p>
+                                    <p>“You’ve reached the age at which people in this family cross the border into the magical world. It’s your turn for an adventure—yes, it’s finally here!” So says Haroun to his younger brother, twelve-year-old Luka. The adventure begins one beautiful starry night in the land of Alifbay, when Luka’s father, Rashid.</p>
                                     <div class="lib-price">
                                         <h3>$852</h3>
                                         <a href="#">See More</a>
@@ -1561,7 +1551,7 @@
                                     <div class="rating">
                                     <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
                                     </div>
-                                    <p>Legions of readers entranced by Twilight are hungry for more and they won't be disappointed. In New Moon, Stephenie Meyer delivers another irresistible combination of romance and suspense with a supernatural twist. The "star-crossed" lovers theme continues as Bella and Edward find themselves facing new obstacles that will enable them to contribute to innovation in the workplace families a life of safety.</p>
+                                    <p>Legions of readers entranced by Twilight are hungry for more and they won't be disappointed. In New Moon, Stephenie Meyer delivers another irresistible combination of romance and suspense with a supernatural twist. The "star-crossed" lovers theme continues as Bella and Edward find themselves facing new obstacles.</p>
                                     <div class="lib-price">
                                         <h3>$630</h3>
                                         <a href="#">See More</a>
@@ -1577,7 +1567,7 @@
         <!--TESTIMONIALS START-->
         <section class="lib-video-section">
             <div class="container">
-                <a href="#" class="fa fa-play video-play" ></a>
+                <i class="fa fa-play"></i>
                 <h2>Play a video on Parallax</h2>
                 
                 <h4>Title: Book Store</h4>
@@ -2046,6 +2036,7 @@
             </div>
         </section>
         <!--GIFT CARD SECTION END-->
+        <!--GIFT CARD SECTION END-->
         <section class="kode-booklet">
             <div class="container">
                 <!--SECTION CONTENT START-->
@@ -2258,13 +2249,10 @@
                     </ul>
                 </div>
             </div>
-            <div class="back-to-top">
-                <a href="#home"><i class="fa fa-angle-up"></i></a>
-            </div>
         </div>
     </footer>
 </div>
-<!--WRAPPER END-->
+
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="{{ asset('bower_components/js/jquery.min.js') }}"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -2276,12 +2264,15 @@
 <script src="{{ asset('bower_components/js/jquery.counterup.min.js') }}"></script>
 <script src="{{ asset('bower_components/js/owl.carousel.js') }}"></script>
 <script src="{{ asset('bower_components/js/dl-menu/jquery.dlmenu.js') }}"></script>
+<script src="{{ asset('bower_components/js/dl-menu/modernizr.custom.js')}} "></script>
 <script type="text/javascript" src="{{ asset('bower_components/lib/hash.js') }}"></script>
 <script type="text/javascript" src="{{ asset('bower_components/lib/booklet-lib.js') }}"></script>
 <script src="{{ asset('bower_components/js/jquerypp.custom.js') }}"></script>
 <script src="{{ asset('bower_components/js/jquery.bookblock.js') }}"></script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
 <script src="{{ asset('bower_components/js/functions.js') }}"></script>
+
+<script src = "{{ asset('bower_components/fontawesome/js/fontawesome.min.js') }}"></script>
 </body>
 
 <!-- Mirrored from kodeforest.net/html/books/library/index.html by HTTrack Website Copier/3.x [XR&CO'2010], Tue, 22 Oct 2019 02:52:11 GMT -->
