@@ -18,7 +18,7 @@ class Story extends Model
         'use_status',
         'view_count',
         'total_vote',
-        'parent_id',
+        'parent_language_id',
         'language_id',
     ];
 
