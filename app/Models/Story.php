@@ -18,6 +18,8 @@ class Story extends Model
         'use_status',
         'view_count',
         'total_vote',
+        'parent_id',
+        'language_id',
     ];
 
     public function authors()

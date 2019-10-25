@@ -16,6 +16,8 @@ class CreateTagsTable extends Migration
         Schema::create('tags', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->integer('language_id')->default(config('Custom.viId'));
+            $table->integer('parent_id')->default('0'); // story parent id
             $table->timestamps();
         });
     }

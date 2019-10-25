@@ -20,8 +20,8 @@ class CreateChaptersTable extends Migration
             $table->string('slug')->nullable();
             $table->longText('content');
             $table->integer('public_status')->default(config('Custom.statusPublic')); //public or draft
-            $table->integer('language_id');
-            $table->bigInteger('parent_id'); // story parent id
+            $table->integer('language_id')->default(config('Custom.viId'));
+            $table->bigInteger('parent_id')->default('0'); // story parent id
             $table->timestamps();
         });
     }
