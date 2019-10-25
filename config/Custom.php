@@ -7,5 +7,5 @@
         'vipAcconut' => '1',
         'active' => '1',
         'deactive' => '0',
-        'vi_id' => '1',
+        'viId' => '1',
     ];
