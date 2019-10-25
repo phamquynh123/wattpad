@@ -17,4 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::group(['middleware' => 'locale'], function() {
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('change-language/{language}', 'LanguageController@changeLanguage')
+        ->name('change-language');
+});
