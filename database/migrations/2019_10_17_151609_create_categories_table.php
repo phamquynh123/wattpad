@@ -16,10 +16,11 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->integer('parent_id');
             $table->string('slug')->nullable();
             $table->string('description')->nullable();
             $table->integer('language_id')->default(config('Custom.viId'));
-            $table->integer('parent_id')->default('0'); // category parent id
+            $table->integer('parent_language_id')->default('0'); // category parent id
             $table->timestamps();
         });
     }

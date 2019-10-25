@@ -11,7 +11,7 @@ class Tag extends Model
     protected $fillable = [
         'title',
         'parent_id',
-        'language_id',
+        'parent_language_id',
     ];
 
     public function stories()

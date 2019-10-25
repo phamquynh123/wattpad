@@ -13,5 +13,6 @@ class Category extends Model
         'description',
         'parent_id',
         'language_id',
+        'parent_language_id',
     ];
 }

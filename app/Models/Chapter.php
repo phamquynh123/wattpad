@@ -14,7 +14,7 @@ class Chapter extends Model
         'slug',
         'content',
         'public_status',
-        'parent_id',
+        'parent_language_id',
         'language_id',
     ];
 }
