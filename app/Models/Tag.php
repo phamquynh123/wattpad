@@ -10,6 +10,8 @@ class Tag extends Model
     protected $table = 'tags';
     protected $fillable = [
         'title',
+        'parent_id',
+        'language_id',
     ];
 
     public function stories()

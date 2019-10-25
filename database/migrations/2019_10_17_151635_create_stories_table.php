@@ -23,8 +23,8 @@ class CreateStoriesTable extends Migration
             $table->string('img');
             $table->integer('use_status');   //vip or normal
             $table->integer('view_count')->default('0');   // number of view this story
-            $table->integer('language_id');
-            $table->bigInteger('parent_id'); // story parent id
+            $table->integer('language_id')->default(config('Custom.viId'));
+            $table->bigInteger('parent_id')->default('0'); // story parent id
             $table->integer('total_vote')->default('0');   //total vote.
             $table->timestamps();
         });

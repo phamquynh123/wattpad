@@ -11,5 +11,7 @@ class Category extends Model
         'title',
         'slug',
         'description',
+        'parent_id',
+        'language_id',
     ];
 }
