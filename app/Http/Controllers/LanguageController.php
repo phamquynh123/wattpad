@@ -3,14 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Session;
 
 class LanguageController extends Controller
 {
     public function changeLanguage($language)
     {
-        // dd($language);
-        \Session::put('website_language', $language);
-    // dd(\Session::get('website_language'));
+        Session::put('website_language', $language);
 
         return redirect()->back();
     }
