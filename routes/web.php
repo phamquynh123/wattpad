@@ -15,11 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+// Auth::routes();
 
 
 
 Route::group(['middleware' => 'locale'], function() {
+    Auth::routes();
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('change-language/{language}', 'LanguageController@changeLanguage')
         ->name('change-language');

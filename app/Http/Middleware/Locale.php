@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Session;
+use App;
 
 class Locale
 {
@@ -16,14 +17,14 @@ class Locale
      */
     public function handle($request, Closure $next)
     {
-        $language = Session::get('website_language', config('app.locale'));
-        // echo  config('app.locale');
-        // dd($language);
-        // echo \Session::get('website_language');
-        \App::setLocale($language);
-        // echo config('app.locale');
-        // die;
-        // config(['app.locale' => $language]);
+        if (Session::has('website_language')) {
+            $language = Session::get('website_language');
+        } else {
+            $language = config('app.locale');
+        }
+
+        App::setLocale($language);
+
         return $next($request);
     }
 }
