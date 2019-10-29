@@ -1,0 +1,1 @@
+1. Type of description of User Table change type string->text. 
