@@ -18,7 +18,6 @@ class CreateCategoriesTable extends Migration
             $table->string('title');
             $table->integer('parent_id');
             $table->string('slug')->nullable();
-            $table->string('description')->nullable();
             $table->integer('language_id')->default(config('Custom.viId'));
             $table->integer('parent_language_id')->default('0'); // category parent id
             $table->timestamps();

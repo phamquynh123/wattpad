@@ -2,17 +2,12 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\Model\Category::class, function (Faker $faker) {
+$factory->define(App\Models\Category::class, function (Faker $faker) {
     return [
-        'title' => $faker->name,
+        'title' => $faker->sentence($nbWords = 6, $variableNbWords = true),
         'slug' => $faker->slug,
-        'description' =>$faker->
-        'parent_id',
-        'language_id',
-        'parent_language_id',
+        'parent_id' => 1,
+        'language_id' => 1,
+        'parent_language_id' => 0,
     ];
 });
-// Ngaf nguyen https://www.facebook.com/profile.php?id=100009709511594
-// Nguyễn Nhuư Quỳnh https://www.facebook.com/profile.php?id=100008861051687
-
-// loại: Thắm nguyen https://www.facebook.com/nguyentham98hn
