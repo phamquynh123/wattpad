@@ -1,8 +1,12 @@
 <?php
 
-namespace App\Model;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
 
 class User extends Model
 {
@@ -10,9 +14,9 @@ class User extends Model
 
     protected $fillable = [
         'name',
-        'description'
+        'description',
         'avatar',
-        'account_status' //vip or normal
+        'account_status', //vip or normal
         'role_id',
         'status', //active deactive
         'password',
