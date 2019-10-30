@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Batch;
+namespace App\Repositories\Story;
 
 use App\Models\Story;
 use App\Repositories\Batch\StoryRepositoryInterface;

@@ -288,51 +288,7 @@
     <div class="kode-content">
         
         <!--BOOK GUIDE SECTION START-->
-        <section>
-            <div class="container">
-                <!--SECTION CONTENT START-->
-                <div class="section-heading-1">
-                    <h2>Welcome to the library</h2>
-                    <p>Welcome to the Most Popular Library Today</p>
-                    <div class="kode-icon"><i class="fa fa-book"></i></div>
-                </div>
-                <!--SECTION CONTENT END-->
-                <div class="row">
-                    <div class="col-md-3 col-sm-6">
-                        <div class="kode-service-3">
-                            <i class="fa fa-gift"></i>
-                            <h3><a href="#">Ebooks</a></h3>
-                            <p>an electronic version of a printed book that can be read on a computer.</p>
-                            <a href="#" class="read-more">Read More</a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="kode-service-3">
-                            <i class="fa fa-book"></i>
-                            <h3><a href="#">audiobooks</a></h3>
-                            <p>an audiocassette or CD recording of a reading of a book, typically a novel.</p>
-                            <a href="#" class="read-more">Read More</a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="kode-service-3">
-                            <i class="fa fa-clone"></i>
-                            <h3><a href="#">Magazine</a></h3>
-                            <p>a periodical publication containing articles and illustrations information.</p>
-                            <a href="#" class="read-more">Read More</a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="kode-service-3">
-                            <i class="fa fa-calculator"></i>
-                            <h3><a href="#">Teans &amp; Kids</a></h3>
-                            <p>the years of a person's age from 13 to 19 and are the kids and teens.</p>
-                            <a href="#" class="read-more">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        @yield('BOOKGUIDE')
         <!--BOOK GUIDE SECTION END-->
         <!--TOP SELLERS SECTION START-->
         <section class="lib-categories-section">
@@ -2252,29 +2208,4 @@
         </div>
     </footer>
 </div>
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="{{ asset('bower_components/js/jquery.min.js') }}"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="{{ asset('bower_components/js/modernizr.custom.js') }}"></script>
-<script src="{{ asset('bower_components/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('bower_components/js/jquery.bxslider.min.js') }}"></script>
-<script src="{{ asset('bower_components/js/bootstrap-slider.js') }}"></script>
-<script src="{{ asset('bower_components/js/waypoints.min.js') }}"></script> 
-<script src="{{ asset('bower_components/js/jquery.counterup.min.js') }}"></script>
-<script src="{{ asset('bower_components/js/owl.carousel.js') }}"></script>
-<script src="{{ asset('bower_components/js/dl-menu/jquery.dlmenu.js') }}"></script>
-<script src="{{ asset('bower_components/js/dl-menu/modernizr.custom.js')}} "></script>
-<script type="text/javascript" src="{{ asset('bower_components/lib/hash.js') }}"></script>
-<script type="text/javascript" src="{{ asset('bower_components/lib/booklet-lib.js') }}"></script>
-<script src="{{ asset('bower_components/js/jquerypp.custom.js') }}"></script>
-<script src="{{ asset('bower_components/js/jquery.bookblock.js') }}"></script>
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
-<script src="{{ asset('bower_components/js/functions.js') }}"></script>
-
-<script src = "{{ asset('bower_components/fontawesome/js/fontawesome.min.js') }}"></script>
-</body>
-
-<!-- Mirrored from kodeforest.net/html/books/library/index.html by HTTrack Website Copier/3.x [XR&CO'2010], Tue, 22 Oct 2019 02:52:11 GMT -->
-</html>
-
+@extends('layouts.footer');
