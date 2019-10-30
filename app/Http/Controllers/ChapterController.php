@@ -14,9 +14,8 @@ class ChapterController extends Controller
      */
     public function index()
     {
-        //
+        dd('a');
     }
-
     /**
      * Show the form for creating a new resource.
      *
