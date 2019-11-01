@@ -3,8 +3,9 @@
     <a href="{!! route('change-language', ['en']) !!}">English</a>
     <a href="{!! route('change-language', ['vi']) !!}">Vietnam</a> 
 
-    {{ trans('message.hello') }}
-    <!--BOOK GUIDE SECTION START-->
+{{ trans('message.hello') }}
+<!--BOOK GUIDE SECTION START-->
+
         <section>
             <div class="container">
                 <!--SECTION CONTENT START-->
@@ -52,6 +53,7 @@
         </section>
         <!--BOOK GUIDE SECTION END-->
 @endsection
+
 
 @section('home.category')
 <section class="lib-categories-section">

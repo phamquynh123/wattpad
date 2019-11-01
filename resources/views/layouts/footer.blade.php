@@ -20,6 +20,7 @@
 <script src = "{{ asset('bower_components/fontawesome/js/fontawesome.min.js') }}"></script>
 
 @yield('script')
+
 </body>
 
 <!-- Mirrored from kodeforest.net/html/books/library/index.html by HTTrack Website Copier/3.x [XR&CO'2010], Tue, 22 Oct 2019 02:52:11 GMT -->

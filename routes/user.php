@@ -10,5 +10,6 @@ Route::group(['middleware' => 'locale'], function() {
     Route::get('/', 'StoryController@home');
     Route::prefix('user')->group(function() {
     });
+
     Route::post('/getCategory', 'StoryController@getCategory')->name('getCategory');
 });
