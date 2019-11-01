@@ -23,12 +23,18 @@ class StoryController extends Controller
 
     public function home()
     {
-        $category = $this->Category->getAll();
-        dd($category);
+        $categories = $this->Category->getAll();
+            // dd($cate)
+        return view('user.home', compact('categories'));
     }
 
     public function index()
     {
         dd('story');
+    }
+
+    public function getCategory(Request $request)
+    {
+        dd($request->all());
     }
 }
