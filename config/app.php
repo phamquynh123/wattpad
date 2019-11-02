@@ -161,7 +161,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Tightenco\Ziggy\ZiggyServiceProvider::class, //
+        Tightenco\Ziggy\ZiggyServiceProvider::class, // ziggy
+        App\Providers\HelperServiceProvider::class, //helper
 
         /*
          * Package Service Providers...

@@ -21,4 +21,9 @@ Route::group(['middleware' => 'locale'], function() {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('change-language/{language}', 'LanguageController@changeLanguage')
         ->name('change-language');
+Route::group(['middleware' => 'auth'], function() {
+    Route::prefix('/admin')->group(function() {
+        Route::get('/', 'AdminController@index');
+    });
+});
 });
