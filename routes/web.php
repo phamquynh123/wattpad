@@ -21,9 +21,16 @@ Route::group(['middleware' => 'locale'], function() {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('change-language/{language}', 'LanguageController@changeLanguage')
         ->name('change-language');
-Route::group(['middleware' => 'auth'], function() {
-    Route::prefix('/admin')->group(function() {
-        Route::get('/', 'AdminController@index');
+    Route::group(['middleware' => 'auth'], function() {
+        Route::prefix('/admin')->group(function() {
+            Route::get('/', 'AdminController@index');
+            Route::prefix('/category')->name('category.')->group(function(){
+            //     // $categoryController = 'CategoryController';
+            //     // Route::post("cart", $shopController . "@cart")->name('cart');
+                Route::get('/', 'CategoryController@index');
+                Route::get('/categoryDatatable', 'CategoryController@categoryDatatable')-> name('datatable');
+            // });
+            });
+        });
     });
-});
 });

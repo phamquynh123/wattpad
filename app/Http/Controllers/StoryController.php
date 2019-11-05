@@ -17,7 +17,7 @@ class StoryController extends Controller
  //        $this->fileRepository = $fileRepository;
  //    }
     public function __construct( CategoryRepositoryInterface $Category)
-<<<<<<< HEAD
+
     {
         $this->Category = $Category;
     }
@@ -37,20 +37,5 @@ class StoryController extends Controller
     public function getCategory(Request $request)
     {
         dd($request->all());
-=======
-    {
-        $this->Category = $Category;
-    }
-
-    public function home()
-    {
-        $category = $this->Category->getAll();
-        dd($category);
-    }
-
-    public function index()
-    {
-        dd('story');
->>>>>>> 030fbe1c24e310a24b61a38df81a7649c27e3f24
     }
 }
