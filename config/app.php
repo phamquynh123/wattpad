@@ -163,6 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Tightenco\Ziggy\ZiggyServiceProvider::class, // ziggy
         App\Providers\HelperServiceProvider::class, //helper
+        Yajra\Datatables\DatatablesServiceProvider::class, //datatable
 
         /*
          * Package Service Providers...
@@ -225,6 +226,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Datatables' => Yajra\Datatables\Facades\Datatables::class, // add datatable
 
     ],
 

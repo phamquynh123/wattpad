@@ -58,7 +58,7 @@
                         <li><a href="#"><i class="fa fa-list"></i> Wishlist</a></li>
                         <li><a href="#"><i class="far fa-user"></i></i> My Account</a></li>
                         <li><a href="#"><i class="fa fa-compress"></i> Compare</a></li>
-                        <li><a href="#"><i class="fa fa-sign-in"></i> Login</a></li>
+                        <li><a href="{{ route('login') }}"><i class="fa fa-sign-in"></i> Login</a></li>
                         <li><a href="#"><i class="fa fa-shopping-cart"></i> 0Item</a></li>                        
                     </ul>
             </div>
