@@ -29,6 +29,8 @@ Route::group(['middleware' => 'locale'], function() {
             //     // Route::post("cart", $shopController . "@cart")->name('cart');
                 Route::get('/', 'CategoryController@index');
                 Route::get('/categoryDatatable', 'CategoryController@categoryDatatable')-> name('datatable');
+                Route::get('/detail/{id}', 'CategoryController@detail')->name('detail');
+                Route::get('/trans/{id}', 'CategoryController@trans')->name('trans');
             // });
             });
         });

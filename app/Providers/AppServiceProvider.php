@@ -25,5 +25,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->app->bind("App\\Repositories\\Category\\CategoryRepositoryInterface","App\\Repositories\\Category\\CategoryRepository");
+        $this->app->bind("App\\Repositories\\Language\\LanguageRepositoryInterface","App\\Repositories\\Language\\LanguageRepository");
     }
 }

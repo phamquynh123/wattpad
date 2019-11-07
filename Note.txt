@@ -1,1 +1,2 @@
 1. Type of description of User Table change type string->text. 
+2. Defaul langguage is Vietnamese with symbol iss 'vi' and id is '1' confingLanguage is '1'.
