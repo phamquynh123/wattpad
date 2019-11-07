@@ -30,8 +30,12 @@
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="{{ asset('bower_components/admin') }}/css/themes/all-themes.css" rel="stylesheet" />
+    {{-- add link font awesome  --}}
+    <link rel="stylesheet" href="{{ asset('bower_components/fontawesome/css/all.min.css') }}">
     {{-- add link laravel datatable --}}
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="{{ asset('bower_components/admin/css/jquery.dataTables.min.css') }}">
+    <link rel="stylesheet" href="{{  asset('bower_components/admin/css/toastr.min.css') }}">
+    {{-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css"> --}}
     @routes
 </head>
 
@@ -90,7 +94,7 @@
         <!-- Left Sidebar -->
         <aside id="leftsidebar" class="sidebar">
             <!-- User Info -->
-            <div class="user-info" style=" background: url('bower_components/admin/images/user-img-background.jpg') no-repeat no-repeat;">
+            <div class="user-info" style=" background: url('{{ asset('/') }}bower_components/admin/images/user-img-background.jpg') no-repeat no-repeat;">
                 <div class="image">
                     <img src="images/user.png" width="48" height="48" alt="User" />
                 </div>
@@ -124,7 +128,7 @@
                     </li>
                     <li>
                         <a href="{{ asset('/admin/category') }}">
-                            <i class="material-icons">text_fields</i>
+                            <i class="material-icons"></i>
                             <span>{{ trans('message.category') }}</span>
                         </a>
                     </li>
@@ -330,7 +334,7 @@
     <script src="{{ asset('bower_components/admin') }}/plugins/bootstrap/js/bootstrap.js"></script>
 
     <!-- Select Plugin Js -->
-    <script src="{{ asset('bower_components/admin') }}/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+    {{-- <script src="{{ asset('bower_components/admin') }}/plugins/bootstrap-select/js/bootstrap-select.js"></script> --}}
 
     <!-- Slimscroll Plugin Js -->
     <script src="{{ asset('bower_components/admin/') }}/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
@@ -364,8 +368,12 @@
 
     <!-- Demo Js -->
     <script src="{{ asset('bower_components/admin') }}/js/demo.js"></script>
+    {{-- FONTAWESOME --}}
+    <script src = "{{ asset('bower_components/fontawesome/js/fontawesome.min.js') }}"></script>
     {{-- laravel datatable js --}}
-    <script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+    {{-- <script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script> --}}
+    <script src = "{{ asset('bower_components/admin/js/jquery.dataTables.min.js') }}"></script>
+    <script src = "{{ asset('bower_components/admin/js/sweetalert2@8.js') }}"></script>
 
     @yield('script')
 </body>
