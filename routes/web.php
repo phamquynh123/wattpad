@@ -31,6 +31,7 @@ Route::group(['middleware' => 'locale'], function() {
                 Route::get('/categoryDatatable', 'CategoryController@categoryDatatable')-> name('datatable');
                 Route::get('/detail/{id}', 'CategoryController@detail')->name('detail');
                 Route::get('/trans/{id}', 'CategoryController@trans')->name('trans');
+                Route::post('/add', 'CategoryController@store')->name('add');
             // });
             });
         });

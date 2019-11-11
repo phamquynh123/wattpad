@@ -27,12 +27,13 @@ class CategoryDatabaseSeeder extends Seeder {
             ['SỰ KIỆN', '1','su-kien', '1', '0'],
             ['TRANG', '1','trang', '1', '0'],
             ['LIÊN HỆ', '1','lien-he', '1', '0'],
-            ['HOME', '1', 'home', '1', '1'],
-            ['BOOK', '1', 'book', '1', '1'],
-            ['BLOG', '1', 'blog', '1', '1'],
-            ['AUTHOR', '1', 'author', '1', '1'],
-            ['EVENTS', '1', 'events', '1', '1'],
-            ['CONTACT US', '1', 'contact-us', '1', '1'],
+            ['HOME', '1', 'home', '2', '1'],
+            ['BOOK', '1', 'book', '2', '2'],
+            ['BLOG', '1', 'blog', '2', '3'],
+            ['AUTHOR', '1', 'author', '2', '4'],
+            ['EVENTS', '1', 'events', '2', '5'],
+            ['PAGE', '1', 'page', '2', '6'],
+            ['CONTACT US', '1', 'contact-us', '2', '7'],
 
         ];
 
