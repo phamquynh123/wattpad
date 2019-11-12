@@ -8,6 +8,7 @@ use App\Repositories\Category\CategoryRepositoryInterface;
 use App\Repositories\Language\LanguageRepositoryInterface;
 use Yajra\Datatables\Datatables;
 use Session;
+use App\Http\Requests\CategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -29,31 +30,49 @@ class CategoryController extends Controller
 
     public function index()
     {
+        $language = config('app.locale');
         $languages = $this->Language->getAll();
-        // dd($languages);
+        foreach ($languages as $value) {
+            if ($value['acronym'] == $language){
+                $language_id = $value['id']; 
+            }
+        }
+        $parentCategories = $this->Category->findByLanguage('parent_id', config('Custom.categoryParentId'), 'language_id', $language_id);
 
-        return view('admin.category', compact('languages'));
+        return view('admin.category', compact(['languages', 'parentCategories']));
     }
 
     public function categoryDatatable()
     {
         $categories = $this->Category->getAll();
-        foreach($categories as $key => $value) {
-            foreach($categories as $key1 => $value1) {
-                if($value->parent_id != '1') {
-                    if($value->parent_id == $value1->id) {
-                        $value->parent = $value1->title;
+        foreach ($categories as $key => $value) {
+            foreach ($categories as $key1 => $value1) {
+                if ($value->parent_id != '1') {
+                    if ($value->parent_id == $value1->id) {
+                        $value->parent = $value1->title; // lấy ra title của category cha 
                     }
                 } else {
                     $value->parent = 'null';
                 }
+                if ($value->id == $value1->parent_language_id){
+                    // echo $value->id;
+                    // echo $value1->parent_language_id;
+                    $value['trans'] = '1'; // kiem tra bản ghi đã dc dịch hay chưa.
+                    // echo $value->status;
+                }
             }
         }
+        // dd($categories);
 
         return Datatables::of($categories)
             ->addColumn('action', function ($category) {
-                if($category->parent_language_id != 0) {
-                    return '<a href="' . route('category.detail', $category->id) . '" class="btn btn-sm btn-warning category.detail btn-xs" data-id="' . $category->id . '" data-name="' . $category->slug . '"><i class="fa fa-eye"></i></a> <a href="#" data-id="' . $category->id .'" class="btn btn-sm btn-info category-trans btn-xs" data-id="' . $category->id . '" data-name="' . $category->slug . '" data-toggle="modal" data-target="#category-trans"><i class="fas fa-exchange-alt"></i></a>';
+                if($category->parent_language_id == '0') {
+                    if ($category->trans == true){
+                        return '<a href="' . route('category.detail', $category->id) . '" class="btn btn-sm btn-warning category.detail btn-xs" data-id="' . $category->id . '" data-name="' . $category->slug . '"><i class="fa fa-eye"></i></a> <a href="#" data-id="' . $category->id .'" class="btn btn-sm btn-info category-tran btn-xs" data-id="' . $category->id . '" data-name="' . $category->slug . '" data-toggle="modal" data-target="#category-trans" title="' . trans('action.trans') . '"><i class="fas fa-exchange-alt"></i></a> <a href="#" class="btn btn-sm btn-success btn-xs" data-id="' . $category->id . '" title="' . trans('validation.exist') . '"><i class="fas fa-check-square"></i></a>';
+                    } else {
+                        return '<a href="' . route('category.detail', $category->id) . '" class="btn btn-sm btn-warning category.detail btn-xs" data-id="' . $category->id . '" data-name="' . $category->slug . '"><i class="fa fa-eye"></i></a> <a href="#" data-id="' . $category->id .'" class="btn btn-sm btn-info category-tran btn-xs" data-id="' . $category->id . '" data-name="' . $category->slug . '" data-toggle="modal" data-target="#category-trans"><i class="fas fa-exchange-alt"></i></a>';
+                    }
+                    
                 } else {
                     return '<a href="' . route('category.detail', $category->id) . '" class="btn btn-sm btn-warning add-student1 btn-xs" data-id="' . $category->id . '" data-name="' . $category->slug . '"><i class="fa fa-eye"></i></a>';
                 }
@@ -61,7 +80,7 @@ class CategoryController extends Controller
             ->rawColumns([ 
                 'action',
             ])
-            ->toJson();
+            ->make(true);
     }
 
     public function trans($id)
@@ -85,9 +104,15 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        //
+        $data = $request->all();
+        $data['slug'] = str_slug($data['title']);
+        // if (isset($data['pare']))
+        // dd($data);
+        $create = $this->Category->create($data);
+
+        return response()->json([ 'error' => false, 'success' => trans('action.success') ]);
     }
 
     /**

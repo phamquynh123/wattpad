@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Welcome To | Bootstrap Based Admin Template - Material Design</title>
+    <title>Admin - Wattpad</title>
     <!-- Favicon-->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -37,6 +37,7 @@
     <link rel="stylesheet" href="{{  asset('bower_components/admin/css/toastr.min.css') }}">
     {{-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css"> --}}
     @routes
+    @yield('style')
 </head>
 
 <body class="theme-red">
@@ -373,6 +374,7 @@
     {{-- laravel datatable js --}}
     {{-- <script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script> --}}
     <script src = "{{ asset('bower_components/admin/js/jquery.dataTables.min.js') }}"></script>
+    <script src = "{{ asset('bower_components/admin/js/toastr.min.js') }}"></script>
     <script src = "{{ asset('bower_components/admin/js/sweetalert2@8.js') }}"></script>
 
     @yield('script')

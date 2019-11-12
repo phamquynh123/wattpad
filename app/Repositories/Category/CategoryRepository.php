@@ -17,4 +17,11 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
         return Category::class;
     }
 
+    public function findByLanguage($parent_id, $id, $language, $id2)
+    {
+        $result = $this->_model->where($parent_id, $id)->where($language, $id2)->get();
+
+        return $result;
+    }
+
 }

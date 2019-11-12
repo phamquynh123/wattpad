@@ -8,4 +8,5 @@
         'active' => '1',
         'deactive' => '0',
         'viId' => '1',
+        'categoryParentId' => '1',
     ];
