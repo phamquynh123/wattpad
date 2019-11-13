@@ -7,7 +7,7 @@
     <div class="block-header">
         <h2>{{ trans('message.category') }}</h2>
     </div>
-    
+    {{-- {{ dd($getLanguages) }} --}}
     <div class="row clearfix">
         <div class=" float-right">
             <button class="btn btn-info" data-toggle="modal" data-target="#category-add">{{ trans('action.add') }} {{ trans('message.category') }}</button>
@@ -37,13 +37,31 @@
                 <h4 class="modal-title">{{ trans('message.trans') }} {{ trans('message.category') }}</h4>
             </div>
             <div class="modal-body">
+                <div class="tranted">
+                     ngon ngu da dich cho <b class="bangoc"></b> la
+                </div>
+                <div>
+                    <table class="table table-hover">
+                        <thead >
+                            <tr>
+                                <th>{{ trans('message.id') }}</th>
+                                <th>{{ trans('message.language') }}</th>
+                                <th>{{ trans('message.title') }}</th>
+                            </tr>
+
+                        </thead>
+                        <tbody class="trans_ed">
+                        </tbody>
+                    </table>
+                </div>
                 <form action="" method="POST" role="form" novalidate id="transData">
                     @csrf
                     {{-- <legend>{{ trans('message.trans') }} {{ trans('message.category') }} </legend> --}}
                     <input type="hidden" value='' id='parent_language_id' name='parent_language_id'>
+                    <input type="hidden" value='' id='parent_id' name='parent_id'>
                     <div class="form-group">
                         <label for="">{{ trans('message.language') }}</label>
-                        <select name="language" id="language" class="form-control">
+                        <select name="language_id" id="language" class="form-control">
                             @foreach ($languages as $language)
                                 <option value="{{ $language->id }}" >{{ $language->name }}</option>
                             @endforeach
@@ -55,7 +73,7 @@
                     </div>
                     <div class="float-right">
                         <button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('message.close') }}</button>
-                        <button type="button" class="btn btn-info ">{{ trans('message.submit') }}</button>
+                        <button type="submit" class="btn btn-info ">{{ trans('message.submit') }}</button>
                     </div>
                     <div class="clear"></div>
                 </form>

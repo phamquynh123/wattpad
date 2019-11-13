@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
+
+class ViewComposerServiceProvider extends ServiceProvider
+{
+    /**
+     * Bootstrap services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        // die;
+        View::composer('*', 'App\Http\ViewComposers\CategoryViewComposer');
+        view()->composer(['admin.category'], 'App\Http\ViewComposers\LanguageViewComposer');
+    }
+
+    /**
+     * Register services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        // $this->app->singleton(ViewComposer::class);
+    }
+}
