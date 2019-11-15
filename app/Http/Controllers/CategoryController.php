@@ -26,10 +26,12 @@ class CategoryController extends Controller
     ){
         $this->Category = $Category;
         $this->Language = $Language;
+
     }
 
     public function index()
     {
+        // dd($getCategories);
         $language = config('app.locale');
         $languages = $this->Language->getAll();
         foreach ($languages as $value) {
@@ -55,10 +57,7 @@ class CategoryController extends Controller
                     $value->parent = 'null';
                 }
                 if ($value->id == $value1->parent_language_id){
-                    // echo $value->id;
-                    // echo $value1->parent_language_id;
                     $value['trans'] = '1'; // kiem tra bản ghi đã dc dịch hay chưa.
-                    // echo $value->status;
                 }
             }
         }
@@ -68,7 +67,7 @@ class CategoryController extends Controller
             ->addColumn('action', function ($category) {
                 if($category->parent_language_id == '0') {
                     if ($category->trans == true){
-                        return '<a href="' . route('category.detail', $category->id) . '" class="btn btn-sm btn-warning category.detail btn-xs" data-id="' . $category->id . '" data-name="' . $category->slug . '"><i class="fa fa-eye"></i></a> <a href="#" data-id="' . $category->id .'" class="btn btn-sm btn-info category-tran btn-xs" data-id="' . $category->id . '" data-name="' . $category->slug . '" data-toggle="modal" data-target="#category-trans" title="' . trans('action.trans') . '"><i class="fas fa-exchange-alt"></i></a> <a href="#" class="btn btn-sm btn-success btn-xs" data-id="' . $category->id . '" title="' . trans('validation.exist') . '"><i class="fas fa-check-square"></i></a>';
+                        return '<a href="' . route('category.detail', $category->id) . '" class="btn btn-sm btn-warning category.detail btn-xs" data-id="' . $category->id . '" data-name="' . $category->slug . '"><i class="fa fa-eye"></i></a> <a href="#" data-id="' . $category->id .'" class="btn btn-sm btn-info category-tran btn-xs" data-id="' . $category->id . '" data-name="' . $category->slug . '" data-parent-id="' . $category->parent_id . '" data-toggle="modal" data-target="#category-trans" title="' . trans('action.trans') . '"><i class="fas fa-exchange-alt"></i></a> <a href="#" class="btn btn-sm btn-success btn-xs" data-id="' . $category->id . '" title="' . trans('validation.exist') . '"><i class="fas fa-check-square"></i></a>';
                     } else {
                         return '<a href="' . route('category.detail', $category->id) . '" class="btn btn-sm btn-warning category.detail btn-xs" data-id="' . $category->id . '" data-name="' . $category->slug . '"><i class="fa fa-eye"></i></a> <a href="#" data-id="' . $category->id .'" class="btn btn-sm btn-info category-tran btn-xs" data-id="' . $category->id . '" data-name="' . $category->slug . '" data-toggle="modal" data-target="#category-trans"><i class="fas fa-exchange-alt"></i></a>';
                     }
@@ -83,10 +82,28 @@ class CategoryController extends Controller
             ->make(true);
     }
 
-    public function trans($id)
+    public function getDataTrans($id)
     {
-        
+        $languages = $this->Language->getAll();
+        $translatedCategories = $this->Category->findCondition('parent_language_id', $id);
 
+        foreach ($translatedCategories as $value) {
+            foreach ($languages as $value1) {
+                if($value['language_id'] == $value1['id']){
+                    $value['language'] = $value1['name'];
+                }
+            }
+        }
+        return response()->json([ $translatedCategories ]);
+    }
+
+    public function trans(CategoryRequest $request)
+    {
+        $data = $request->all();
+        $data['slug'] = str_slug($data['title']);
+        $reponse = $this->Category->create($data);
+
+        return response()->json([ 'error' => false, 'success' => trans('action.success') ]);
     }
     /**
      * Show the form for creating a new resource.

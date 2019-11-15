@@ -3,3 +3,6 @@
 3. parent_language_id 
 translated record has thisTable.id = thisTable.parent_language_id 
 and language has language.id=thisTable.language_id
+
+4. Delete Category 
+when delete category => delete all 
