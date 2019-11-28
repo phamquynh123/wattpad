@@ -18,21 +18,15 @@ class LanguageViewComposer
 
     public function __construct(LanguageRepositoryInterface $Language)
     {
-        $this->getLanguage = $Language->getAll();
+        $this->getLanguage = $Language;
     }
 
     //this function get languge in precence
     public function compose(View $view)
     {
         $locale = config('app.locale');
-        $languages = $this->getLanguage;
-        $language = [];
-        foreach ($languages as $value) {
-            if ($value['acronym'] == $locale){
-                $language['id'] = $value['id']; 
-                $language['name'] = $value['name'];
-            }
-        }
-        $view->with('nowLanguage', $language);
+        $getlanguage = $this->getLanguage->findCondition('acronym', $locale);
+
+        $view->with('nowLanguage', $getlanguage);
     }
 }

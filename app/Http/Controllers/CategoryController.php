@@ -26,12 +26,12 @@ class CategoryController extends Controller
     ){
         $this->Category = $Category;
         $this->Language = $Language;
+        // getLanguage();
 
     }
 
     public function index()
     {
-        // dd($getCategories);
         $language = config('app.locale');
         $languages = $this->Language->getAll();
         foreach ($languages as $value) {
@@ -125,8 +125,7 @@ class CategoryController extends Controller
     {
         $data = $request->all();
         $data['slug'] = str_slug($data['title']);
-        // if (isset($data['pare']))
-        // dd($data);
+
         $create = $this->Category->create($data);
 
         return response()->json([ 'error' => false, 'success' => trans('action.success') ]);
