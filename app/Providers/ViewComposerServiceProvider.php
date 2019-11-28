@@ -15,8 +15,8 @@ class ViewComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         // die;
-        View::composer('*', 'App\Http\ViewComposers\CategoryViewComposer');
-        view()->composer(['admin.category'], 'App\Http\ViewComposers\LanguageViewComposer');
+        View::composer(['admin.category'], 'App\Http\ViewComposers\CategoryViewComposer');
+        view()->composer('*', 'App\Http\ViewComposers\LanguageViewComposer');
     }
 
     /**

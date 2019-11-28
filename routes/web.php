@@ -25,8 +25,8 @@ Route::group(['middleware' => 'locale'], function() {
         Route::prefix('/admin')->group(function() {
             Route::get('/', 'AdminController@index');
             Route::prefix('/category')->name('category.')->group(function(){
-            //     // $categoryController = 'CategoryController';
-            //     // Route::post("cart", $shopController . "@cart")->name('cart');
+                 // $categoryController = 'CategoryController';
+                 // Route::post("cart", $shopController . "@cart")->name('cart');
                 Route::get('/', 'CategoryController@index');
                 Route::get('/categoryDatatable', 'CategoryController@categoryDatatable')-> name('datatable');
                 Route::get('/detail/{id}', 'CategoryController@detail')->name('detail');
@@ -35,6 +35,10 @@ Route::group(['middleware' => 'locale'], function() {
                 Route::post('/add', 'CategoryController@store')->name('add');
             // });
             });
+
+            Route::prefix('/story')->name('story.')->group(function() {
+                Route::get('/', 'StoryController@index');
+            })
         });
     });
 });

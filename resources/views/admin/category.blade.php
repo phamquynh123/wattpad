@@ -7,7 +7,8 @@
     <div class="block-header">
         <h2>{{ trans('message.category') }}</h2>
     </div>
-    {{-- {{ dd($getLanguages) }} --}}
+    {{-- {{ dd($getCategories) }} --}}
+    {{-- {{ dd($nowLanguage) }} --}}
     <div class="row clearfix">
         <div class=" float-right">
             <button class="btn btn-info" data-toggle="modal" data-target="#category-add">{{ trans('action.add') }} {{ trans('message.category') }}</button>
