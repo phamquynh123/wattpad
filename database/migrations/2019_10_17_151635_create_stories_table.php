@@ -19,9 +19,9 @@ class CreateStoriesTable extends Migration
             $table->string('slug')->unique();
             $table->longText('description');
             $table->string('original');
-            $table->integer('public_status')->default(config('Custom.statusPublic')); //public or draft
+            $table->integer('public_status')->default(config('Custom.statusPublic')); //public=1 or draft=0
             $table->string('img');
-            $table->integer('use_status');   //vip or normal
+            $table->integer('use_status');   //vip=1 or normal=0
             $table->integer('view_count')->default('0');   // number of view this story
             $table->integer('language_id')->default(config('Custom.viId'));
             $table->bigInteger('parent_language_id')->default('0'); // story parent id

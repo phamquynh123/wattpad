@@ -15,6 +15,15 @@ return [
     //form
     'parent' => 'Parent',
     'story' => 'Story',
+    'stories' => [
+        'vip' => 'Story For Vip Account',
+        'normal' => 'Story For Normal Account',
+        'draft' => 'Draft Story',
+        'public' => 'Public Story',
+        'public_status' => 'Public status',
+        'original' => 'Original',
+        'img' => 'Image',
+    ],
     'user' => 'User',
     'normalUser' => 'Normal User',
     'vipUser' => 'Vip User',
@@ -29,9 +38,11 @@ return [
     'language' => 'Language',
     'submit' => 'Submit',
     'close' => 'Close',
-
     'parent' => 'parent',
     //language
     'vi' => 'Vietnamese',
     'en' => 'English',
+
+    //page action 
+    'detail' =>'Detail',
 ];

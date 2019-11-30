@@ -26,7 +26,11 @@ class LanguageViewComposer
     {
         $locale = config('app.locale');
         $getlanguage = $this->getLanguage->findCondition('acronym', $locale);
-
-        $view->with('nowLanguage', $getlanguage);
+        $get_all_languages = $this->getLanguage->getAll();
+        $a = $getlanguage[0]->id;
+        // dd($getlanguage[0]->id);
+        $view->with('nowLanguage_id', $a);
+        $view->with('get_now_language', $getlanguage);
+        $view->with('get_all_languages', $get_all_languages);
     }
 }

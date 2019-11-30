@@ -3,7 +3,7 @@
 namespace App\Repositories\Story;
 
 use App\Models\Story;
-use App\Repositories\Batch\StoryRepositoryInterface;
+use App\Repositories\Story\StoryRepositoryInterface;
 use App\Repositories\BaseRepository;
 
 class StoryRepository extends BaseRepository implements StoryRepositoryInterface

@@ -134,7 +134,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ asset('/admin/story') }}">
+                        <a href="{{ asset('/admin/story/') }}">
                             <i class="material-icons">layers</i>
                             <span>{{ trans('message.story') }}</span>
                         </a>
@@ -317,14 +317,12 @@
     </section>
 
     <section class="content">
-        <div class="container-fluid">
-            <div class="block-header">
-                <h2>DASHBOARD</h2>
+        <div class="container-fluid" >
+            <div class="card">
+                <div class="body">
+                    @yield('content')
+                </div>
             </div>
-            
-            <div class="row clearfix">
-            </div>
-            @yield('content')
         </div>
     </section>
 
