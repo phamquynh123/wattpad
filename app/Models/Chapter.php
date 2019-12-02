@@ -17,4 +17,9 @@ class Chapter extends Model
         'parent_language_id',
         'language_id',
     ];
+
+    public function story()
+    {
+        return $this->belongsToMany('App\Models\Story', 'story_id');
+    }
 }

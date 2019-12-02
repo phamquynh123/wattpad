@@ -24,7 +24,7 @@ class Story extends Model
 
     public function authors()
     {
-        return $this->belongsToMany('App\Models\Author', 'story_author', 'story_id', 'author_id');
+        return $this->belongsToMany('App\Models\User', 'story_author', 'story_id', 'user_id');
     }
 
     public function categoties()
@@ -35,5 +35,10 @@ class Story extends Model
     public function tags()
     {
         return $this->belongsToMany('App\Models\Tag', 'story_tag', 'story_id', 'tag_id');
+    }
+
+    public function chapter()
+    {
+        return $this->hasMany('App\Models\Chapter', 'story_id', 'id');
     }
 }

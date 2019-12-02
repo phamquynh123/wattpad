@@ -38,7 +38,9 @@ Route::group(['middleware' => 'locale'], function() {
 
             Route::prefix('/story')->name('story.')->group(function() {
                 Route::get('/', 'StoryController@index');
-            })
+                Route::get('datatable/{language_id}', 'StoryController@storyDatatable')->name('datatable');
+                Route::get('/detail/{id}', 'StoryController@detail')->name('detail');
+            });
         });
     });
 });

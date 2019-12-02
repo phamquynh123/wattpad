@@ -1,7 +1,7 @@
 <?php
 
     return [
-        'statusPublic' => '1',
+        'statusPublic' => 1,
         'statusDraft' => '0',
         'normalAcconut' => '0',
         'vipAcconut' => '1',
@@ -9,4 +9,11 @@
         'deactive' => '0',
         'viId' => '1',
         'categoryParentId' => '1',
+        'VipStory' => '1', //story for vip account
+        'NormalStory' => '0', //story for normal account
+
+        'ImgDefaul' => 'IMG/defaul.jpeg',
+        'linkImgDefaul' => 'storage/story',
+
+        'roleAdmin' => 1,
     ];
