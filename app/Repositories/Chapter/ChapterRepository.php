@@ -17,4 +17,10 @@ class ChapterRepository extends BaseRepository implements ChapterRepositoryInter
         return Chapter::class;
     }
 
+    public function countChapter($attr, $id)
+    {
+        $result = $this->_model->where($attr, $id)->count();
+
+        return $result;
+    }
 }

@@ -28,5 +28,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind("App\\Repositories\\Language\\LanguageRepositoryInterface","App\\Repositories\\Language\\LanguageRepository");
         $this->app->bind("App\\Repositories\\Story\\StoryRepositoryInterface","App\\Repositories\\Story\\StoryRepository");
         $this->app->bind("App\\Repositories\\Chapter\\ChapterRepositoryInterface","App\\Repositories\\Chapter\\ChapterRepository");
+        $this->app->bind("App\\Repositories\\Comment\\CommentRepositoryInterface","App\\Repositories\\Comment\\CommentRepository");
     }
 }

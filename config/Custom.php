@@ -13,7 +13,7 @@
         'NormalStory' => '0', //story for normal account
 
         'ImgDefaul' => 'IMG/defaul.jpeg',
-        'linkImgDefaul' => 'storage/story',
+        'linkImgDefaul' => 'storage/story/',
 
         'roleAdmin' => 1,
     ];
