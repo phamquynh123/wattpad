@@ -140,6 +140,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="{{ asset('/manageMyStory') }}">
+                            <i class="material-icons">layers</i>
+                            <span>{{ trans('message.myStory') }}</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">widgets</i>
                             <span>{{ trans('message.user') }}</span>

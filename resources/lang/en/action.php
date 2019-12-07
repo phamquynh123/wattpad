@@ -8,4 +8,8 @@ return [
     'error' => 'ERROR',
     'trans' => 'Translate',
     'detail' => 'Detail',
+    'change' => [
+        'public_status' => 'Public Status Change ',
+        'use_status' => 'Use Status Change ',
+    ],
 ];

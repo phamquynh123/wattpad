@@ -16,6 +16,8 @@ return [
     'parent' => 'Parent',
     'story' => 'Story',
     'stories' => [
+        'Vip' => 'Vip',
+        'Normal' => 'Normal',
         'vip' => 'Story For Vip Account',
         'normal' => 'Story For Normal Account',
         'draft' => 'Draft Story',
@@ -31,6 +33,7 @@ return [
         'comment' => 'Comments',
         'author' => 'Authors',
     ],
+    'myStory' => 'My Story',
     'user' => 'User',
     'normalUser' => 'Normal User',
     'vipUser' => 'Vip User',
