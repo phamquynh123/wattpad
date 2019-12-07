@@ -7,4 +7,5 @@ return [
     'success' => 'SUCCESSFULLY',
     'error' => 'ERROR',
     'trans' => 'Translate',
+    'detail' => 'Detail',
 ];

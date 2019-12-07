@@ -7,6 +7,7 @@ use App\Repositories\Category\CategoryRepositoryInterface;
 use App\Repositories\Language\LanguageRepositoryInterface;
 use App\Repositories\Story\StoryRepositoryInterface;
 use App\Repositories\Chapter\ChapterRepositoryInterface;
+use App\Repositories\Comment\CommentRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Yajra\Datatables\Datatables;
@@ -16,17 +17,21 @@ class StoryController extends Controller
     protected $Category;
     protected $Language;
     protected $Story;
-    protected $chapter;
+    protected $Chapter;
+    protected $Comment;
+
     public function __construct( 
         CategoryRepositoryInterface $Category,
         LanguageRepositoryInterface $Language,
         StoryRepositoryInterface $Story,
-        ChapterRepositoryInterface $Chapter
+        ChapterRepositoryInterface $Chapter,
+        CommentRepositoryInterface $Comment
     ) {
         $this->Category = $Category;
         $this->Language = $Language;
         $this->Story = $Story;
         $this->Chapter = $Chapter;
+        $this->Comment = $Comment;
 
         $language = config('app.locale');
     }
@@ -79,13 +84,19 @@ class StoryController extends Controller
 
     public function detail($id)
     {
-        $story = $this->Story->find($id)->load('chapter', 'authors');
+        $story = $this->Story->find($id)->load('chapter','authors');
         // ->map(function($item) {
         //     dd($item);
         // });
-        $numChapter = DB::table('chapters')->where('story_id', $id)->count();
-        $story['numChapter'] = $numChapter;
-        // dd($story);
+        if ($story->img == "") {
+            $story->img = asset('') . config('Custom.ImgDefaul');
+        } else {
+            $story->img = asset('') . config('Custom.linkImgDefaul') .$story->img;
+        }
+
+        $story['numChapter'] = $this->Chapter->countChapter('story_id', $id);
+        $story['numComment'] = $this->Comment->countComment('story_id', $id);
+
         return $story;
     }
 }
