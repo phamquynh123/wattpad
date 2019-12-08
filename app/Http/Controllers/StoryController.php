@@ -8,6 +8,7 @@ use App\Repositories\Language\LanguageRepositoryInterface;
 use App\Repositories\Story\StoryRepositoryInterface;
 use App\Repositories\Chapter\ChapterRepositoryInterface;
 use App\Repositories\Comment\CommentRepositoryInterface;
+use App\Repositories\User\UserRepositoryInterface as User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Yajra\Datatables\Datatables;
@@ -98,5 +99,72 @@ class StoryController extends Controller
         $story['numComment'] = $this->Comment->countComment('story_id', $id);
 
         return $story;
+    }
+
+    public function manageMyStory() {
+        return view('admin.myStory');
+    }
+
+    public function manageMyStoryDatatable() {
+        $user = Auth::user()->load('story')->toArray();
+        $stories = $user['story'];
+        // dd($stories);
+        return Datatables::of($stories)
+            ->addColumn('action', function ($story) {
+                // dd($story);
+                if($story['parent_language_id'] == 0) {
+                        return '<a href="#" class="btn btn-sm btn-warning story_detail btn-xs" data-id="' . $story['id'] . '" data-name="' . $story['slug'] . '" data-toggle="modal" data-target="#story-detail"><i class="fa fa-eye"></i></a> <a href="#" data-id="' . $story['id'] .'" class="btn btn-sm btn-info story-tran btn-xs" data-id="' . $story['id'] . '" data-name="' . $story['slug'] . '" data-toggle="modal" data-target="#story-trans" title="' . trans('action.trans') . '"><i class="fas fa-exchange-alt"></i></a> ';
+                    }
+            })
+            ->editColumn('img', function($story) {
+                if ($story['img'] == null) {
+                    $image = asset('') . config('Custom.ImgDefaul');
+                } else {
+                    $image = asset(config('Custom.linkImgDefaul')) . $story['img'];
+                }
+
+                return '<img class="img-avatar" src=" ' . $image . ' "/>';
+            })
+            ->editColumn('public_status', function($story) {
+                if($story['public_status'] == config('Custom.statusPublic')) {
+                    return '<select value="' . trans('message.stories.public') . '" class="btn bg-purple waves-effect public-status" data-id="' . $story['id'] . '"><option class="btn btn-default waves-effect">' . trans('message.stories.public') . '</option><option class="btn btn-default waves-effect">' . trans('message.stories.draft') . '</option></select>';
+                //     return '<button type="button" class="btn bg-purple waves-effect public-status" data-id="' . $story['id'] . '">' . trans('message.stories.public') . '</button>';
+                } else {
+                     return '<select value="' . trans('message.stories.draft') . '" class="btn bg-purple waves-effect public-status" data-id="' . $story['id'] . '"><option class="btn btn-default waves-effect">' . trans('message.stories.draft') . '</option><option class="btn btn-default waves-effect">' . trans('message.stories.public') . '</option></select>';
+                }
+            })
+            ->editColumn('use_status', function($story) {
+                if($story['use_status'] == config('Custom.normalAcconut')) {
+                    return '<button type="button" class="btn bg-indigo waves-effect use-status"   data-id="' . $story['id'] . '">' . trans('message.stories.Vip') . '</button>';
+                } else {
+                    return '<button type="button" class="btn bg-indigo waves-effect use-status" data-id="' . $story['id'] . '">' . trans('message.stories.Normal') . '</button>';
+                }
+            })
+            ->rawColumns([ 
+                'action', 'img', 'public_status', 'use_status'
+            ])
+            ->make(true);
+    }
+
+    public function changPublicStatus($id) {
+        $data = $this->Story->find($id)->toArray();
+        if($data['public_status'] == config('Custom.statusPublic')) {
+            $data['public_status'] = config('Custom.statusDraft');
+        } else $data['public_status'] = config('Custom.statusPublic');
+        // dd($data);
+        $response = $this->Story->update($id, $data);
+
+        return response()->json([ 'error' => false, 'success' => trans('action.change.public_status') . trans('action.success') ]);
+    }
+
+    public function changUseStatus ($id) {
+        $data = $this->Story->find($id)->toArray();
+        if($data['use_status'] == config('Custom.VipStory')) {
+            $data['use_status'] = config('Custom.NormalStory');
+        } else $data['use_status'] = config('Custom.VipStory');
+        // dd($data);
+        $response = $this->Story->update($id, $data);
+
+        return response()->json([ 'error' => false, 'success' => trans('action.change.use_status') . trans('action.success') ]);
     }
 }

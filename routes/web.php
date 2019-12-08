@@ -42,5 +42,12 @@ Route::group(['middleware' => 'locale'], function() {
                 Route::get('/detail/{id}', 'StoryController@detail')->name('detail');
             });
         });
+
+        Route::prefix('/manageMyStory')->name('myStory.')->group(function() {
+            Route::get('/', 'StoryController@manageMyStory');
+            Route::get('datatable/{language_id}', 'StoryController@manageMyStoryDatatable')->name('datatable');
+            Route::get('/changPublicStatus/{id}', 'StoryController@changPublicStatus')->name('changPublicStatus');
+            Route::get('/changUseStatus/{id}', 'StoryController@changUseStatus')->name('changUseStatus');
+        });
     });
 });
