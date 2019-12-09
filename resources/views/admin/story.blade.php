@@ -17,7 +17,7 @@
         <button class="btn btn-info float-right" data-toggle="modal" data-target="#story-add">{{ trans('action.add') }} {{ trans('message.story') }}</button>
         <div class="clear"></div>
 
-        <table class="table table-hover" id="story" data-url="{{ route('mystory.datatable', $nowLanguage_id) }}">
+        <table class="table table-hover" id="story" data-url="{{ route('story.datatable', $nowLanguage_id) }}">
             <thead>
                 <tr>
                     <th>{{ trans('message.id') }}</th>

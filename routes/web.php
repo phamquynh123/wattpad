@@ -48,6 +48,7 @@ Route::group(['middleware' => 'locale'], function() {
             Route::get('datatable/{language_id}', 'StoryController@manageMyStoryDatatable')->name('datatable');
             Route::get('/changPublicStatus/{id}', 'StoryController@changPublicStatus')->name('changPublicStatus');
             Route::get('/changUseStatus/{id}', 'StoryController@changUseStatus')->name('changUseStatus');
+            Route::post('/add', 'StoryController@addStory')->name('addStory');
         });
     });
 });
