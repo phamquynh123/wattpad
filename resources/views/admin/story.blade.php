@@ -110,15 +110,15 @@
                             <ul>
                                 <li>
                                     <span>{{ trans('message.stories.total_vote') }}</span>
-                                    <span class="total_vote">1.234</span>
+                                    <span class="total_vote"></span>
                                 </li>
                                 <li>
                                     <span>{{ trans('message.stories.public_status') }}</span>
-                                    <span id="public_status">1.201</span>
+                                    <span id="public_status"></span>
                                 </li>
                                 <li>
                                     <span>{{ trans('message.stories.use_status') }}</span>
-                                    <span id ="use_status">14.252</span>
+                                    <span id ="use_status"></span>
                                 </li>
                                 <li>
                                     <span>{{ trans('message.stories.view_count') }}</span>

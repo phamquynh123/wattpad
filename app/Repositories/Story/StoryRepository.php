@@ -17,4 +17,11 @@ class StoryRepository extends BaseRepository implements StoryRepositoryInterface
         return Story::class;
     }
 
+    public function detailStory($attr, $value)
+    {
+        $result = $this->_model::where($attr, $value)->first();
+
+        return $result;
+    }
+
 }
