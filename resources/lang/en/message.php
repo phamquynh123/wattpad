@@ -41,6 +41,7 @@ return [
     'id' => 'ID',
     'title' => 'Title',
     'content' => 'Content',
+    'description' => 'Description',
     'created_at' => 'Created At',
     'action' => 'Action',
     'addNew' => 'Add New',

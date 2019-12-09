@@ -30,5 +30,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind("App\\Repositories\\Chapter\\ChapterRepositoryInterface","App\\Repositories\\Chapter\\ChapterRepository");
         $this->app->bind("App\\Repositories\\Comment\\CommentRepositoryInterface","App\\Repositories\\Comment\\CommentRepository");
         $this->app->bind("App\\Repositories\\User\\UserRepositoryInterface","App\\Repositories\\User\\UserRepository");
+        $this->app->bind("App\\Repositories\\StoryAuthor\\StoryAuthorRepositoryInterface","App\\Repositories\\StoryAuthor\\StoryAuthorRepository");
     }
 }

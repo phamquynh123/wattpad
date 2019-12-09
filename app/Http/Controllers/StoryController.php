@@ -9,9 +9,11 @@ use App\Repositories\Story\StoryRepositoryInterface;
 use App\Repositories\Chapter\ChapterRepositoryInterface;
 use App\Repositories\Comment\CommentRepositoryInterface;
 use App\Repositories\User\UserRepositoryInterface as User;
+use App\Repositories\StoryAuthor\StoryAuthorRepositoryInterface as StoryAuthor;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Yajra\Datatables\Datatables;
+use App\Http\Requests\StoryRequest;
 
 class StoryController extends Controller
 {
@@ -20,19 +22,22 @@ class StoryController extends Controller
     protected $Story;
     protected $Chapter;
     protected $Comment;
+    protected $StoryAuthor;
 
     public function __construct( 
         CategoryRepositoryInterface $Category,
         LanguageRepositoryInterface $Language,
         StoryRepositoryInterface $Story,
         ChapterRepositoryInterface $Chapter,
-        CommentRepositoryInterface $Comment
+        CommentRepositoryInterface $Comment,
+        StoryAuthor $StoryAuthor
     ) {
         $this->Category = $Category;
         $this->Language = $Language;
         $this->Story = $Story;
         $this->Chapter = $Chapter;
         $this->Comment = $Comment;
+        $this->StoryAuthor = $StoryAuthor;
 
         $language = config('app.locale');
     }
@@ -76,7 +81,7 @@ class StoryController extends Controller
                     return trans('message.stories.draft');
                 }
             })
-            ->rawColumns([ 
+            ->rawColumns([
                 'action', 'img', 'public_status'
             ])
             ->make(true);
@@ -85,7 +90,7 @@ class StoryController extends Controller
 
     public function detail($id)
     {
-        $story = $this->Story->find($id)->load('chapter','authors');
+        $story = $this->Story->find($id)->load('chapter', 'authors');
         // ->map(function($item) {
         //     dd($item);
         // });
@@ -101,26 +106,28 @@ class StoryController extends Controller
         return $story;
     }
 
-    public function manageMyStory() {
+    public function manageMyStory()
+    {
         return view('admin.myStory');
     }
 
-    public function manageMyStoryDatatable() {
+    public function manageMyStoryDatatable()
+    {
         $user = Auth::user()->load('story')->toArray();
         $stories = $user['story'];
         // dd($stories);
         return Datatables::of($stories)
             ->addColumn('action', function ($story) {
                 // dd($story);
-                if($story['parent_language_id'] == 0) {
-                        return '<a href="#" class="btn btn-sm btn-warning story_detail btn-xs" data-id="' . $story['id'] . '" data-name="' . $story['slug'] . '" data-toggle="modal" data-target="#story-detail"><i class="fa fa-eye"></i></a> <a href="#" data-id="' . $story['id'] .'" class="btn btn-sm btn-info story-tran btn-xs" data-id="' . $story['id'] . '" data-name="' . $story['slug'] . '" data-toggle="modal" data-target="#story-trans" title="' . trans('action.trans') . '"><i class="fas fa-exchange-alt"></i></a> ';
+                if ($story['parent_language_id'] == 0) {
+                    return '<a href="#" class="btn btn-sm btn-warning story_detail btn-xs" data-id="' . $story['id'] . '" data-name="' . $story['slug'] . '" data-toggle="modal" data-target="#story-detail"><i class="fa fa-eye"></i></a> <a href="#" data-id="' . $story['id'] .'" class="btn btn-sm btn-info story-tran btn-xs" data-id="' . $story['id'] . '" data-name="' . $story['slug'] . '" data-toggle="modal" data-target="#story-trans" title="' . trans('action.trans') . '"><i class="fas fa-exchange-alt"></i></a> <a href="#" data-id="' . $story['id'] .'" class="btn bg-lime waves-effect story-fix btn-xs" data-id="' . $story['id'] . '" data-name="' . $story['slug'] . '" data-toggle="modal" data-target="#story-edit" title="' . trans('action.trans') . '"><i class="material-icons">content_cut</i></a>';
                     }
             })
             ->editColumn('img', function($story) {
                 if ($story['img'] == null) {
                     $image = asset('') . config('Custom.ImgDefaul');
                 } else {
-                    $image = asset(config('Custom.linkImgDefaul')) . $story['img'];
+                    $image = asset(config('Custom.linkImgDefaul')) . '/' . $story['img'];
                 }
 
                 return '<img class="img-avatar" src=" ' . $image . ' "/>';
@@ -146,7 +153,8 @@ class StoryController extends Controller
             ->make(true);
     }
 
-    public function changPublicStatus($id) {
+    public function changPublicStatus($id)
+    {
         $data = $this->Story->find($id)->toArray();
         if($data['public_status'] == config('Custom.statusPublic')) {
             $data['public_status'] = config('Custom.statusDraft');
@@ -157,14 +165,38 @@ class StoryController extends Controller
         return response()->json([ 'error' => false, 'success' => trans('action.change.public_status') . trans('action.success') ]);
     }
 
-    public function changUseStatus ($id) {
+    public function changUseStatus ($id)
+    {
         $data = $this->Story->find($id)->toArray();
-        if($data['use_status'] == config('Custom.VipStory')) {
+        if ($data['use_status'] == config('Custom.VipStory')) {
             $data['use_status'] = config('Custom.NormalStory');
         } else $data['use_status'] = config('Custom.VipStory');
         // dd($data);
         $response = $this->Story->update($id, $data);
 
         return response()->json([ 'error' => false, 'success' => trans('action.change.use_status') . trans('action.success') ]);
+    }
+
+    public function addStory(StoryRequest $request)
+    {
+        $data = $request->all();
+        $data['slug'] = str_slug($data['title']);
+        if ($request->hasFile('file')) {
+            $a = $request->file('file')->storeAs('public/story', 'image_' . time() . request()->file->getClientOriginalName());
+            // dd($a);
+            $path = time() . request()->file->getClientOriginalName();
+            $image = $request->file('file');
+            $data['img'] = $path;
+        }
+
+
+        $result = $this->Story->create($data);
+
+        $author_story['story_id'] = $result->id;
+        $author_story['user_id'] = Auth::user()->id;
+
+        $this->StoryAuthor->create($author_story);
+
+        return response()->json(['error' => false, 'success' => trans('action.success')]);
     }
 }
