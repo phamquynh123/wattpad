@@ -41,4 +41,14 @@ class Story extends Model
     {
         return $this->hasMany('App\Models\Chapter', 'story_id', 'id');
     }
+
+    public function chapterCustom()
+    {
+        return $this->hasMany('App\Models\Chapter', 'story_id', 'id')->select(['title']);
+    }
+
+    public function comment()
+    {
+        return $this->hasMany('App\Models\Comment', 'story_id', 'id');
+    }
 }

@@ -66,10 +66,10 @@ class StoryController extends Controller
                     }
             })
             ->editColumn('img', function($story) {
-                if ($story->img == null) {
+                if ($story['img'] == null) {
                     $image = asset('') . config('Custom.ImgDefaul');
                 } else {
-                    $image = asset(config('Custom.linkImgDefaul')) . $story->img;
+                    $image = asset(config('Custom.linkImgDefaul')) . '/' . $story['img'];
                 }
 
                 return '<img class="img-avatar" src=" ' . $image . ' "/>';
@@ -97,7 +97,7 @@ class StoryController extends Controller
         if ($story->img == "") {
             $story->img = asset('') . config('Custom.ImgDefaul');
         } else {
-            $story->img = asset('') . config('Custom.linkImgDefaul') .$story->img;
+            $story->img = asset('') . config('Custom.linkImgDefaul') . '/' .$story->img;
         }
 
         $story['numChapter'] = $this->Chapter->countChapter('story_id', $id);
@@ -120,7 +120,7 @@ class StoryController extends Controller
             ->addColumn('action', function ($story) {
                 // dd($story);
                 if ($story['parent_language_id'] == 0) {
-                    return '<a href="#" class="btn btn-sm btn-warning story_detail btn-xs" data-id="' . $story['id'] . '" data-name="' . $story['slug'] . '" data-toggle="modal" data-target="#story-detail"><i class="fa fa-eye"></i></a> <a href="#" data-id="' . $story['id'] .'" class="btn btn-sm btn-info story-tran btn-xs" data-id="' . $story['id'] . '" data-name="' . $story['slug'] . '" data-toggle="modal" data-target="#story-trans" title="' . trans('action.trans') . '"><i class="fas fa-exchange-alt"></i></a> <a href="#" data-id="' . $story['id'] .'" class="btn bg-lime waves-effect story-fix btn-xs" data-id="' . $story['id'] . '" data-name="' . $story['slug'] . '" data-toggle="modal" data-target="#story-edit" title="' . trans('action.trans') . '"><i class="material-icons">content_cut</i></a>';
+                    return '<a href="' . route('myStory.detailStory', $story['slug']) . '" class="btn btn-sm btn-warning my-story-detail btn-xs" data-id="' . $story['id'] . '" title="' . trans('action.detail') . '"><i class="fa fa-eye"></i></a> <a href="#" data-id="' . $story['id'] .'" class="btn btn-sm btn-info story-tran btn-xs" data-id="' . $story['id'] . '" data-name="' . $story['slug'] . '" data-toggle="modal" data-target="#story-trans" title="' . trans('action.trans') . '"><i class="fas fa-exchange-alt"></i></a> <a href="#" data-id="' . $story['id'] .'" class="btn bg-lime waves-effect story-fix btn-xs" data-id="' . $story['id'] . '" data-name="' . $story['slug'] . '" title="' . trans('action.edit') . '" data-toggle="modal" data-target="#story-edit" title="' . trans('action.trans') . '"><i class="material-icons">content_cut</i></a>';
                     }
             })
             ->editColumn('img', function($story) {
@@ -198,5 +198,21 @@ class StoryController extends Controller
         $this->StoryAuthor->create($author_story);
 
         return response()->json(['error' => false, 'success' => trans('action.success')]);
+    }
+
+    // admin view show detail Story
+    public function detailStory($slug)
+    {
+        $data = $this->Story->detailStory('slug', $slug)->load(['authors', 'comment' => function($item){
+            $item->take(5);
+        }]);
+        foreach ($data['comment'] as $key => $value) {
+            $data['comment'][$key]['user'] = $value->load('user');
+        }
+        $data['numChapter'] = $this->Chapter->countChapter('story_id', $data['id']);
+        $data['numComment'] = $this->Comment->countComment('story_id', $data['id']);
+
+        return view('admin/mystoryDetail', compact('data'));
+        // dd($data->toArray());
     }
 }

@@ -13,4 +13,9 @@ class Comment extends Model
         'user_id',
         'content',
     ];
+
+    public function user()
+    {
+        return $this->hasOne('App\Models\User', 'id', 'user_id');
+    }
 }

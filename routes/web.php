@@ -49,6 +49,7 @@ Route::group(['middleware' => 'locale'], function() {
             Route::get('/changPublicStatus/{id}', 'StoryController@changPublicStatus')->name('changPublicStatus');
             Route::get('/changUseStatus/{id}', 'StoryController@changUseStatus')->name('changUseStatus');
             Route::post('/add', 'StoryController@addStory')->name('addStory');
+            Route::get('detail/{slug}', 'StoryController@detailStory')->name('detailStory');
         });
     });
 });
