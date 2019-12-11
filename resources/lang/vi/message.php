@@ -55,4 +55,8 @@ return [
 
     //page action 
     'detail' =>'Chi Tiết',
+
+    //permission
+    'permission' => 'Quyền',
+    'role' => 'Vai trò',
 ];

@@ -203,16 +203,20 @@ class StoryController extends Controller
     // admin view show detail Story
     public function detailStory($slug)
     {
-        $data = $this->Story->detailStory('slug', $slug)->load(['authors', 'comment' => function($item){
-            $item->take(5);
-        }]);
-        foreach ($data['comment'] as $key => $value) {
-            $data['comment'][$key]['user'] = $value->load('user');
-        }
+        $data = $this->Story->detailStory('slug', $slug)->load([
+            'authors' => function($item) {
+                return $item->select(['name', 'avatar']);
+            },
+            'comment.user'=> function($item){
+                $item->take(5);
+                // $item->select(['content']);
+            }
+        ]);
+
         $data['numChapter'] = $this->Chapter->countChapter('story_id', $data['id']);
         $data['numComment'] = $this->Comment->countComment('story_id', $data['id']);
 
         return view('admin/mystoryDetail', compact('data'));
-        // dd($data->toArray());
+        dd($data->toArray());
     }
 }
