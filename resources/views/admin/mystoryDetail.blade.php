@@ -107,6 +107,22 @@
                                 <input type="text" class="form-control" placeholder="Type a comment" />
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            @foreach($data->comment as $value)
+                                <div class="row">
+                                    <div class="image-cmt float-left">
+                                        <img src="{{ asset('/') . $value->user->avatar }}" alt="">
+                                    </div>
+                                    <div class="float-left">
+                                        <p><b>{{ $value->user->name }}</b></p>
+                                        <p>{{ $value->content }}</p>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <hr>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
 

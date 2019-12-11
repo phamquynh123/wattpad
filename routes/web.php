@@ -51,5 +51,10 @@ Route::group(['middleware' => 'locale'], function() {
             Route::post('/add', 'StoryController@addStory')->name('addStory');
             Route::get('detail/{slug}', 'StoryController@detailStory')->name('detailStory');
         });
+
+        Route::prefix('/permission')->name('permission.')->group(function() {
+            Route::get('/', 'PermissionController@index');
+            Route::get('/datatable', 'PermissionController@datatable')->name('datatable');
+        });
     });
 });
