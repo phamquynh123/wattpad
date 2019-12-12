@@ -59,4 +59,10 @@ return [
     //permission
     'permission' => 'Quyền',
     'role' => 'Vai trò',
+    'permissionlist' => 'Danh Sách Quyền',
+    'Capquyen' => 'Cấp Quyền',
+    'permission_role' => 'Quyền - Vai Trò',
+    'name' => 'Tên',
+    'display_name' => 'Tên Hiển Thị',
+    'fullpermission' => 'Người dùng đã đủ quyền',
 ];

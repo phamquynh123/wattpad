@@ -173,6 +173,22 @@
                             </li>
                         </ul>
                     </li>
+
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">widgets</i>
+                            <span>{{ trans('message.permission') }}</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="{{ asset('permission/permissionlist') }}">{{ trans('message.permissionlist') }}</a>
+                            </li>
+                            <li>
+                                <a href="{{ asset('/Capquyen') }}">{{ trans('message.Capquyen') }}</a>
+                            </li>
+                        </ul>
+                    </li>
+
                 </ul>
             </div>
             <!-- #Menu -->

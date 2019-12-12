@@ -17,6 +17,7 @@ class ViewComposerServiceProvider extends ServiceProvider
         // die;
         View::composer(['admin.category'], 'App\Http\ViewComposers\CategoryViewComposer');
         view()->composer('*', 'App\Http\ViewComposers\LanguageViewComposer');
+        view()->composer('admin.permission', 'App\Http\ViewComposers\LanguageViewComposer');
     }
 
     /**
