@@ -101,7 +101,15 @@
                 </div>
                 <div class="info-container">
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</div>
-                    <div class="email">{{ Auth::user()->email }}</div>
+                    <div class="email">{{ Auth::user()->email }} - 
+                        @if (Auth::user()->role_id == config('Custom.roleAuthor'))
+                            {{ trans('message.stories.author') }}
+                        @elseif (Auth::user()->role_id == config('Custom.roleVipUser'))
+                            {{ trans('message.vipUser') }}
+                        @else 
+                            {{ trans('message.normalUser') }}
+                        @endif
+                    </div>
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
@@ -138,24 +146,43 @@
                             <span>Home</span>
                         </a>
                     </li>
+                    @if(Gate::allows('admin'))
                     <li>
                         <a href="{{ asset('/admin/category') }}">
                             <i class="material-icons"></i>
                             <span>{{ trans('message.category') }}</span>
                         </a>
                     </li>
+                    @endif
+
+                    @if(Gate::allows('admin'))
                     <li>
                         <a href="{{ asset('/admin/story/') }}">
                             <i class="material-icons">layers</i>
                             <span>{{ trans('message.story') }}</span>
                         </a>
                     </li>
+                    @endif
+
+                    @if(Gate::allows('myStory') || Gate::allows('admin'))
                     <li>
                         <a href="{{ asset('/manageMyStory') }}">
                             <i class="material-icons">layers</i>
                             <span>{{ trans('message.myStory') }}</span>
                         </a>
                     </li>
+                    @endif
+
+                    @if(Auth::user()->role_id == config('Custom.roleNormaluser'))
+                        <li>
+                            <a href="{{ asset('/manageMyStory') }}">
+                                <i class="material-icons">layers</i>
+                                <span>{{ trans('message.createStory') }}</span>
+                            </a>
+                        </li>
+                    @endif
+
+                    @if(Gate::allows('admin'))
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">widgets</i>
@@ -173,7 +200,9 @@
                             </li>
                         </ul>
                     </li>
+                    @endif
 
+                    @if(Gate::allows('vipAccount') || Gate::allows('admin'))
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">widgets</i>
@@ -184,10 +213,11 @@
                                 <a href="{{ asset('permission/permissionlist') }}">{{ trans('message.permissionlist') }}</a>
                             </li>
                             <li>
-                                <a href="{{ asset('/Capquyen') }}">{{ trans('message.Capquyen') }}</a>
+                                <a href="{{ asset('permission/Capquyen') }}">{{ trans('message.Capquyen') }}</a>
                             </li>
                         </ul>
                     </li>
+                    @endif
 
                 </ul>
             </div>
@@ -354,6 +384,11 @@
             <div class="card">
                 <div class="body">
                     @yield('content')
+                    @can('vipAccount')
+                            {{ 'allows' }}
+                    @else 
+                         {{ 'false' }}
+                    @endcan
                 </div>
             </div>
         </div>

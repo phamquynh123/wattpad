@@ -20,6 +20,6 @@ class Chapter extends Model
 
     public function story()
     {
-        return $this->belongsToMany('App\Models\Story', 'story_id');
+        return $this->belongsTo('App\Models\Story', 'story_id');
     }
 }

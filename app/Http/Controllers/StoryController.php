@@ -11,6 +11,7 @@ use App\Repositories\Comment\CommentRepositoryInterface;
 use App\Repositories\User\UserRepositoryInterface as User;
 use App\Repositories\StoryAuthor\StoryAuthorRepositoryInterface as StoryAuthor;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\DB;
 use Yajra\Datatables\Datatables;
 use App\Http\Requests\StoryRequest;
@@ -90,10 +91,15 @@ class StoryController extends Controller
 
     public function detail($id)
     {
-        $story = $this->Story->find($id)->load('chapter', 'authors');
-        // ->map(function($item) {
-        //     dd($item);
-        // });
+        $story = $this->Story->find($id)->load([
+            // 'chapter' => function($query) {
+            //     $query->get();
+            // },
+            'authors' => function($item) {
+                $item->select('name', 'avatar', 'users.id');
+            }
+        ]);
+
         if ($story->img == "") {
             $story->img = asset('') . config('Custom.ImgDefaul');
         } else {
@@ -167,14 +173,18 @@ class StoryController extends Controller
 
     public function changUseStatus ($id)
     {
-        $data = $this->Story->find($id)->toArray();
-        if ($data['use_status'] == config('Custom.VipStory')) {
-            $data['use_status'] = config('Custom.NormalStory');
-        } else $data['use_status'] = config('Custom.VipStory');
-        // dd($data);
-        $response = $this->Story->update($id, $data);
+        if (Gate::allows('admin') || Gate::allows('vipAccount')){
+            $data = $this->Story->find($id)->toArray();
+            if ($data['use_status'] == config('Custom.VipStory')) {
+                $data['use_status'] = config('Custom.NormalStory');
+            } else $data['use_status'] = config('Custom.VipStory');
+            // dd($data);
+            $response = $this->Story->update($id, $data);
 
-        return response()->json([ 'error' => false, 'success' => trans('action.change.use_status') . trans('action.success') ]);
+            return response()->json([ 'errors' => false, 'success' => trans('action.change.use_status') . trans('action.success') ]);
+        } else {
+            return response()->json(['errors' => trans('validation.permissionDeny')]);
+        }
     }
 
     public function addStory(StoryRequest $request)
