@@ -16,4 +16,7 @@
         'linkImgDefaul' => 'storage/story/',
 
         'roleAdmin' => 1,
+        'roleAuthor' => 3,
+        'roleNormaluser' => 2,
+        'roleVipUser' => 4,
     ];

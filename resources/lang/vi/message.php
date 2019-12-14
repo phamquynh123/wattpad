@@ -65,4 +65,8 @@ return [
     'name' => 'Tên',
     'display_name' => 'Tên Hiển Thị',
     'fullpermission' => 'Người dùng đã đủ quyền',
+    'avatar' => 'Ảnh Đại Diện',
+    'email' => 'Email',
+    'changePermission' => 'Thay đổi quyền',
+    'createStory' => 'Sáng tác truyện',
 ];

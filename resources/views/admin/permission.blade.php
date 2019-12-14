@@ -100,7 +100,7 @@
                         </div>
                     </div>
 
-                    <button class="btn btn-primary waves-effect" type="submit" data-dismiss="modal">SUBMIT</button>
+                    <button class="btn btn-primary waves-effect" id="addRoleOrPermission" type="submit" data-dismiss="modal">SUBMIT</button>
                 </form>
             </div>
         </div>
@@ -206,7 +206,7 @@
                 <h2 class="modal-title">{{ trans('action.add') }}</h2>
             </div>
             <div class="modal-body">
-                <form id="form_validation" method="POST">
+                <form id="" method="POST">
                     @csrf
                     <input type="text" name="type" class="type-add">
                     <div class="form-group ">
