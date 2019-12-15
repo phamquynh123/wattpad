@@ -53,8 +53,22 @@ Route::group(['middleware' => 'locale'], function() {
         });
 
         Route::prefix('/permission')->name('permission.')->group(function() {
-            Route::get('/', 'PermissionController@index');
-            Route::get('/datatable', 'PermissionController@datatable')->name('datatable');
+            $ctl = 'PermissionController';
+            Route::get('/permissionlist', 'PermissionController@index');
+            Route::get('/datatable/{lang_id}', 'PermissionController@datatable')->name('datatable');
+            Route::get('/datatableRole/{lang_id}', 'PermissionController@datatableRole')->name('datatableRole');
+            Route::get('/datatablePermissionRole/{lang_id}', 'PermissionController@datatablePermissionRole')->name('datatablePermissionRole');
+            Route::post('/store', 'PermissionController@store')->name('add');
+            Route::get('/edit/{id}', 'PermissionController@edit')->name('edit');
+            Route::post('/update', 'PermissionController@update')->name('update');
+            Route::get('/role/edit/{id}', 'PermissionController@roleEdit')->name('roleedit');
+            Route::post('/role/update', 'PermissionController@roleUpdate')->name('roleupdate');
+            Route::get('/permissionRoleEdit/{id}', 'PermissionController@permissionRoleEdit')->name('permissionRoleEdit');
+            Route::post('/permissionRoleUpdatee', 'PermissionController@permissionRoleUpdatee')->name('permissionRoleUpdatee');
+            Route::get('/Capquyen', $ctl . '@addVip')->name('addVip');
+            Route::get('/Capquyen/datatable/{lang_id}', $ctl . '@addVipDatatable')->name('addVipDatatable');
+            Route::post('/changeRole', $ctl . '@changeRole')->name('changeRole');
+
         });
     });
 });

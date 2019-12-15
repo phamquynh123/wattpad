@@ -17,4 +17,9 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
         return User::class;
     }
 
+    public function getUser()
+    {
+        return User::where('role_id', '!=' , config('Custom.roleAdmin'))->orWhereNull('role_id')->get();
+    }
+
 }

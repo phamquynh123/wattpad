@@ -16,11 +16,17 @@ class Role extends Model
 
     public function permissions()
     {
-        return $this->belongsToMany('App\Models\Permissions', 'permission_role');
+        return $this->belongsToMany('App\Models\Permission', 'permission_role');
     }
 
     public function permission_role()
     {
         return $this->belongsTo('App\Models\PermissionRole', 'role_id');
     }
+
+    public function permission()
+    {
+        return $this->belongsToMany('App\Models\Permission', 'permission_role', 'role_id', 'permission_id');
+    }
+
 }
