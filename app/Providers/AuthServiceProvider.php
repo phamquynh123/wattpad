@@ -42,7 +42,7 @@ class AuthServiceProvider extends ServiceProvider
         }
         // dd( Gate::abilities() );
         Gate::define('admin', function ($user) {
-            if($user->role_id == config('Custom.roleAdmin')){
+            if ($user->role_id == config('Custom.roleAdmin')) {
                 return true;
             } else return false;
         });

@@ -69,4 +69,8 @@ return [
     'email' => 'Email',
     'changePermission' => 'Thay đổi quyền',
     'createStory' => 'Sáng tác truyện',
+  
+    'category' => 'Thể loại',
+    'upgrateAccountToRead' => 'Nâng Cấp Tài Khoản Để Đọc Truyện',
+    'chapter' => 'Các Chương',
 ];

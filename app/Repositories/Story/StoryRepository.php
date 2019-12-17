@@ -24,4 +24,10 @@ class StoryRepository extends BaseRepository implements StoryRepositoryInterface
         return $result;
     }
 
+    public function getLimitStory($use_status)
+    {
+        // dd(config('Custom.limitRecord'));
+        return $this->_model::where('use_status', $use_status)->orderBy('id', 'DESC')->limit(config('Custom.limitRecord'))->get();
+    }
+
 }

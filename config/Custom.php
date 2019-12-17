@@ -19,4 +19,7 @@
         'roleAuthor' => 3,
         'roleNormaluser' => 2,
         'roleVipUser' => 4,
+
+        'limitRecord' => 6,
+
     ];

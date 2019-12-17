@@ -8,6 +8,7 @@ use  App\Repositories\Role\RoleRepositoryInterface as RoleRepo;
 use  App\Repositories\PermissionRole\PermissionRoleRepositoryInterface as PerRoleRepo;
 use  App\Repositories\User\UserRepositoryInterface as UserRepo;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Yajra\Datatables\Datatables;
 use \App\Models\RoleUser as RoleUser;
 
@@ -272,5 +273,50 @@ class PermissionController extends Controller
         $response = $this->userrepo->update($data['id'], $data);
 
         return response()->json(['success' => trans('message.success')]);
+    }
+
+    public function addVip()
+    {
+        return view('admin.addVip');
+    }
+
+    public function addVipDatatable()
+    {
+        if (Gate::allows('vipAccount')) {
+            $useres = $this->userrepo->getUser()->load('role')->toArray();
+            // foreach ($useres as $value) {
+            //     dd($value['role']['display_name']);
+            // }
+            // dd($useres);
+            return Datatables::of($useres)
+            ->addColumn('action', function ($user) {
+                $user_id = $user['id'];
+                return view('admin.returnFile.selectRole', compact('user_id'));
+            })
+            ->editColumn('avatar', function($user) {
+                if ($user['avatar'] == null) {
+                    $img = asset('/') . config('Custom.ImgDefaul');
+                } else {
+                    $img = asset('/') . $user['avatar'];
+                }
+
+                return '<img src=' . $img .' style="width:80px"/>';
+            })
+            ->editColumn('role', function($user) {
+                return $user['role']['display_name'];
+            })
+            ->rawColumns([
+                'action', 'avatar', 'role',
+            ])
+            ->make(true);
+        }
+    }
+
+    public function changeRole(Request $request)
+    {
+        $data = $request->all();
+        $response = $this->userrepo->update($data['id'], $data);
+
+        return response()->json(['success' => trans('action.success')]);
     }
 }
