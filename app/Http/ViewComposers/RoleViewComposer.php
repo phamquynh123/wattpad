@@ -28,3 +28,4 @@ class RoleViewComposer
         $view->with('allRole', $data);
     }
 }
+

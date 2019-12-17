@@ -188,7 +188,8 @@ class StoryController extends Controller
 
     public function changUseStatus ($id)
     {
-        if (Gate::allows('admin') || Gate::allows('vipAccount')){
+        if(Gate::allows('admin') || Gate::allows('vipAccount')) {
+
             $data = $this->Story->find($id)->toArray();
             if ($data['use_status'] == config('Custom.VipStory')) {
                 $data['use_status'] = config('Custom.NormalStory');
