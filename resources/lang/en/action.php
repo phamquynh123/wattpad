@@ -10,6 +10,6 @@ return [
     'detail' => 'Detail',
     'change' => [
         'public_status' => 'Public Status Change ',
-        'use_status' => 'Use Status Change ',
+        'use_status' => 'Use Status Change',
     ],
 ];

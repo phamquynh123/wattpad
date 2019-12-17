@@ -69,6 +69,16 @@
                         <label for="">{{ trans('message.stories.img') }} {{ trans('message.story') }}</label>
                         <input type="file" class="form-control" name="file" placeholder="Input field">
                     </div>
+
+                    <div class="form-group">
+                        <label for="">{{ trans('message.category') }} {{ trans('message.story') }}</label>
+                        <select name="public_status" id="" class="form-control" multiple>
+                            <option value="">--- {{ trans('message.category') }} ---</option>
+                            @foreach($selectCategory as $value)
+                                <option value="{{ $value->id }}" class="form-control">{{ $value->title }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="form-group">
                         <label for="">{{ trans('message.stories.public_status') }} {{ trans('message.story') }}</label>
                         <select name="public_status" id="" class="form-control">
@@ -77,14 +87,25 @@
                             <option value="{{ config('Custom.statusDraft') }}">{{ trans('message.stories.draft') }}</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="">{{ trans('message.stories.use_status') }} {{ trans('message.story') }}</label>
-                        <select name="use_status" id="" class="form-control">
-                            <option value="">--- {{ trans('message.stories.use_status') }} ---</option>
-                            <option value="{{ config('Custom.VipStory') }}">{{ trans('message.stories.vip') }}</option>
-                            <option value="{{ config('Custom.NormalStory') }}">{{ trans('message.stories.normal') }}</option>
-                        </select>
-                    </div>
+
+                    @if(Gate::allows('vipAccount') || Gate::allows('admin'))
+                        <div class="form-group">
+                            <label for="">{{ trans('message.stories.use_status') }} {{ trans('message.story') }}</label>
+                            <select name="use_status" id="" class="form-control">
+                                <option value="">--- {{ trans('message.stories.use_status') }} ---</option>
+                                <option value="{{ config('Custom.VipStory') }}">{{ trans('message.stories.vip') }}</option>
+                                <option value="{{ config('Custom.NormalStory') }}">{{ trans('message.stories.normal') }}</option>
+                            </select>
+                        </div>
+                    @else 
+                        <div class="form-group">
+                            <label for="">{{ trans('message.stories.use_status') }} {{ trans('message.story') }}</label>
+                            <select name="use_status" id="" class="form-control">
+                                <option value="{{ config('Custom.NormalStory') }}">{{ trans('message.stories.normal') }}</option>
+                            </select>
+                        </div>
+                    @endif
+
                     <div class="float-right">
                         <button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('message.close') }}</button>
                         <button type="submit" class="btn btn-info">{{ trans('message.submit') }}</button>

@@ -8,6 +8,7 @@ use  App\Repositories\Role\RoleRepositoryInterface as RoleRepo;
 use  App\Repositories\PermissionRole\PermissionRoleRepositoryInterface as PerRoleRepo;
 use  App\Repositories\User\UserRepositoryInterface as UserRepo;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Yajra\Datatables\Datatables;
 use \App\Models\RoleUser as RoleUser;
 
@@ -271,6 +272,6 @@ class PermissionController extends Controller
         $data = $request->all();
         $response = $this->userrepo->update($data['id'], $data);
 
-        return response()->json(['success' => trans('message.success')]);
+        return response()->json(['success' => trans('action.success')]);
     }
 }

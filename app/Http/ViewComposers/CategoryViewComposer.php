@@ -23,6 +23,9 @@ class CategoryViewComposer
 
     public function compose(View $view)
     {
+        $selectCategory = $this->Category->findCondition('cate', 1);
+        dd($selectCategory);
         $view->with('getCategories', $this->getCategory);
+        $view->with('selectCategory', $selectCategory);
     }
 }

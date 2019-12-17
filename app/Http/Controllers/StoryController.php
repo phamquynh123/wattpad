@@ -46,8 +46,21 @@ class StoryController extends Controller
     public function home()
     {
         $categories = $this->Category->getAll();
+        $category_theloai = $this->Category->findByLanguage('parent_id', 0, 'language_id', 1);
 
-        return view('user.home', compact('categories'));
+        $story = $this->Story->getLimitStory(config('Custom.NormalStory'))->load([
+            'authors' => function($item) {
+                $item->select('name');
+            }
+        ]);
+
+        $vip_story = $this->Story->getLimitStory(config('Custom.VipStory'))->load([
+            'authors' => function($item) {
+                $item->select('name');
+            }
+        ]);
+        // dd($vip_story->toArray());
+        return view('user.home', compact(['categories', 'category_theloai', 'story', 'vip_story']));
     }
 
     public function index()
@@ -114,7 +127,9 @@ class StoryController extends Controller
 
     public function manageMyStory()
     {
-        return view('admin.myStory');
+        $selectCategory = $this->Category->findCondition('cate', 1);
+        // dd($selectCategory);
+        return view('admin.myStory', compact('selectCategory'));
     }
 
     public function manageMyStoryDatatable()
@@ -190,6 +205,7 @@ class StoryController extends Controller
     public function addStory(StoryRequest $request)
     {
         $data = $request->all();
+        dd($data);
         $data['slug'] = str_slug($data['title']);
         if ($request->hasFile('file')) {
             $a = $request->file('file')->storeAs('public/story', 'image_' . time() . request()->file->getClientOriginalName());
@@ -228,5 +244,32 @@ class StoryController extends Controller
 
         return view('admin/mystoryDetail', compact('data'));
         dd($data->toArray());
+    }
+
+    //client View Story
+    public function viewStory($slug)
+    {
+        $data = $this->Story->detailStory('slug', $slug)->load([
+            'authors' => function($item) {
+                return $item->select(['name', 'avatar']);
+            },
+            'comment.user'=> function($item){
+                $item->take(5);
+                // $item->select(['content']);
+            },
+            'chapter' => function($item) {
+                $item->take(5);
+            },
+        ]);
+        $data['numChapter'] = $this->Chapter->countChapter('story_id', $data['id']);
+        $data['numComment'] = $this->Comment->countComment('story_id', $data['id']);
+
+        return view('user/detailStory', compact(['data']));
+        dd($data);
+    }
+
+    public function viewChapter($story_id, $slug)
+    {
+        
     }
 }

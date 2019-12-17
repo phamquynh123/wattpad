@@ -24,4 +24,9 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
         return $result;
     }
 
+    public function findMenuCategory($cate, $attr1, $parent_id, $attr2, $language, $attr3)
+    {
+        $result = $this->_model->where($cate, $attr1)->where($parent_id, $attr2)->where($language, $attr3)->get();
+    }
+
 }
