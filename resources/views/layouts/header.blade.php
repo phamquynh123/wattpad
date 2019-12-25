@@ -55,7 +55,7 @@
                     <p> @if(Auth::check())
                         {{ Auth::user()->name }}
                         @endif
-                         - Welcome to Library</p>
+                         - Welcome to library</p>
                 </div>
                 <ul class="my-account">
                         <li><a href="#"><i class="fa fa-list"></i> Wishlist</a></li>
@@ -70,38 +70,38 @@
             <div class="container">
                 <!--LOGO START-->
                 <div class="logo">
-                    <a href="#"><img src="{{ asset('bower_components/images/logo-2.png') }}" alt=""></a>
+                    <a href="#" style="color:white; font-size: 20px">TQUYNH - WATTPAD</a>
                 </div>
                 <!--LOGO END-->
                 <div class="kode-navigation">
                     <ul>
-                        <li><a href="#">Home</a>
+                        <li><a href="#">{{ trans('message.home') }}</a>
                             <ul>
                                 <li><a href="index-1.html">Home page 1</a></li>
                             </ul>
                         </li>
                         
-                        <li><a href="about-us.html">About Us</a></li>
-                        <li><a href="books.html">Our Books</a>
+                        <li><a href="about-us.html">{{ trans('message.about_us') }}</a></li>
+                        <li><a href="books.html">{{ trans('message.book') }}</a>
                             <ul>
                                 <li><a href="books3-sidebar.html">Book With Sidebar</a></li>
                                 <li><a href="books-detail.html">Book Detail</a></li>                                
                             </ul>
                         </li>
-                        <li><a href="blog.html">Blog</a>
+                        <li><a href="blog.html">{{ trans('message.blog') }}</a>
                             <ul>
                                 <li><a href="blog-2column.html">Blog 2 Column</a></li>
                                 <li><a href="blog-full.html">Blog Full</a></li>
                                 <li><a href="blog-detail.html">Blog Detail</a></li>
                             </ul>
                         </li>
-                        <li><a href="authors.html">Authors</a>
+                        <li><a href="authors.html">{{ trans('message.author') }}</a>
                             <ul>
                                 <li><a href="authors.html">Authors</a></li>
                                 <li><a href="author-detail.html">Authors Detail</a></li>                                        
                             </ul>
                         </li>
-                        <li class="last"><a href="#">Events</a>
+                        <li class="last"><a href="#">{{ trans('message.event') }}</a>
                             <ul>
                                 <li><a href="events-2column.html">Event 2 Column</a></li>
                                 <li><a href="events-3column.html">Event 3 Column</a></li>
@@ -109,21 +109,8 @@
                                 <li><a href="event-detail.html">Event Detail</a></li>
                             </ul>
                         </li>
-                        
-                        <li class="last"><a href="#">Pages</a>
-                            <ul class="children">
-                                <li><a href="error-404.html">Error 404</a></li>
-                                <li><a href="coming-soon.html">Comming Soon</a></li>
-                                <li class="last"><a href="gallery-2col.html">Gallery</a>
-                                    <ul>
-                                        <li><a href="gallery-2col.html">Gallery 2 Col</a></li>
-                                        <li><a href="gallery-3col.html">Gallery 3 Col</a></li>
-                                        <li><a href="gallery-4col.html">Gallery 4 Col</a></li>    
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="last"><a href="contact-us.html">Contact Us</a></li>
+
+                        <li class="last"><a href="contact-us.html">{{ trans('message.contact') }}</a></li>
                     </ul>
                 </div>
                 <div id="kode-responsive-navigation" class="dl-menuwrapper">
