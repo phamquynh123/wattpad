@@ -73,4 +73,6 @@ return [
     'category' => 'Thể loại',
     'upgrateAccountToRead' => 'Nâng Cấp Tài Khoản Để Đọc Truyện',
     'chapter' => 'Các Chương',
+    'comment' => 'Bình Luận',
+    'loginToComment' => 'Đăng Nhập Để Bình Luận',
 ];

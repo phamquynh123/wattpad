@@ -26,7 +26,7 @@ $(document).on('submit', '#submitAdd', function(e) {
         processData: false,
         data: new FormData(this),
         url: route('category.add'),
-        success: function(response){
+        success: function(response) {
             toastr.info(response.success);
             location.reload();
         },

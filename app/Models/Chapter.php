@@ -22,4 +22,9 @@ class Chapter extends Model
     {
         return $this->belongsTo('App\Models\Story', 'story_id');
     }
+
+    public function comment()
+    {
+        
+    }
 }
