@@ -15,16 +15,18 @@ class CategoryViewComposer
      * @return void
      */
     protected $getCategory = [];
+    protected $Category;
 
     public function __construct(CategoryRepositoryInterface $Category)
     {
+        $this->Category = $Category;
         $this->getCategory = $Category->getAll();
     }
 
     public function compose(View $view)
     {
         $selectCategory = $this->Category->findCondition('cate', 1);
-        dd($selectCategory);
+        // dd($selectCategory);
         $view->with('getCategories', $this->getCategory);
         $view->with('selectCategory', $selectCategory);
     }

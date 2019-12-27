@@ -200,9 +200,9 @@
                         <div class="kode-thumb">
                             <a href="{{ asset('/') . $value->slug }}">
                             @if ($value['img'] != '')
-                                <img src="{{ asset('/') . config('Custom.linkImgDefaul') . $value->img }}" alt="">
+                                <img src="{{ asset('/') . config('Custom.linkImgDefaul') . $value->img }}" alt="" class="img-avatar">
                             @else
-                                <img src="{{ asset('/') . config('Custom.ImgDefaul') }}" alt="">
+                                <img src="{{ asset('/') . config('Custom.ImgDefaul') }}" alt=""  class="img-avatar">
                             @endif
                             </a>
                         </div>
@@ -283,7 +283,7 @@
             <div class="lib-blog-post" >
                 <div class="kode-thumb" style="text-align: center;background-color: #f3f3f3">
                     @if ($value['img'] != '')
-                        <img src="{{ asset('/') . config('Custom.linkImgDefaul') . $value->img }}" alt="" style="width: 100%">
+                        <img src="{{ asset('/') . config('Custom.linkImgDefaul') . $value->img }}" alt="" style="width: 41%">
                     @else
                         <img src="{{ asset('/') . config('Custom.ImgDefaul') }}" alt="" style="width:200px">
                     @endif

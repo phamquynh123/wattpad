@@ -25,15 +25,15 @@ Route::group(['middleware' => 'locale'], function() {
         Route::prefix('/admin')->group(function() {
             Route::get('/', 'AdminController@index');
             Route::prefix('/category')->name('category.')->group(function(){
-                 // $categoryController = 'CategoryController';
-                 // Route::post("cart", $shopController . "@cart")->name('cart');
+                // $categoryController = 'CategoryController';
+                // Route::post("cart", $shopController . "@cart")->name('cart');
                 Route::get('/', 'CategoryController@index');
                 Route::get('/categoryDatatable', 'CategoryController@categoryDatatable')-> name('datatable');
                 Route::get('/detail/{id}', 'CategoryController@detail')->name('detail');
                 Route::get('/trans/{id}', 'CategoryController@getDataTrans')->name('gettrans');
                 Route::post('/trans', 'CategoryController@trans')->name('trans');
                 Route::post('/add', 'CategoryController@store')->name('add');
-            // });
+                // });
             });
 
             Route::prefix('/story')->name('story.')->group(function() {
@@ -41,15 +41,20 @@ Route::group(['middleware' => 'locale'], function() {
                 Route::get('datatable/{language_id}', 'StoryController@storyDatatable')->name('datatable');
                 Route::get('/detail/{id}', 'StoryController@detail')->name('detail');
             });
+
         });
 
         Route::prefix('/manageMyStory')->name('myStory.')->group(function() {
+            $ctl = 'StoryController';
             Route::get('/', 'StoryController@manageMyStory');
             Route::get('datatable/{language_id}', 'StoryController@manageMyStoryDatatable')->name('datatable');
             Route::get('/changPublicStatus/{id}', 'StoryController@changPublicStatus')->name('changPublicStatus');
             Route::get('/changUseStatus/{id}', 'StoryController@changUseStatus')->name('changUseStatus');
             Route::post('/add', 'StoryController@addStory')->name('addStory');
             Route::get('detail/{slug}', 'StoryController@detailStory')->name('detailStory');
+            Route::get('editStory/{id}', $ctl . '@editStory')->name('editStory');
+            Route::post('/submitEdit/{id}', $ctl . '@submitEdit')->name('submitEdit');
+            Route::post('addChapter/{id}', $ctl . '@addChapter')->name('addChapter');
         });
 
         Route::prefix('/permission')->name('permission.')->group(function() {

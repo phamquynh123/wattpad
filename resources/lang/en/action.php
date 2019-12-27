@@ -8,6 +8,7 @@ return [
     'error' => 'ERROR',
     'trans' => 'Translate',
     'detail' => 'Detail',
+    'addChapter' => 'Add Chapter',
     'change' => [
         'public_status' => 'Public Status Change ',
         'use_status' => 'Use Status Change',

@@ -14,5 +14,5 @@ Route::group(['middleware' => 'locale'], function() {
 
     Route::post('/getCategory', 'StoryController@getCategory')->name('getCategory');
     Route::get('/{slug}', $ctl . '@viewStory');
-    Route::get('/{id}/{slug}' , $ctl . '@viewChapter')->name('viewChapter');
+    Route::get('/{story_slug}/{id}/{chapter_slug}' , $ctl . '@viewChapter')->name('viewChapter');
 });

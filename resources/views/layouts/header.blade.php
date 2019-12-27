@@ -70,7 +70,7 @@
             <div class="container">
                 <!--LOGO START-->
                 <div class="logo">
-                    <a href="#" style="color:white; font-size: 20px">TQUYNH - WATTPAD</a>
+                    <a href="#" style="color:white; font-size: 20px">TQUYNH - LIBRARY</a>
                 </div>
                 <!--LOGO END-->
                 <div class="kode-navigation">
@@ -170,8 +170,8 @@
             <li>
                 <img src="{{ asset('bower_components/images/banner-1.png') }}" alt="">
                 <div class="kode-caption-2">
-                    <h5>Are you searching a book...?</h5>
-                    <h2>Biggest Library</h2>
+                    <h5>BẠN ĐANG TÌM SÁCH...?</h5>
+                    <h2>THƯ VIỆN SÁCH LỚN NHẤT</h2>
                     <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolor emque laudantium, totam rem aperiam.ipsam voluptatem.</p>
                     <div class="caption-btns">
                         <a href="#">See More</a>
@@ -182,8 +182,8 @@
             <li>
                 <img src="{{ asset('bower_components/images/banner-2.png') }}" alt="">
                 <div class="kode-caption-2">
-                    <h5>Are you searching a book...?</h5>
-                    <h2>Biggest Library</h2>
+                    <h5>BẠN ĐANG TÌM SÁCH...?</h5>
+                    <h2>THƯ VIỆN SÁCH LỚN NHẤT</h2>
                     <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolor emque laudantium, totam rem aperiam.ipsam voluptatem.</p>
                     <div class="caption-btns">
                         <a href="#">See More</a>
@@ -194,8 +194,8 @@
             <li>
                 <img src="{{ asset('bower_components/images/banner-3.png') }}" alt="">
                 <div class="kode-caption-2">
-                    <h5>Are you searching a book...?</h5>
-                    <h2>Biggest Library</h2>
+                    <h5>BẠN ĐANG TÌM SÁCH...?</h5>
+                    <h2>THƯ VIỆN SÁCH LỚN NHẤT</h2>
                     <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolor emque laudantium, totam rem aperiam.ipsam voluptatem.</p>
                     <div class="caption-btns">
                         <a href="#">See More</a>

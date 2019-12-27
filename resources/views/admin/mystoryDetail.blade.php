@@ -86,7 +86,19 @@
                             </div>
                         </div>
                     </div>
+                    <div class="panel-body">
+                        <div class="post">
+                            <div class="post-heading"><h3>Danh Sách Chương</h3></div>
+                            @foreach($data->chapter as $value)
+                                <div class="post-heading">
+                                    <a href="{{ asset('/' . $data->slug . '/' . $data->id . '/' . $value->slug) }}">{{ $value->title }}</a>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+
                     <div class="panel-footer">
+                        <h3>{{ trans('message.comment') }}</h3>
                         <ul>
                             <li>
                                 <a href="#">

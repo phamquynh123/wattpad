@@ -10,11 +10,13 @@ use App\Repositories\Chapter\ChapterRepositoryInterface;
 use App\Repositories\Comment\CommentRepositoryInterface;
 use App\Repositories\User\UserRepositoryInterface as User;
 use App\Repositories\StoryAuthor\StoryAuthorRepositoryInterface as StoryAuthor;
+use App\Repositories\CategoryStory\CategoryStoryRepositoryInterface as CategoryStory;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\DB;
 use Yajra\Datatables\Datatables;
 use App\Http\Requests\StoryRequest;
+use App\Http\Requests\AddChapterRequest;
 
 class StoryController extends Controller
 {
@@ -24,6 +26,7 @@ class StoryController extends Controller
     protected $Chapter;
     protected $Comment;
     protected $StoryAuthor;
+    protected $CategoryStory;
 
     public function __construct( 
         CategoryRepositoryInterface $Category,
@@ -31,7 +34,8 @@ class StoryController extends Controller
         StoryRepositoryInterface $Story,
         ChapterRepositoryInterface $Chapter,
         CommentRepositoryInterface $Comment,
-        StoryAuthor $StoryAuthor
+        StoryAuthor $StoryAuthor,
+        CategoryStory $CategoryStory
     ) {
         $this->Category = $Category;
         $this->Language = $Language;
@@ -39,6 +43,7 @@ class StoryController extends Controller
         $this->Chapter = $Chapter;
         $this->Comment = $Comment;
         $this->StoryAuthor = $StoryAuthor;
+        $this->CategoryStory = $CategoryStory;
 
         $language = config('app.locale');
     }
@@ -139,9 +144,8 @@ class StoryController extends Controller
         // dd($stories);
         return Datatables::of($stories)
             ->addColumn('action', function ($story) {
-                // dd($story);
                 if ($story['parent_language_id'] == 0) {
-                    return '<a href="' . route('myStory.detailStory', $story['slug']) . '" class="btn btn-sm btn-warning my-story-detail btn-xs" data-id="' . $story['id'] . '" title="' . trans('action.detail') . '"><i class="fa fa-eye"></i></a> <a href="#" data-id="' . $story['id'] .'" class="btn btn-sm btn-info story-tran btn-xs" data-id="' . $story['id'] . '" data-name="' . $story['slug'] . '" data-toggle="modal" data-target="#story-trans" title="' . trans('action.trans') . '"><i class="fas fa-exchange-alt"></i></a> <a href="#" data-id="' . $story['id'] .'" class="btn bg-lime waves-effect story-fix btn-xs" data-id="' . $story['id'] . '" data-name="' . $story['slug'] . '" title="' . trans('action.edit') . '" data-toggle="modal" data-target="#story-edit" title="' . trans('action.trans') . '"><i class="material-icons">content_cut</i></a>';
+                    return '<a href="' . route('myStory.detailStory', $story['slug']) . '" class="btn btn-sm btn-warning my-story-detail btn-xs" data-id="' . $story['id'] . '" title="' . trans('action.detail') . '"><i class="fa fa-eye"></i></a> <a href="#" data-id="' . $story['id'] .'" class="btn bg-lime waves-effect story-fix btn-xs" data-id="' . $story['id'] . '" data-name="' . $story['slug'] . '" title="' . trans('action.edit') . '" data-toggle="modal" data-target="#story-edit" title="' . trans('action.trans') . '"><i class="material-icons">content_cut</i></a> <a href="#" data-id="' . $story['id'] .'" class="btn bg-cyan waves-effect story-add-chapter btn-xs" data-id="' . $story['id'] . '" data-name="' . $story['slug'] . '" title="' . trans('action.addChapter') . '" data-toggle="modal" data-target="#add-chapter" title="' . trans('action.trans') . '"><i class="material-icons">add</i></a>';
                     }
             })
             ->editColumn('img', function($story) {
@@ -206,23 +210,27 @@ class StoryController extends Controller
     public function addStory(StoryRequest $request)
     {
         $data = $request->all();
-        dd($data);
+
         $data['slug'] = str_slug($data['title']);
         if ($request->hasFile('file')) {
             $a = $request->file('file')->storeAs('public/story', 'image_' . time() . request()->file->getClientOriginalName());
-            // dd($a);
-            $path = time() . request()->file->getClientOriginalName();
+            $path = 'image_' . time() . request()->file->getClientOriginalName();
             $image = $request->file('file');
             $data['img'] = $path;
         }
-
-
         $result = $this->Story->create($data);
 
+        //create author-story
         $author_story['story_id'] = $result->id;
         $author_story['user_id'] = Auth::user()->id;
-
         $this->StoryAuthor->create($author_story);
+
+        //create category-story
+        $category_story['story_id'] = $result->id;
+        foreach ($data['category_id'] as $value) {
+            $category_story['category_id'] = $value;
+            $category_story = $this->CategoryStory->create($category_story);
+        }
 
         return response()->json(['error' => false, 'success' => trans('action.success')]);
     }
@@ -237,6 +245,9 @@ class StoryController extends Controller
             'comment.user'=> function($item){
                 $item->take(5);
                 // $item->select(['content']);
+            },
+            'chapter' => function($item) {
+                $item->take(5);
             }
         ]);
 
@@ -245,6 +256,42 @@ class StoryController extends Controller
 
         return view('admin/mystoryDetail', compact('data'));
         dd($data->toArray());
+    }
+
+    //public function edit review Story 
+    public function editStory($id)
+    {
+        $data = $this->Story->find($id);
+        if ($data['img'] != '') {
+            $data['img'] = asset('/') . config('Custom.linkImgDefaul') . $data['img'];
+        }
+
+        return $data;
+    }
+
+    public function submitEdit(Request $request, $id) {
+        $data = $request->all();
+
+        if ($request->hasFile('file')) {
+            $a = $request->file('file')->storeAs('public/story', 'image_' . time() . request()->file->getClientOriginalName());
+            $path = 'image_' . time() . request()->file->getClientOriginalName();
+            $image = $request->file('file');
+            $data['img'] = $path;
+        }
+         $result = $this->Story->update($id, $data);
+
+        return response()->json(['error' => false, 'success' => trans('action.success')]);
+    }
+
+    public function addChapter(AddChapterRequest $request, $id)
+    {
+        $data = $request->all();
+        $data['slug'] = str_slug($data['title']);
+        $data['story_id'] = $id;
+        // dd($data);
+        $result = $this->Chapter->create($data);
+
+        return response()->json(['success' => trans('action.success')]);
     }
 
     //client View Story
@@ -260,17 +307,42 @@ class StoryController extends Controller
             },
             'chapter' => function($item) {
                 $item->take(5);
-            },
+            }
         ]);
         $data['numChapter'] = $this->Chapter->countChapter('story_id', $data['id']);
         $data['numComment'] = $this->Comment->countComment('story_id', $data['id']);
 
+        // UPDATE VIEW_COUNT
+        $update['view_count'] = $data['view_count'] + 1;
+        $this->Story->update($data['id'], $update);
+
         return view('user/detailStory', compact(['data']));
-        dd($data);
+        dd($data->toArray());
     }
 
-    public function viewChapter($story_id, $slug)
+    public function viewChapter($story_slug, $story_id, $chapter_slug)
     {
-        
+        $story = $this->Story->selectCustom($story_slug)->load([
+            'chapter' => function($item) {
+                return $item->take('10');
+            },
+            'comment.user'=> function($item){
+                $item->take(5);
+            },
+        ]);
+        // dd($story['id']);
+        $story['numChapter'] = $this->Chapter->countChapter('story_id', $story['id']);
+        $story['numComment'] = $this->Comment->countComment('story_id', $story['id']);
+
+        $chapter = $this->Chapter->findConditionClass('story_id', $story_id, 'slug', $chapter_slug)->first();
+        // dd($chapter->toArray());
+        $recommentStory = $this->Story->getLimit()->load([
+            'authors' => function($item) {
+                $item->select('name');
+            }
+        ]);
+        // dd($recommentStory->toArray());
+
+        return view('user.viewChapter', compact(['story', 'chapter', 'recommentStory']));
     }
 }
