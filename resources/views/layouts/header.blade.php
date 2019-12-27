@@ -35,6 +35,7 @@
 <link href="{{ asset('bower_components/js/dl-menu/component.css') }}" rel="stylesheet">
 
 <link rel="stylesheet" type="text/css" href="{{ asset('bower_component/css/bookblock.css') }}" />
+<link rel="stylesheet" href="{{  asset('bower_components/admin/css/toastr.min.css') }}">
 @routes
 @yield('css')
 </head>

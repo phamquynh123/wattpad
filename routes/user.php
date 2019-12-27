@@ -15,4 +15,6 @@ Route::group(['middleware' => 'locale'], function() {
     Route::post('/getCategory', 'StoryController@getCategory')->name('getCategory');
     Route::get('/{slug}', $ctl . '@viewStory');
     Route::get('/{story_slug}/{id}/{chapter_slug}' , $ctl . '@viewChapter')->name('viewChapter');
+
+    Route::post('addComment', $ctl . '@addComment')->name('addComment');
 });

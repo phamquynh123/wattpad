@@ -146,7 +146,8 @@
                             <span>Home</span>
                         </a>
                     </li>
-                    @if(Gate::allows('admin'))
+
+                    @if (Gate::allows('admin'))
                     <li>
                         <a href="{{ asset('/admin/category') }}">
                             <i class="material-icons"></i>
@@ -155,7 +156,7 @@
                     </li>
                     @endif
 
-                    @if(Gate::allows('admin'))
+                    @if (Gate::allows('admin'))
                     <li>
                         <a href="{{ asset('/admin/story/') }}">
                             <i class="material-icons">layers</i>
@@ -164,7 +165,7 @@
                     </li>
                     @endif
 
-                    @if(Gate::allows('myStory') || Gate::allows('admin'))
+                    @if(Gate::allows('vipAccount') || Gate::allows('myStory') || Gate::allows('admin'))
                     <li>
                         <a href="{{ asset('/manageMyStory') }}">
                             <i class="material-icons">layers</i>
@@ -173,7 +174,7 @@
                     </li>
                     @endif
 
-                    @if(Auth::user()->role_id == config('Custom.roleNormaluser'))
+                    @if (Auth::user()->role_id == config('Custom.roleNormaluser'))
                         <li>
                             <a href="{{ asset('/manageMyStory') }}">
                                 <i class="material-icons">layers</i>
@@ -182,7 +183,7 @@
                         </li>
                     @endif
 
-                    @if(Gate::allows('admin'))
+                    @if (Gate::allows('admin'))
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">widgets</i>
@@ -202,7 +203,7 @@
                     </li>
                     @endif
 
-                    @if(Gate::allows('vipAccount') || Gate::allows('admin'))
+                    @if (Gate::allows('admin'))
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">widgets</i>
@@ -384,10 +385,10 @@
             <div class="card">
                 <div class="body">
                     @yield('content')
-                    @can('vipAccount')
-                            {{ 'allows' }}
+                    @if (Gate::allows('vipAccount'))
+                        {{ 'allows' }}
                     @else 
-                         {{ 'false' }}
+                        {{ 'false' }}
                     @endcan
                 </div>
             </div>
