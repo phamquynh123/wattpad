@@ -179,6 +179,26 @@
         @foreach($selectCategory as $value)
             <a href="{{ asset('/category/' . $value->slug . '') }}" class="btn btn-info waves-effect"> {{ $value->title }}</a>
         @endforeach
+        <div class="recomment-story">
+            @foreach($recomment as $value)
+            <div class="row">
+                <div class="col-md-5 col-sm-12 col-xs-12">
+                    <a href="{{ asset('/' . $value->slug ) }}">
+                        @if($value->img == '')
+                            <img src="{{ asset('/') .config('Custom.ImgDefaul') }}" alt="" style="width: 100%">
+                        @else 
+                            <img src="{{ asset('/') .config('Custom.linkImgDefaul') . $value->img }}" alt=""  style="width: 100%">
+                        @endif
+                    </a>
+                </div>
+                <div class="col-md-7 col-sm-12 col-xs-12">
+                    <a href="{{ asset('/' . $value->slug ) }}">{{ $value->title }}</a>
+                </div>
+            </div>
+            <hr>
+            @endforeach
+        </div>
+
     </div>
 </div>
 </div>
