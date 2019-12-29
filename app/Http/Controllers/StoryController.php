@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\DB;
 use Yajra\Datatables\Datatables;
 use App\Http\Requests\StoryRequest;
 use App\Http\Requests\AddChapterRequest;
+use App\Http\Requests\CommentRequest;
 
 class StoryController extends Controller
 {
@@ -344,5 +345,25 @@ class StoryController extends Controller
         // dd($recommentStory->toArray());
 
         return view('user.viewChapter', compact(['story', 'chapter', 'recommentStory']));
+    }
+
+    public function addComment(CommentRequest $request)
+    {
+        if (Auth::check()) {
+            $data = $request->all();
+            $data['user_id'] = Auth::user()->id;
+            $result = $this->Comment->create($data);
+// dd($result);
+            $result['user'] = Auth::user();
+            if($result['user']['avatar'] == ''){
+                $result['user']['avatar'] = asset('') . config('Custom.imgDefaul');
+            } else $result['user']['avatar'] = asset('') . config('Custom.linkImgDefaul') . $result['user']['avatar'];
+
+            return response()->json(['success' => trans('action.success'), 'result' => $result]);
+            dd($data);
+        } else {
+            return response()->json(['success' => trans('message.loginToComment')]);
+        }
+        
     }
 }

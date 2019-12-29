@@ -99,7 +99,7 @@
                                     </div>
                                 </div>
                                 
-                                @if(Gate::allows('vipAcconut') || Gate::allows('admin'))
+                                @if(Gate::allows('vipAccount') || Gate::allows('admin'))
                                     <div class="chapter">
                                         <b>{{ trans('message.chapter') }}</b>
                                         <ol>
@@ -135,7 +135,14 @@
                                 @if(Auth::check())
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <input type="text" class="form-control" placeholder="Type a comment" />
+                                        <form action="#" method="POST" role="form" id="comment-story">
+                                            @csrf
+                                            <input type="hidden" name="story_id" value="{{ $data->id }}">
+                                            <div class="form-group">
+                                                <textarea type="text" class="form-control" id="" placeholder="add comment" name="content"></textarea>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </form>
                                     </div>
                                 </div>
 
@@ -143,10 +150,14 @@
                                     <p class="bg-red">{{ trans('message.loginToComment') }}</p>
                                 @endif
 
-                                <div class="form-group">
+                                <div class="form-group div-comment">
                                     @foreach($data->comment as $value)
                                         <div class="image-cmt float-left">
-                                            <img src="{{ asset('/') . $value->user->avatar }}" alt="">
+                                            @if($value->user->avatar == '')
+                                                <img src="{{ asset('/') .config('Custom.ImgDefaul') }}" alt="">
+                                            @else 
+                                                <img src="{{ asset('/') .config('Custom.linkImgDefaul') . $value->user->avatar }}" alt="">
+                                            @endif
                                         </div>
                                         <div class="float-left">
                                             <p><b>{{ $value->user->name }}</b></p>

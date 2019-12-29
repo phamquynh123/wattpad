@@ -18,7 +18,8 @@
 <script src="{{ asset('bower_components/js/functions.js') }}"></script>
 
 <script src = "{{ asset('bower_components/fontawesome/js/fontawesome.min.js') }}"></script>
-
+<script src = "{{ asset('bower_components/admin/js/toastr.min.js') }}"></script>
+<script src = "{{ asset('bower_components/admin/js/sweetalert2@8.js') }}"></script>
 @yield('script')
 
 </body>
