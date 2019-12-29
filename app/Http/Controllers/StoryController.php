@@ -317,7 +317,9 @@ class StoryController extends Controller
         $update['view_count'] = $data['view_count'] + 1;
         $this->Story->update($data['id'], $update);
 
-        return view('user/detailStory', compact(['data']));
+        $recomment = $this->Story->getLimit();
+
+        return view('user/detailStory', compact(['data', 'recomment']));
         dd($data->toArray());
     }
 
