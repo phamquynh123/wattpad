@@ -11,4 +11,6 @@ interface StoryRepositoryInterface
     public function selectCustom($slug);
 
     public function getLimit();
+
+    public function getVote($id);
 }

@@ -15,7 +15,7 @@ class ViewComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         // die;
-        View::composer(['admin.category', 'user.detailStory', 'user.viewChapter'], 'App\Http\ViewComposers\CategoryViewComposer');
+        View::composer(['admin.category', 'user.detailStory', 'user.viewChapter', 'user.category'], 'App\Http\ViewComposers\CategoryViewComposer');
         view()->composer('*', 'App\Http\ViewComposers\LanguageViewComposer');
         view()->composer('admin.permission', 'App\Http\ViewComposers\LanguageViewComposer');
         view()->composer('admin.returnFile.selectRole', 'App\Http\ViewComposers\RoleViewComposer');

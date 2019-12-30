@@ -14,4 +14,8 @@ class Category extends Model
         'language_id',
         'parent_language_id',
     ];
+
+    public function stories() {
+        return $this->belongsToMany('App\Models\Story', 'category_story', 'category_id', 'story_id');
+    }
 }

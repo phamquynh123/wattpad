@@ -37,7 +37,13 @@ class StoryRepository extends BaseRepository implements StoryRepositoryInterface
 
     public function getLimit()
     {
-        return $this->_model::select(['id', 'title', 'img', 'slug'])->orderBy('id', 'desc')->limit(config('Custom.limitRecord'))->get();
+        return $this->_model::select(['id', 'title', 'img', 'slug', 'use_status'])->orderBy('id', 'desc')->limit(config('Custom.limitRecord'))->get();
+    }
+
+    public function getVote($id)
+    {
+        return $this->_model::where('id', $id)->select(['id', 'total_vote'])->first();
+        // return $this->_model::find($id)->select(['id', 'total_vote'])->first();
     }
 
 }

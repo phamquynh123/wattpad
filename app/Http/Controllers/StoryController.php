@@ -11,6 +11,7 @@ use App\Repositories\Comment\CommentRepositoryInterface;
 use App\Repositories\User\UserRepositoryInterface as User;
 use App\Repositories\StoryAuthor\StoryAuthorRepositoryInterface as StoryAuthor;
 use App\Repositories\CategoryStory\CategoryStoryRepositoryInterface as CategoryStory;
+use App\Repositories\Vote\VoteRepositoryInterface as Vote;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\DB;
@@ -28,6 +29,7 @@ class StoryController extends Controller
     protected $Comment;
     protected $StoryAuthor;
     protected $CategoryStory;
+    protected $Vote;
 
     public function __construct( 
         CategoryRepositoryInterface $Category,
@@ -36,7 +38,8 @@ class StoryController extends Controller
         ChapterRepositoryInterface $Chapter,
         CommentRepositoryInterface $Comment,
         StoryAuthor $StoryAuthor,
-        CategoryStory $CategoryStory
+        CategoryStory $CategoryStory,
+        Vote $Vote
     ) {
         $this->Category = $Category;
         $this->Language = $Language;
@@ -45,6 +48,7 @@ class StoryController extends Controller
         $this->Comment = $Comment;
         $this->StoryAuthor = $StoryAuthor;
         $this->CategoryStory = $CategoryStory;
+        $this->Vote = $Vote;
 
         $language = config('app.locale');
     }
@@ -317,8 +321,19 @@ class StoryController extends Controller
         $update['view_count'] = $data['view_count'] + 1;
         $this->Story->update($data['id'], $update);
 
+        //RECOMMENT STORY
         $recomment = $this->Story->getLimit();
 
+        // SHOW VOTE
+        if (Auth::check()) {
+            $vote = $this->Vote->findCondition('user_id', Auth::user()->id)->toArray();
+            if ($vote == null) {
+                $data['vote'] = false;
+            } else {
+                $data['vote'] = true;
+            }
+        }
+        // die;
         return view('user/detailStory', compact(['data', 'recomment']));
         dd($data->toArray());
     }
@@ -367,5 +382,40 @@ class StoryController extends Controller
             return response()->json(['success' => trans('message.loginToComment')]);
         }
         
+    }
+
+    public function vote($story_id)
+    {
+        $data = $this->Vote->findConditionClass('user_id', Auth::user()->id, 'story_id', $story_id)->toArray();
+        $getvote = $this->Story->getVote($story_id)->toArray();
+        // dd($getvote->toArray());
+        if ($data == null) {
+            $getvote['total_vote'] = $getvote['total_vote'] + 1;
+            $insert_info['story_id'] = $story_id;
+            $insert_info['user_id'] = Auth::user()->id;
+            $vote_change = $this->Vote->create($insert_info);
+            $this->Story->update($story_id, $getvote);
+
+            return response()->json(['success' => trans('action.vote') . trans('action.success'), 'total_vote' => $getvote, 'status' => 'voted']);
+        } else {
+            $getvote['total_vote'] = $getvote['total_vote'] - 1;
+            $vote_change = $this->Vote->delete($data[0]['id']);
+            $this->Story->update($story_id, $getvote);
+
+            return response()->json(['success' => trans('action.unvote') . trans('action.success'), 'total_vote' => $getvote, 'status' => 'unvote']);
+        }
+    }
+
+    public function getStoryByCategory($slug)
+    {
+        $data = $this->Category->findCondition('slug', $slug)->load([
+            'stories' => function($item) {
+                return $item->paginate(10);
+            }
+        ])->toArray();
+        $data = $data[0];
+        // echo $data['title'];
+        return view('user.category', compact(['data']));
+        dd($data);
     }
 }

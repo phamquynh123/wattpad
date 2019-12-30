@@ -77,10 +77,10 @@
                                     <li>
                                         <span><b>{{ trans('message.stories.use_status') }} : </b></span>
                                         <span>
-                                            @if($data->use_status == 0 ) 
+                                            @if($data->use_status == config('Custom.NormalStory') ) 
                                                 {{ trans('message.stories.normal') }}
                                             @else
-                                                {{ trans('message.stories.normal') }}
+                                                {{ trans('message.stories.vip') }}
                                             @endif
                                         </span>
                                     </li>
@@ -99,7 +99,22 @@
                                     </div>
                                 </div>
                                 
-                                @if(Gate::allows('vipAccount') || Gate::allows('admin'))
+                                @if($data->use_status == config('Custom.VipStory'))
+                                    @if(Gate::allows('vipAccount') || Gate::allows('admin'))
+                                        <div class="chapter">
+                                            <b>{{ trans('message.chapter') }}</b>
+                                            <ol>
+                                            @foreach($data->chapter as $value)
+                                            <li><a href="{{ route('viewChapter', [$data->slug, $data->id, $value->slug]) }}">
+                                                {{ $value->title }}
+                                            </a></li>
+                                            @endforeach
+                                            </ol>
+                                        </div>
+                                    @else 
+                                        <div class="chapter bg-red">{{ trans('message.upgrateAccountToRead') }}</div>
+                                    @endif
+                                @else 
                                     <div class="chapter">
                                         <b>{{ trans('message.chapter') }}</b>
                                         <ol>
@@ -110,22 +125,29 @@
                                         @endforeach
                                         </ol>
                                     </div>
-                                @else 
-                                    <div class="chapter bg-red">{{ trans('message.upgrateAccountToRead') }}</div>
                                 @endif
                             </div>
                             <div class="panel-footer">
                                 <h3>{{ trans('message.comment') }}</h3>
                                 <ul>
+                                    @if($data['vote'] == false)
+                                        <li class="vote">
+                                            <a href="#"  class="notlike vote-Story" data-id={{ $data->id }}>
+                                                <i class="fas fa-thumbs-up"></i>
+                                                <span class="total_vote">{{ $data->total_vote }} </span>
+                                            </a>
+                                        </li>
+                                    @elseif ($data['vote'] == true)
+                                        <li class="vote">
+                                            <a href="#" class="vote-Story" data-id={{ $data->id }}>
+                                                <i class="fas fa-thumbs-up"></i>
+                                                <span class="total_vote">{{ $data->total_vote }} </span>
+                                            </a>
+                                        </li>
+                                    @endif
                                     <li>
                                         <a href="#">
-                                            <i class="fas fa-thumbs-up" class="notlike"></i>
-                                            <span class="total_vote">{{ $data->total_vote }} </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fas fa-comments" class="notlike"></i>
+                                            <i class="fas fa-comments"></i>
                                             <span class="comment">{{ $data->numComment }} </span><span>{{ trans('message.stories.comment') }}</span>
                                         </a>
                                     </li>
@@ -180,11 +202,12 @@
             <a href="{{ asset('/category/' . $value->slug . '') }}" class="btn btn-info waves-effect"> {{ $value->title }}</a>
         @endforeach
         <div class="recomment-story">
-            @foreach($recomment as $value)
+            @foreach ($recomment as $value)
+            {{-- {{ dd($value) }} --}}
             <div class="row">
                 <div class="col-md-5 col-sm-12 col-xs-12">
                     <a href="{{ asset('/' . $value->slug ) }}">
-                        @if($value->img == '')
+                        @if ($value->img == '')
                             <img src="{{ asset('/') .config('Custom.ImgDefaul') }}" alt="" style="width: 100%">
                         @else 
                             <img src="{{ asset('/') .config('Custom.linkImgDefaul') . $value->img }}" alt=""  style="width: 100%">
@@ -193,6 +216,11 @@
                 </div>
                 <div class="col-md-7 col-sm-12 col-xs-12">
                     <a href="{{ asset('/' . $value->slug ) }}">{{ $value->title }}</a>
+                    @if ($value->use_status == config('Custom.VipStory'))
+                        <p class="bg-red"> {{ trans('message.story') }} {{ trans('message.stories.Vip') }}</p>
+                    @else
+                        <p class="bg-red"> {{ trans('message.story') }} {{ trans('message.stories.Normal') }}</p>
+                    @endif
                 </div>
             </div>
             <hr>
