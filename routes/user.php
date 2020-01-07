@@ -17,4 +17,7 @@ Route::group(['middleware' => 'locale'], function() {
     Route::get('/{story_slug}/{id}/{chapter_slug}' , $ctl . '@viewChapter')->name('viewChapter');
 
     Route::post('addComment', $ctl . '@addComment')->name('addComment');
+    Route::get('vote/{id}', $ctl . '@vote')->name('vote');
+
+    Route::get('category/{slug}', $ctl . '@getStoryByCategory')->name('getStoryByCategory');
 });

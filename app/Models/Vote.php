@@ -8,6 +8,7 @@ class Vote extends Model
 {
     protected $table = 'votes';
     protected $fillable = [
-        'title',
+        'user_id',
+        'story_id',
     ];
 }
