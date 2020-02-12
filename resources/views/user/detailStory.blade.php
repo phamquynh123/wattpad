@@ -112,9 +112,13 @@
                                             </ol>
                                         </div>
                                     @else 
-                                        <div class="chapter bg-red">{{ trans('message.upgrateAccountToRead') }}</div>
+                                        <div class="chapter bg-red">
+                                            <a href="#" class="upgrateAccount bg-red">
+                                                {{ trans('message.upgrateAccountToRead') }}
+                                            </a>
+                                        </div>
                                     @endif
-                                @else 
+                                @else
                                     <div class="chapter">
                                         <b>{{ trans('message.chapter') }}</b>
                                         <ol>

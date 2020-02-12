@@ -146,7 +146,7 @@ class PermissionController extends Controller
     {
         //
     }
-
+<a href="#" data-id="' . $data['id'] .'" class="btn bg-lime waves-effect data-fix btn-xs permission-role-edit" data-id="' . $data['id'] . '" data-name="" title="' . trans('action.edit') . '" data-toggle="modal" data-target="#permissionrole-edit" title="' . trans('action.trans') . '"><i class="material-icons">content_cut</i></a>
     /**
      * Show the form for editing the specified resource.
      *
@@ -246,6 +246,7 @@ class PermissionController extends Controller
             return Datatables::of($useres)
             ->addColumn('action', function ($user) {
                 $user_id = $user['id'];
+
                 return view('admin.returnFile.selectRole', compact('user_id'));
             })
             ->editColumn('avatar', function($user) {
