@@ -1,0 +1,21 @@
+.panel-footer >ul {
+    list-style:none;
+}
+.notlike{
+    color:black;
+}
+.like{
+    color:blue;
+}
+.recomment-story{
+    margin-top: 20px;
+}
+.recomment-story img{
+    width: 100%;
+}
+.recomment-story .row{
+    margin-top: 10px;
+}
+.recomment-story hr{
+    border-bottom: 1px #e8dede solid;
+}
