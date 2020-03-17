@@ -160,7 +160,7 @@
                     <li>
                         <a href="{{ asset('/admin/story/') }}">
                             <i class="material-icons">layers</i>
-                            <span>{{ trans('message.story') }}</span>
+                            <span>{{ trans('message.storyManagement') }}</span>
                         </a>
                     </li>
                     @endif

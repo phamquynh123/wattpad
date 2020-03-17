@@ -69,7 +69,7 @@ Route::group(['middleware' => 'locale'], function() {
             Route::get('/role/edit/{id}', 'PermissionController@roleEdit')->name('roleedit');
             Route::post('/role/update', 'PermissionController@roleUpdate')->name('roleupdate');
             Route::get('/permissionRoleEdit/{id}', 'PermissionController@permissionRoleEdit')->name('permissionRoleEdit');
-            Route::post('/permissionRoleUpdatee', 'PermissionController@permissionRoleUpdatee')->name('permissionRoleUpdatee');
+            Route::post('/permissionRoleUpdatee', $ctl . '@permissionRoleUpdatee')->name('permissionRoleUpdatee');
             Route::get('/Capquyen', $ctl . '@addVip')->name('addVip');
             Route::get('/Capquyen/datatable/{lang_id}', $ctl . '@addVipDatatable')->name('addVipDatatable');
             Route::post('/changeRole', $ctl . '@changeRole')->name('changeRole');
