@@ -56,4 +56,5 @@ return [
 
     //page action 
     'detail' =>'Detail',
+    'storyManagement' => "Story Managerment",
 ];

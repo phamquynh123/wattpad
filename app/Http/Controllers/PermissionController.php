@@ -146,7 +146,7 @@ class PermissionController extends Controller
     {
         //
     }
-<a href="#" data-id="' . $data['id'] .'" class="btn bg-lime waves-effect data-fix btn-xs permission-role-edit" data-id="' . $data['id'] . '" data-name="" title="' . trans('action.edit') . '" data-toggle="modal" data-target="#permissionrole-edit" title="' . trans('action.trans') . '"><i class="material-icons">content_cut</i></a>
+// <a href="#" data-id="' . $data['id'] .'" class="btn bg-lime waves-effect data-fix btn-xs permission-role-edit" data-id="' . $data['id'] . '" data-name="" title="' . trans('action.edit') . '" data-toggle="modal" data-target="#permissionrole-edit" title="' . trans('action.trans') . '"><i class="material-icons">content_cut</i></a>
     /**
      * Show the form for editing the specified resource.
      *
@@ -210,15 +210,14 @@ class PermissionController extends Controller
         // }])->toArray();
         foreach ($permissiones as$key1 => $permission) {
             foreach ($roles['permission'] as $key => $value) {
-                if($value['name'] != $permission['name'])
+                if($value['name'] == $permission['name'])
                 {
                     unset($permissiones[$key1]);
-                    // dd($data);
                 }
             }
         }
         $roles['permissionToAdd'] = $permissiones;
-
+// dd($roles);
         return $roles;
     }
 

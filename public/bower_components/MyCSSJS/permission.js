@@ -167,7 +167,8 @@ $(document).on('submit', '#role-editt', function(e) {
 
 $(document).on('click', '.permission-role-edit', function() {
     var id = $(this).attr('data-id');
-
+    $('.list-permission-per-people').html('');
+    $('.selectpermission').html('');
     $.ajax({
         dataType: 'JSON',
         method: 'get',
@@ -177,12 +178,13 @@ $(document).on('click', '.permission-role-edit', function() {
         data: new FormData(this),
         url: route('permission.permissionRoleEdit', id),
         success: function(response) {
-            $('#rolename').html(response.display_name);
+            console.log(response);
+            $('.rolename').html(response.display_name);
             $.each(response.permission, function(key, value) {
                 $('.list-permission-per-people'). append(`<p>` + value['display_name'] + `</p>`);
             })
             if(response.permissionToAdd == '') {
-                 $('.selectpermission').append(`<option value="">Người dùng đã đủ quyền</option>`)
+                $('.selectpermission').append(`<option value="">Người dùng đã đủ quyền</option>`)
             } else {
                 $.each(response.permissionToAdd, function(key, value) {
                     $('.selectpermission').append(`<option value="" data-roleid="` + response.id + `" data-permissionid="` + value.id +`">` + value.display_name + `</option>`)

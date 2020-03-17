@@ -25,7 +25,7 @@
                     <th>{{ trans('message.id') }}</th>
                     <th>{{ trans('message.name') }}</th>
                     <th>{{ trans('message.description') }}</th>
-                    <th>{{ trans('message.action') }}</th>
+                    <th style="width: 80px">{{ trans('message.action') }}</th>
                 </tr>
             </thead>
         </table>
@@ -231,7 +231,7 @@
     </div>
 </div>
 
-{{-- edit  pẻmission-role --}}
+{{-- edit  permission-role --}}
 <div id="permissionrole-edit" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
 
@@ -239,21 +239,20 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h2 class="modal-title">{{ trans('action.edit') }}</h2>
+                <h2 class="modal-title">{{ trans('action.edit') }} {{ trans('message.permission') }} - {{ trans('message.role') }}</h2>
             </div>
             <div class="modal-body">
-                <span><b>{{ trans('message.role') }} : </b></span></h3><span id="rolename"></span>
-                    
+                <span><b>{{ trans('message.role') }} : </b></span></h3><span class="rolename"></span> <br>
+                <b>{{ trans('message.permission') }} : </b>
                 <div class="list-permission-per-people">
                     <p><b>{{ trans('message.permission') }}</b></p>
                 </div>
-
                 <div>
                     <form action="" method="POST" role="form" id = >
                         @csrf
                         <div class="form-group">
                             <div class="form-line">
-                                <label for="">{{ trans('message.description') }}</label>
+                                <label for="">{{ trans('action.add') }} {{ trans('message.permission') }} cho <span class="rolename"></span></label>
                                 <select name="" id="" class="selectpermission form-control">
                                 </select>
                             </div>
