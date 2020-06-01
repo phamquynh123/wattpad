@@ -18,24 +18,25 @@ class UserSeeder extends Seeder
 class UserDatabaseSeeder extends Seeder {
     public function run() 
     {
-        // Schema::disableForeignKeyConstraints();
-        // $users = [
+        //
+        Schema::disableForeignKeyConstraints();
+        $users = [
             
-        // ];
+        ];
 
-        // foreach ($users as $user) {
-        //     DB::table('users')->insert([
-        //         'name' => $user[0],
-        //         'description' => $user[1],
-        //         'avatar' ,
-        //         'account_status' //vip or normal
-        //         'role_id',
-        //         'status', //active deactive
-        //         'password',
-        //         'email',
-        //     ]);
-        // }
+        foreach ($users as $user) {
+            DB::table('users')->insert([
+                'name' => $user[0],
+                'description' => $user[1],
+                'avatar' ,
+                'account_status', //vip or normal
+                'role_id',
+                'status', //active deactive
+                'password',
+                'email',
+            ]);
+        }
 
-        // Schema::enableForeignKeyConstraints();
+        Schema::enableForeignKeyConstraints();
     }
 }

@@ -69,7 +69,7 @@ class StoryController extends Controller
                 $item->select('name');
             }
         ]);
-        // dd($vip_story->toArray());
+
         return view('user.home', compact(['categories', 'category_theloai', 'story', 'vip_story']));
     }
 
@@ -81,7 +81,7 @@ class StoryController extends Controller
     public function storyDatatable($language_id) {
         if(Auth::user()->role_id == config('Custom.roleAdmin')) {
             $stories = $this->Story->findCondition('language_id', $language_id);
-            // dd($stories);
+
             return Datatables::of($stories)
             ->addColumn('action', function ($story) {
                 if($story->parent_language_id == 0) {
@@ -138,7 +138,7 @@ class StoryController extends Controller
     public function manageMyStory()
     {
         $selectCategory = $this->Category->findCondition('cate', 1);
-        // dd($selectCategory);
+
         return view('admin.myStory', compact('selectCategory'));
     }
 
@@ -146,7 +146,7 @@ class StoryController extends Controller
     {
         $user = Auth::user()->load('story')->toArray();
         $stories = $user['story'];
-        // dd($stories);
+
         return Datatables::of($stories)
             ->addColumn('action', function ($story) {
                 if ($story['parent_language_id'] == 0) {
@@ -186,7 +186,7 @@ class StoryController extends Controller
     public function changPublicStatus($id)
     {
         $data = $this->Story->find($id)->toArray();
-        if($data['public_status'] == config('Custom.statusPublic')) {
+        if ($data['public_status'] == config('Custom.statusPublic')) {
             $data['public_status'] = config('Custom.statusDraft');
         } else $data['public_status'] = config('Custom.statusPublic');
         // dd($data);
@@ -249,7 +249,6 @@ class StoryController extends Controller
             },
             'comment.user'=> function($item){
                 $item->take(5);
-                // $item->select(['content']);
             },
             'chapter' => function($item) {
                 $item->take(5);
@@ -308,12 +307,15 @@ class StoryController extends Controller
             },
             'comment.user'=> function($item){
                 $item->take(5);
-                // $item->select(['content']);
+            },
+            'comment'=> function($item){
+                $item->take(5);
             },
             'chapter' => function($item) {
                 $item->take(5);
             }
         ]);
+        // dd($data->toArray());
         $data['numChapter'] = $this->Chapter->countChapter('story_id', $data['id']);
         $data['numComment'] = $this->Comment->countComment('story_id', $data['id']);
 
@@ -333,7 +335,6 @@ class StoryController extends Controller
                 $data['vote'] = true;
             }
         }
-        // die;
         return view('user/detailStory', compact(['data', 'recomment']));
         dd($data->toArray());
     }
@@ -348,18 +349,15 @@ class StoryController extends Controller
                 $item->take(5);
             },
         ]);
-        // dd($story['id']);
         $story['numChapter'] = $this->Chapter->countChapter('story_id', $story['id']);
         $story['numComment'] = $this->Comment->countComment('story_id', $story['id']);
 
         $chapter = $this->Chapter->findConditionClass('story_id', $story_id, 'slug', $chapter_slug)->first();
-        // dd($chapter->toArray());
         $recommentStory = $this->Story->getLimit()->load([
             'authors' => function($item) {
                 $item->select('name');
             }
         ]);
-        // dd($recommentStory->toArray());
 
         return view('user.viewChapter', compact(['story', 'chapter', 'recommentStory']));
     }
@@ -370,14 +368,12 @@ class StoryController extends Controller
             $data = $request->all();
             $data['user_id'] = Auth::user()->id;
             $result = $this->Comment->create($data);
-// dd($result);
             $result['user'] = Auth::user();
             if($result['user']['avatar'] == ''){
                 $result['user']['avatar'] = asset('') . config('Custom.imgDefaul');
             } else $result['user']['avatar'] = asset('') . config('Custom.linkImgDefaul') . $result['user']['avatar'];
 
             return response()->json(['success' => trans('action.success'), 'result' => $result]);
-            dd($data);
         } else {
             return response()->json(['success' => trans('message.loginToComment')]);
         }
@@ -414,8 +410,17 @@ class StoryController extends Controller
             }
         ])->toArray();
         $data = $data[0];
-        // echo $data['title'];
         return view('user.category', compact(['data']));
-        dd($data);
+    }
+
+    public function listStory()
+    {
+        $story = $this->Story->getStoryClient()->with([
+            'authors' => function($item) {
+                $item->select('name');
+            }
+        ])->paginate(config('Custom.list_story_client'));
+
+        return view('user.list_story', ['data' => $story]);
     }
 }

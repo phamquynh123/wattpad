@@ -1,0 +1,11 @@
+/*// list story client */
+
+.list_story .kode-thumb {
+    text-align: center;
+    background-color: #f3f3f3;
+    padding: 15px 0;
+    margin-bottom: 10px;
+}
+.list_story{
+    margin-bottom: 10px;
+}

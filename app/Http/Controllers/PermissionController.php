@@ -102,23 +102,12 @@ class PermissionController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
 
-    // pubic function
     public function store(Request $request)
     {
         $data = $request->all();
@@ -217,13 +206,12 @@ class PermissionController extends Controller
             }
         }
         $roles['permissionToAdd'] = $permissiones;
-// dd($roles);
+
         return $roles;
     }
 
     public function permissionRoleUpdatee(Request $request) {
         $data = $request->all();
-        // dd($data);
         $this->perrolerepo->create($data);
 
         return response()->json(['success' => trans('message.success')]);
@@ -238,10 +226,6 @@ class PermissionController extends Controller
     {
         if (Gate::allows('vipAccount')) {
             $useres = $this->userrepo->getUser()->load('role')->toArray();
-            // foreach ($useres as $value) {
-            //     dd($value['role']['display_name']);
-            // }
-            // dd($useres);
             return Datatables::of($useres)
             ->addColumn('action', function ($user) {
                 $user_id = $user['id'];

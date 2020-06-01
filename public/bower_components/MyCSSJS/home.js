@@ -43,13 +43,14 @@ $(document).on('submit', '#comment-story', function(e) {
             console.log(response.result);
 
             var html =` <div class="image-cmt float-left">
-                            <img src="` + response.user.avatar + ` }}" alt="">
+                            <img src="` + response.result.user.avatar + ` }}" alt="">
                         </div>
                         <div class="float-left">
-                            <p><b>{{ $value->user->name }}</b></p>
-                            <p>` + response.content + `</p>
+                            <p><b>` + response.result.user.name + `</b></p>
+                            <p>` + response.result.content + `</p>
                         </div>
                         <div class="clear"></div>`;
+
             $('.div-comment').prepend(html);
         },
         error:function(jqXHR, textStatus, errorThrown){
@@ -69,7 +70,7 @@ $(document).on('click', '.vote-Story', function(e) {
         cache: false,
         contentType: false,
         processData: false,
-        data: new FormData(this),
+        // data: new FormData(this),
         url: route('vote', $story_id),
         success: function(response){
             toastr.info(response.success);

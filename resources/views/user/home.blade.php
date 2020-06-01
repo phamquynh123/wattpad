@@ -1,9 +1,9 @@
 @extends('layouts.header')
 @section('BOOKGUIDE')
-    <a href="{!! route('change-language', ['en']) !!}">English</a>
+{{--     <a href="{!! route('change-language', ['en']) !!}">English</a>
     <a href="{!! route('change-language', ['vi']) !!}">Vietnam</a> 
 
-{{ trans('message.hello') }}
+{{ trans('message.hello') }} --}}
     <!--BOOK GUIDE SECTION START-->
     <section>
         <div class="container">

@@ -46,4 +46,9 @@ class StoryRepository extends BaseRepository implements StoryRepositoryInterface
         // return $this->_model::find($id)->select(['id', 'total_vote'])->first();
     }
 
+    public function getStoryClient()
+    {
+        return $this->_model::orderBy('id', 'DESC');
+    }
+
 }

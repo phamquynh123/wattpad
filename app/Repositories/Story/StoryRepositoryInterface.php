@@ -13,4 +13,6 @@ interface StoryRepositoryInterface
     public function getLimit();
 
     public function getVote($id);
+
+    public function getStoryClient();
 }

@@ -73,7 +73,16 @@ Route::group(['middleware' => 'locale'], function() {
             Route::get('/Capquyen', $ctl . '@addVip')->name('addVip');
             Route::get('/Capquyen/datatable/{lang_id}', $ctl . '@addVipDatatable')->name('addVipDatatable');
             Route::post('/changeRole', $ctl . '@changeRole')->name('changeRole');
-
         });
+
+        Route::group(['prefix' => 'news'],function() {
+			$ctl = 'NewsController';
+			Route::get('list.html', $ctl . '@listNews')->name('news.list');
+			Route::get('add.html', $ctl . '@addNewsForm')->name('news_add_form');
+	    	Route::post('add.html', $ctl . '@addNewsAccess')->name('news_add');
+			Route::get('edit/{id}', $ctl . '@editNewsForm')->name('news_edit_form');
+	    	Route::post('edit.html', $ctl . '@editNewsAccess')->name('news_edit');
+	    	Route::get('delete.html/{id}', $ctl . '@deleteNewsAccess')->name('news_delete');
+		});
     });
 });

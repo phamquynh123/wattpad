@@ -76,42 +76,42 @@
                 <!--LOGO END-->
                 <div class="kode-navigation">
                     <ul>
-                        <li><a href="#">{{ trans('message.home') }}</a>
+                        <li><a href="{{ asset('/') }}">{{ trans('message.home') }}</a>
                             <ul>
                                 <li><a href="index-1.html">Home page 1</a></li>
                             </ul>
                         </li>
                         
-                        <li><a href="about-us.html">{{ trans('message.about_us') }}</a></li>
-                        <li><a href="books.html">{{ trans('message.book') }}</a>
+                        <li><a href="#">{{ trans('message.about_us') }}</a></li>
+                        <li><a href="{{ route('list_story') }}">{{ trans('message.book') }}</a>
                             <ul>
-                                <li><a href="books3-sidebar.html">Book With Sidebar</a></li>
-                                <li><a href="books-detail.html">Book Detail</a></li>                                
+                                <li><a href="#">Book With Sidebar</a></li>
+                                <li><a href="#">Book Detail</a></li>                                
                             </ul>
                         </li>
-                        <li><a href="blog.html">{{ trans('message.blog') }}</a>
+                        <li><a href="#">{{ trans('message.blog') }}</a>
                             <ul>
-                                <li><a href="blog-2column.html">Blog 2 Column</a></li>
-                                <li><a href="blog-full.html">Blog Full</a></li>
-                                <li><a href="blog-detail.html">Blog Detail</a></li>
+                                <li><a href="#">Blog 2 Column</a></li>
+                                <li><a href="#">Blog Full</a></li>
+                                <li><a href="#">Blog Detail</a></li>
                             </ul>
                         </li>
-                        <li><a href="authors.html">{{ trans('message.author') }}</a>
+                        <li><a href="#">{{ trans('message.author') }}</a>
                             <ul>
-                                <li><a href="authors.html">Authors</a></li>
-                                <li><a href="author-detail.html">Authors Detail</a></li>                                        
+                                <li><a href="#">Authors</a></li>
+                                <li><a href="#">Authors Detail</a></li>                                        
                             </ul>
                         </li>
                         <li class="last"><a href="#">{{ trans('message.event') }}</a>
                             <ul>
-                                <li><a href="events-2column.html">Event 2 Column</a></li>
-                                <li><a href="events-3column.html">Event 3 Column</a></li>
-                                <li><a href="event-full.html">Event Single</a></li>
-                                <li><a href="event-detail.html">Event Detail</a></li>
+                                <li><a href="#">Event 2 Column</a></li>
+                                <li><a href="#">Event 3 Column</a></li>
+                                <li><a href="#">Event Single</a></li>
+                                <li><a href="#">Event Detail</a></li>
                             </ul>
                         </li>
 
-                        <li class="last"><a href="contact-us.html">{{ trans('message.contact') }}</a></li>
+                        <li class="last"><a href="#">{{ trans('message.contact') }}</a></li>
                     </ul>
                 </div>
                 <div id="kode-responsive-navigation" class="dl-menuwrapper">
@@ -221,7 +221,7 @@
               <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active" id="Basic">
                     <div class="form-container">
-                        <div class="row">
+                        {{-- <div class="row">
                             <div class="col-md-3 col-sm-4">
                                 <input type="text" placeholder="First Name">
                             </div>
@@ -234,7 +234,7 @@
                             <div class="col-md-3 col-sm-12">
                                 <button>Search Author</button>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="Author">
@@ -377,28 +377,29 @@
         <section class="lib-contact-section">
             <div class="location-text">
                 <i class="fa fa-map-marker"></i>
-                <h2>Lorem ipsum<br>Sed ut perspiciatis</h2>
+                <h2>All create<br> and develop</h2>
                 <h4>200 capacity</h4>
                 <p>Esse cillum dolore eu fugiat nulla USA</p>
-                <span><i class="fa fa-phone"></i>80.828247.89</span>
+                <span><i class="fa fa-phone"></i>037 435 2428</span>
             </div>
             <div class="kode-thumb">
                 
             </div>
-            <div class="map-canvas" id="map-canvas"></div>
+            {{-- <div class="map-canvas" id="map-canvas"></div> --}}
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.6888436908225!2d105.84343494986697!3d21.005106393894035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ad5569f4fbf1%3A0x5bf30cadcd91e2c3!2zxJDhuqBJIEjhu4xDIELDgUNIIEtIT0EgQ-G7lE5HIFRS4bqmTiDEkOG6oEkgTkdIxKhB!5e0!3m2!1svi!2s!4v1591028430772!5m2!1svi!2s" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
         </section>
     </div>
     <!--CONTENT END-->
     <footer class="footer-2">
         <div class="container">
             <div class="lib-copyrights">
-                <p>Copyrights © 2015-16 KodeForest. All rights reserved</p>
+                <p>Copyrights © 2020-Quynh. All rights reserved</p>
                 <div class="social-icon">
                     <ul>
-                        <li><a href="#" data-toggle="tooltip" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#" data-toggle="tooltip" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="#" data-toggle="tooltip" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#" data-toggle="tooltip" title="Tumblr"><i class="fa fa-tumblr"></i></a></li>
+                        <li><a href="#" data-toggle="tooltip" title="Facebook"><i class="fab fa-facebook"></i></a></li>
+                        <li><a href="#" data-toggle="tooltip" title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
+                        <li><a href="#" data-toggle="tooltip" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#" data-toggle="tooltip" title="Tumblr"><i class="fab fa-tumblr"></i></a></li>
                     </ul>
                 </div>
             </div>

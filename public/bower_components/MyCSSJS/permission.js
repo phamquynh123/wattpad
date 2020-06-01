@@ -232,7 +232,7 @@ $('#addVip').DataTable({
     ],
 });
 
-$(document).on('change', '#selectRole', function() {
+$(document).on('change', '.selectRole', function() {
     Swal.fire({
         title: 'Thay đổi vai trò người dùng ?',
         icon: 'warning',
@@ -242,8 +242,8 @@ $(document).on('change', '#selectRole', function() {
         confirmButtonText: 'Yes, !'
     }).then((result) => {
         if (result.value) {
-            var user_id = $('#selectRole').attr('data-userId');
-            var role_id = $('#selectRole').children("option:selected").attr('data-roleId');
+            var user_id = $(this).attr('data-userId');
+            var role_id = $(this).children("option:selected").attr('data-roleid');
             var formData = new FormData();
             formData.append('role_id', role_id);
             formData.append('id' , user_id);

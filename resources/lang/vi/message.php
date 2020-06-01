@@ -77,4 +77,8 @@ return [
     'loginToComment' => 'Đăng Nhập Để Bình Luận',
     'storyManagement' => 'Quản lí truyện',
     'success' => 'Thành công',
+    'news' => 'Tin tức',
+    'menu' => 'Menu',
+    'category' => 'Danh mục',
+
 ];

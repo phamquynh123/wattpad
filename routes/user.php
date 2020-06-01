@@ -13,6 +13,7 @@ Route::group(['middleware' => 'locale'], function() {
     });
 
     Route::post('/getCategory', 'StoryController@getCategory')->name('getCategory');
+    Route::get('/list_story', $ctl . '@listStory')->name('list_story');
     Route::get('/{slug}', $ctl . '@viewStory');
     Route::get('/{story_slug}/{id}/{chapter_slug}' , $ctl . '@viewChapter')->name('viewChapter');
 
@@ -20,4 +21,5 @@ Route::group(['middleware' => 'locale'], function() {
     Route::get('vote/{id}', $ctl . '@vote')->name('vote');
 
     Route::get('category/{slug}', $ctl . '@getStoryByCategory')->name('getStoryByCategory');
+
 });

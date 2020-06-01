@@ -36,5 +36,12 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind("App\\Repositories\\PermissionRole\\PermissionRoleRepositoryInterface","App\\Repositories\\PermissionRole\\PermissionRoleRepository");
         $this->app->bind("App\\Repositories\\CategoryStory\\CategoryStoryRepositoryInterface","App\\Repositories\\CategoryStory\\CategoryStoryRepository");
         $this->app->bind("App\\Repositories\\Vote\\VoteRepositoryInterface","App\\Repositories\\Vote\\VoteRepository");
+
+        $repositories = [ 
+            'NewsRepositoryInterface' => 'NewsRepository',
+        ];
+        foreach ($repositories as $key => $val){
+            $this->app->bind("App\\Repositories\\Contracts\\$key", "App\\Repositories\\Eloquents\\$val");
+        }
     }
 }

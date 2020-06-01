@@ -21,5 +21,6 @@
         'roleVipUser' => 4,
 
         'limitRecord' => 6,
+        'list_story_client' => 8,
 
     ];
