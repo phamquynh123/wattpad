@@ -221,7 +221,7 @@
               <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active" id="Basic">
                     <div class="form-container">
-                        {{-- <div class="row">
+                        <div class="row">
                             <div class="col-md-3 col-sm-4">
                                 <input type="text" placeholder="First Name">
                             </div>
@@ -234,7 +234,7 @@
                             <div class="col-md-3 col-sm-12">
                                 <button>Search Author</button>
                             </div>
-                        </div> --}}
+                        </div>
                     </div>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="Author">

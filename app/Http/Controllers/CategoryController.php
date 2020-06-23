@@ -9,6 +9,7 @@ use App\Repositories\Language\LanguageRepositoryInterface;
 use Yajra\Datatables\Datatables;
 use Session;
 use App\Http\Requests\CategoryRequest;
+use Carbon\Carbon;
 
 class CategoryController extends Controller
 {
@@ -41,12 +42,12 @@ class CategoryController extends Controller
         }
         $parentCategories = $this->Category->findByLanguage('parent_id', config('Custom.categoryParentId'), 'language_id', $language_id);
 
-        return view('admin.category', compact(['languages', 'parentCategories']));
+        return view('admin.menu', compact(['languages', 'parentCategories']));
     }
 
-    public function categoryDatatable()
+    public function menuDatatable()
     {
-        $categories = $this->Category->getAll();
+        $categories = $this->Category->listMenu();
         foreach ($categories as $key => $value) {
             foreach ($categories as $key1 => $value1) {
                 if ($value->parent_id != '1') {
@@ -174,5 +175,56 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         //
+    }
+    // category
+    public function listCategory()
+    {
+        $languages = $this->Language->getAll();
+
+        return view('admin.category', ['languages' => $languages]);
+    }
+
+    public function categoryDatatable()
+    {
+        $categories = $this->Category->listCategory();
+
+        return Datatables::of($categories)
+            ->addColumn('action', function ($category) {
+                return '<a href="' . route('category.detail', $category->id) . '" class="btn btn-sm btn-warning category-detail btn-xs" data-id="' . $category->id . '" data-name="' . $category->slug . '"><i class="fa fa-eye"></i></a> <a href="#" data-id="' . $category->id .'" class="btn btn-sm btn-info category-edit btn-xs" data-id="' . $category->id . '" data-name="' . $category->slug . '" data-toggle="modal" data-target="#category-edit"><i class="fa fa-edit"></i></a>';
+            })
+            ->editColumn('created_at', function ($item) {
+                return Carbon::parse($item->created_at)->format('d-m-Y');
+            })
+            ->rawColumns([ 
+                'action',
+            ])
+            ->make(true);
+    }
+
+    public function storeCategory(Request $request)
+    {
+        $data = $request->all();
+        $data['slug'] = str_slug($data['title']);
+        $data['parent_id'] = 0;
+        $data['cate'] = 1;
+        $this->Category->create($data);
+
+        return response()->json([ 'error' => false, 'success' => trans('action.success') ]);
+    }
+
+    public function editCategory($id)
+    {
+        $data = $this->Category->find($id);
+
+        return response()->json([$data]);
+    }
+
+    public function updateCategory(Request $request)
+    {
+        $data = $request->all();
+        $data['slug'] = str_slug($data['title']);
+        $this->Category->update($data['id'], $data);
+
+        return response()->json([ 'error' => false, 'success' => trans('action.success') ]);
     }
 }

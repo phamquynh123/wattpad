@@ -29,4 +29,14 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
         $result = $this->_model->where($cate, $attr1)->where($parent_id, $attr2)->where($language, $attr3)->get();
     }
 
+    public function listMenu()
+    {
+        return Category::where('cate', '!=', '1')->get();
+    }
+
+    public function listCategory()
+    {
+        return Category::where('cate', '1')->get();
+    }
+
 }

@@ -11,6 +11,7 @@ class Category extends Model
         'title',
         'slug',
         'parent_id',
+        'cate',
         'language_id',
         'parent_language_id',
     ];

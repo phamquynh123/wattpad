@@ -24,16 +24,27 @@ Route::group(['middleware' => 'locale'], function() {
     Route::group(['middleware' => 'auth'], function() {
         Route::prefix('/admin')->group(function() {
             Route::get('/', 'AdminController@index');
-            Route::prefix('/category')->name('category.')->group(function(){
-                // $categoryController = 'CategoryController';
+            Route::prefix('/menu')->name('category.')->group(function(){
+                $categoryController = 'CategoryController';
                 // Route::post("cart", $shopController . "@cart")->name('cart');
                 Route::get('/', 'CategoryController@index');
-                Route::get('/categoryDatatable', 'CategoryController@categoryDatatable')-> name('datatable');
+                Route::get('/categoryDatatable', 'CategoryController@menuDatatable')-> name('datatable');
                 Route::get('/detail/{id}', 'CategoryController@detail')->name('detail');
                 Route::get('/trans/{id}', 'CategoryController@getDataTrans')->name('gettrans');
                 Route::post('/trans', 'CategoryController@trans')->name('trans');
                 Route::post('/add', 'CategoryController@store')->name('add');
                 // });
+            });
+            Route::prefix('/category')->group(function() {
+                $categoryController = 'CategoryController';
+                Route::get('/', 'CategoryController@listCategory');
+                Route::get('/categoryDatatable', 'CategoryController@categoryDatatable')-> name('list_category');
+                Route::get('/detail/{id}', 'CategoryController@detail')->name('detail');
+                Route::get('/trans/{id}', 'CategoryController@getDataTrans')->name('gettrans');
+                Route::post('/trans', 'CategoryController@trans')->name('trans');
+                Route::post('/add', 'CategoryController@storeCategory')->name('add_category');
+                Route::get('/edit/{id}', 'CategoryController@editCategory')->name('edit_category');
+                Route::post('/update', '<<<CategoryController@updateCategory></CategoryController@updateCategory></CategoryController@updateCategory></CategoryController@updateCategory>')->name('update_category');
             });
 
             Route::prefix('/story')->name('story.')->group(function() {
@@ -41,7 +52,6 @@ Route::group(['middleware' => 'locale'], function() {
                 Route::get('datatable/{language_id}', 'StoryController@storyDatatable')->name('datatable');
                 Route::get('/detail/{id}', 'StoryController@detail')->name('detail');
             });
-
         });
 
         Route::prefix('/manageMyStory')->name('myStory.')->group(function() {

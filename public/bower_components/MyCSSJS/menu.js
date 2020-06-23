@@ -10,6 +10,7 @@ $('#category').DataTable({
     columns: [
         { data: 'id', name: 'id' },
         { data: 'title', name: 'title' },
+        { data: 'parent', name: 'parent' },
         { data: 'created_at', name: 'created_at' },
         { data: 'action', name: 'action' },
     ],
@@ -24,11 +25,10 @@ $(document).on('submit', '#submitAdd', function(e) {
         contentType: false,
         processData: false,
         data: new FormData(this),
-        url: route('add_category'),
+        url: route('category.add'),
         success: function(response) {
             toastr.info(response.success);
-            $('#category-add').modal('hide');
-            $('#category').DataTable().ajax.reload(null, false);
+            location.reload();
         },
         error:function(jqXHR, textStatus, errorThrown){
             if (jqXHR.responseJSON.errors.title !== undefined){
@@ -93,43 +93,3 @@ $('#transData').on('submit', function(e) {
         }
     })
 })
-
-$(document).on('click', '.category-edit', function(e) {
-    e.preventDefault();
-    $.ajax({
-        dataType: 'JSON',
-        method: 'get',
-        cache: false,
-        contentType: false,
-        processData: false,
-        url: route('edit_category', $(this).attr('data-id')),
-        success: function(response){
-            $('#edit-id').val(response[0]['id']);
-            $('#edit-name').val(response[0]['title']);
-        }
-    });
-})
-
-$('#submitEdit').on('submit', function(e) {
-    e.preventDefault();
-    $.ajax({
-        dataType: 'JSON',
-        method: 'post',
-        cache: false,
-        contentType: false,
-        processData: false,
-        data: new FormData(this),
-        url: route('update_category'),
-        success: function(response){
-            toastr.info(response.success);
-            $('#category-edit').modal('hide');
-            $('#category').DataTable().ajax.reload(null, false);
-        },
-        error:function(jqXHR, textStatus, errorThrown){
-            if (jqXHR.responseJSON.errors.title !== undefined){
-                toastr.error(jqXHR.responseJSON.errors.title[0]);
-            }
-        }
-    })
-})
-

@@ -20,7 +20,7 @@
 
                     @if (Gate::allows('admin'))
                     <li>
-                        <a href="{{ asset('/admin/category') }}">
+                        <a href="{{ asset('/admin/menu') }}">
                             <i class="material-icons fa fa-bars"></i>
                             <span>{{ trans('message.menu') }}</span>
                         </a>
